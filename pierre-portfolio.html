@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Pierre Pétillion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--teal:#2bb8b8;--teal-d:#1a9999;--teal-dk:#0e7a7a}
+body{min-height:100vh;background:var(--teal);color:#fff;font-family:'Inter',sans-serif;display:flex;flex-direction:column;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:rgba(255,255,255,.08)}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.35);border-radius:3px}
+
+/* FLAGS */
+#flags{position:fixed;top:14px;left:18px;z-index:200;display:flex;gap:8px}
+#flags img{width:32px;height:32px;object-fit:cover;border-radius:5px;cursor:pointer;opacity:.45;transition:opacity .2s,transform .2s}
+#flags img.active{opacity:1;transform:scale(1.12)}
+
+/* LAYOUT */
+main{flex:1;display:flex;flex-direction:column;align-items:center;padding:52px 20px 36px;gap:28px}
+.container{max-width:1120px;width:100%;display:flex;flex-direction:column;gap:28px}
+
+/* SLIDE BOX */
+.slide-box{border:3px solid rgba(255,255,255,.42);border-radius:18px;padding:48px 56px;min-height:520px;display:flex;flex-direction:column;justify-content:center;gap:22px;background:transparent}
+
+/* CAROUSEL */
+#carousel{position:relative}
+.slide{display:none}
+.slide.active{display:flex;flex-direction:column}
+
+/* ARROWS */
+.carousel-ctrl{position:absolute;top:50%;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:20;box-shadow:0 2px 14px rgba(0,0,0,.18);transition:background .2s}
+.carousel-ctrl:hover{background:#fff}
+#prev{left:-44px;animation:aL 2.5s ease-in-out infinite}
+#next{right:-44px;animation:aR 2.5s ease-in-out infinite}
+#prev:hover,#next:hover{animation:none}
+@keyframes aL{0%,100%{left:-44px}50%{left:-50px}}
+@keyframes aR{0%,100%{right:-44px}50%{right:-50px}}
+.carousel-ctrl svg{color:var(--teal-dk)}
+
+/* DOTS — vrais cercles */
+#dots{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:18px}
+.dot{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,.35);border:none;cursor:pointer;transition:background .25s,transform .25s;padding:0;flex-shrink:0}
+.dot.active{background:#fff;transform:scale(1.3)}
+
+/* ── SLIDE 1 PROFILE ── */
+.profile-row{display:flex;align-items:center;justify-content:center;gap:56px;flex-wrap:wrap}
+
+/* Avatar PP circle */
+.avatar-circle{width:190px;height:190px;border-radius:50%;flex-shrink:0;background:linear-gradient(145deg,rgba(255,255,255,.25) 0%,rgba(255,255,255,.08) 100%);border:3px solid rgba(255,255,255,.65);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 7px rgba(255,255,255,.1);position:relative;overflow:hidden}
+.avatar-circle .initials{font-size:56px;font-weight:800;color:#fff;letter-spacing:3px;user-select:none;text-shadow:0 2px 14px rgba(0,0,0,.15)}
+
+.profile-info{max-width:520px}
+.profile-info h1{font-size:44px;font-weight:800;letter-spacing:-.5px;line-height:1.1;margin-bottom:8px}
+.job-title{font-size:18px;font-weight:700;margin-bottom:3px}
+.job-sub{font-size:14px;font-weight:400;opacity:.72;margin-bottom:14px}
+.meta-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:14px}
+.meta-item{display:flex;align-items:center;gap:6px;font-size:13.5px;opacity:.85}
+.meta-item svg{opacity:.72;flex-shrink:0}
+.bio{font-size:14px;line-height:1.72;opacity:.88;margin-bottom:16px;max-width:480px}
+.lang-tags{display:flex;gap:8px;flex-wrap:wrap}
+.lang-tag{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.18);border-radius:20px;padding:4px 13px;font-size:12.5px;font-weight:500}
+
+/* Buttons — match screenshot style */
+.btn-row{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap;justify-content:center}
+.action-btn{display:flex;align-items:center;gap:9px;padding:14px 32px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.28);border-radius:50px;color:#fff;text-decoration:none;font-weight:600;font-size:15px;transition:background .2s,border-color .2s;white-space:nowrap}
+.action-btn:hover{background:rgba(255,255,255,.28);border-color:rgba(255,255,255,.5)}
+
+/* SLIDE TITLE */
+.slide-title-wrap{text-align:center;margin-bottom:6px}
+.slide-title{font-size:26px;font-weight:700;border:3px solid rgba(255,255,255,.42);padding:8px 22px;border-radius:8px;display:inline-block}
+
+/* TECH LOGOS */
+.logo-grid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.logo-box{width:64px;height:64px;background:rgba(255,255,255,.18);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:default;transition:transform .2s,background .2s;position:relative}
+.logo-box:hover{transform:scale(1.12);background:rgba(255,255,255,.28)}
+.logo-box img{width:38px;height:38px;object-fit:contain}
+.logo-box .tip{position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);background:var(--teal-dk);color:#fff;font-size:11px;padding:4px 10px;border-radius:5px;white-space:nowrap;z-index:999;pointer-events:none;opacity:0;transition:opacity .15s;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.logo-box:hover .tip{opacity:1}
+
+/* SOFT SKILLS */
+.soft-grid{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.soft-box{display:flex;flex-direction:column;align-items:center;gap:7px;width:90px;cursor:default}
+.soft-inner{width:76px;height:76px;background:rgba(255,255,255,.18);border-radius:14px;display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s;position:relative}
+.soft-box:hover .soft-inner{transform:scale(1.1);background:rgba(255,255,255,.28)}
+.soft-inner .emoji-big{font-size:40px;line-height:1}
+.soft-label{font-size:11px;text-align:center;opacity:.82;line-height:1.3;max-width:86px;font-weight:500}
+.soft-inner .tip{position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);background:var(--teal-dk);color:#fff;font-size:11px;padding:4px 10px;border-radius:5px;white-space:nowrap;z-index:999;pointer-events:none;opacity:0;transition:opacity .15s}
+.soft-box:hover .soft-inner .tip{opacity:1}
+
+/* EDUCATION */
+.edu-scroll{max-height:380px;overflow-y:auto;margin-top:10px;padding-right:8px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.3) transparent}
+.timeline{position:relative;padding-left:46px}
+.tl-line{position:absolute;left:13px;top:10px;bottom:10px;width:3px;background:rgba(255,255,255,.3);border-radius:2px}
+.tl-item{position:relative;margin-bottom:24px}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-37px;top:7px;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--teal);box-shadow:0 0 0 4px rgba(255,255,255,.22)}
+.t-card{background:rgba(255,255,255,.14);border-radius:12px;padding:14px 18px;border:1px solid rgba(255,255,255,.22);transition:background .2s}
+.t-card:hover{background:rgba(255,255,255,.24)}
+.t-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.t-title{font-size:15px;font-weight:700}
+.t-badge{font-size:12px;opacity:.68;font-family:monospace;background:rgba(0,0,0,.18);padding:2px 9px;border-radius:10px;white-space:nowrap}
+.t-place{font-size:13.5px;opacity:.88;font-weight:600;margin-bottom:4px}
+.t-sub{font-size:12.5px;opacity:.7;line-height:1.55}
+
+/* EXPERIENCE */
+.exp-scroll{max-height:400px;overflow-y:auto;display:flex;flex-direction:column;gap:14px;padding-right:8px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.3) transparent}
+.exp-card{background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.22);border-radius:14px;padding:18px 22px;transition:border-color .2s}
+.exp-card:hover{border-color:rgba(255,255,255,.55)}
+.exp-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.exp-icon{font-size:26px}
+.exp-company{font-size:17px;font-weight:700}
+.exp-period{font-size:12px;opacity:.6;font-family:monospace;margin-top:2px}
+.exp-roles{display:flex;flex-direction:column;gap:9px}
+.exp-role{display:flex;gap:10px}
+.exp-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.62);margin-top:5px;flex-shrink:0}
+.exp-rl{font-size:13px;font-weight:600}
+.exp-rp{font-size:11px;opacity:.56;margin-left:8px;font-family:monospace}
+.exp-rd{font-size:12.5px;opacity:.75;margin-top:3px;line-height:1.55}
+
+/* CONTACT */
+.contact-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.contact-tile{display:flex;align-items:center;gap:16px;padding:18px 22px;border:2px solid rgba(255,255,255,.22);border-radius:14px;flex:1;min-width:230px;max-width:340px;background:rgba(255,255,255,.1);transition:border-color .2s,background .2s}
+.contact-tile:hover{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.18)}
+.contact-icon{flex-shrink:0;display:flex}
+.contact-info{flex:1;min-width:0}
+.contact-label{font-size:14px;font-weight:700;display:block}
+.contact-detail{font-size:12px;opacity:.72;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.contact-btn{font-size:12px;color:#fff;border:1.5px solid rgba(255,255,255,.48);padding:7px 14px;border-radius:20px;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background .2s}
+.contact-btn:hover{background:rgba(255,255,255,.2)}
+
+/* CATEGORIES */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cat-card{position:relative;border-radius:14px;overflow:hidden;border:3px solid rgba(255,255,255,.36);cursor:pointer;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;transition:transform .22s,border-color .22s}
+.cat-card:hover{transform:scale(1.04);border-color:rgba(255,255,255,.68)}
+.cat-card.active{border-color:#fff;transform:scale(1.03)}
+.cat-emoji{font-size:76px;opacity:.24;user-select:none}
+.cat-label-bar{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.26);padding:12px 0;text-align:center}
+.cat-name{font-size:19px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+
+/* PROJECTS */
+.proj-section-title{font-size:22px;font-weight:700;text-align:center;border:3px solid rgba(255,255,255,.42);padding:10px 24px;border-radius:10px;background:rgba(43,184,184,.2);margin-bottom:16px}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:14px}
+.proj-card{display:flex;flex-direction:column;background:rgba(255,255,255,.13);border:2px solid rgba(255,255,255,.28);border-radius:12px;overflow:hidden;text-decoration:none;color:#fff;transition:transform .2s,box-shadow .2s}
+.proj-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.22)}
+.proj-card img{width:100%;height:128px;object-fit:cover;display:block}
+.proj-fallback{width:100%;height:128px;background:rgba(0,0,0,.18);display:none;align-items:center;justify-content:center;font-size:34px}
+.proj-body{padding:12px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
+.proj-meta{display:flex;justify-content:space-between}
+.proj-year{font-size:11px;opacity:.58;font-family:monospace}
+.proj-stars{color:#ffd700;font-size:12px}
+.proj-title{font-weight:700;font-size:14px}
+.proj-desc{font-size:12px;opacity:.76;line-height:1.5;flex:1}
+.proj-tags{display:flex;flex-wrap:wrap;gap:4px}
+.proj-tag{padding:2px 7px;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap}
+.proj-gh{margin-top:2px;font-size:12px;text-align:center;border:1px solid rgba(255,255,255,.42);border-radius:16px;padding:5px 0;opacity:.82}
+
+/* SCROLL TOP */
+#scrollTop{position:fixed;bottom:16px;right:16px;width:46px;height:46px;border-radius:50%;background:rgba(14,95,95,.85);border:none;cursor:pointer;color:#fff;font-size:19px;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:50;display:flex;align-items:center;justify-content:center}
+#scrollTop.visible{opacity:1;pointer-events:auto}
+footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-weight:500}
+
+/* TAG COLORS */
+.tPy{background:#3776AB;color:#fff}.tCs{background:#68217a;color:#fff}.tJs{background:#f0db4f;color:#000}
+.tJv{background:#b07219;color:#fff}.tC_{background:#555;color:#fff}.tCp{background:#f34b7d;color:#fff}
+.tR_{background:#276dc3;color:#fff}.tSq{background:#f29111;color:#fff}.tHt{background:#e34c26;color:#fff}
+.tCss{background:#563d7c;color:#fff}.tPh{background:#4F5D95;color:#fff}.tNt{background:#512bd4;color:#fff}
+.tTf{background:#FF6F00;color:#fff}.tPt{background:#EE4C2C;color:#fff}.tPd{background:#150458;color:#fff}
+.tSk{background:#f89939;color:#000}.tRc{background:#20232a;color:#61dafb}.tTw{background:#06B6D4;color:#000}
+.tNj{background:#339933;color:#fff}.tDk{background:#2496ED;color:#fff}.tSp{background:#E25A1C;color:#fff}
+.tHd{background:#ffd900;color:#000}.tUn{background:#222;color:#fff}.tQt{background:#41cd52;color:#000}
+.tSc{background:#DC322F;color:#fff}.tHf{background:#FFD21E;color:#000}.tJp{background:#F37626;color:#fff}
+.tBs{background:#7952B3;color:#fff}.tBh{background:#4EAA25;color:#fff}.tKr{background:#D00000;color:#fff}
+.tSb{background:#4c72b0;color:#fff}.tMd{background:#083fa1;color:#fff}
+</style>
+</head>
+<body>
+
+<div id="flags">
+  <img id="flag-en" src="https://raw.githubusercontent.com/Pierre-Portfolio/Celia/main/assets/images/profil/uk.png" onerror="this.src='https://flagcdn.com/w40/gb.png'" alt="EN" onclick="setLang('en')">
+  <img id="flag-fr" src="https://raw.githubusercontent.com/Pierre-Portfolio/Celia/main/assets/images/profil/fr.png" onerror="this.src='https://flagcdn.com/w40/fr.png'" alt="FR" onclick="setLang('fr')" class="active">
+</div>
+
+<main><div class="container">
+
+<section id="carousel">
+  <button id="prev" class="carousel-ctrl" onclick="changeSlide(-1)">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button id="next" class="carousel-ctrl" onclick="changeSlide(1)">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+
+  <div class="slides">
+
+    <!-- SLIDE 1 PROFIL -->
+    <div class="slide slide-box active" id="s0">
+      <div class="profile-row">
+        <div class="avatar-circle"><span class="initials">PP</span></div>
+        <div class="profile-info">
+          <h1>Pierre Petillion</h1>
+          <div class="job-title" data-fr="Software Consultant at VPWhite" data-en="Software Consultant at VPWhite">Software Consultant at VPWhite</div>
+          <div class="job-sub">Data &amp; AI Developer</div>
+          <div class="meta-row">
+            <span class="meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Voisins-le-Bretonneux, Ile-de-France, France
+            </span>
+            <span class="meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              VPWhite
+            </span>
+          </div>
+          <p class="bio" data-fr="Enthousiaste de l'intelligence artificielle et de son potentiel revolutionnaire, j'aspire a faire de cette passion mon metier. Ma quete incessante de connaissances et mon amour pour l'apprentissage automatique et les algorithmes me motivent a explorer les possibilites infinies offertes par l'IA." data-en="Enthusiast of artificial intelligence and its revolutionary potential, I aspire to make this passion my career. My constant quest for knowledge and love of machine learning motivate me to explore the infinite possibilities offered by AI.">Enthousiaste de l'intelligence artificielle et de son potentiel revolutionnaire, j'aspire a faire de cette passion mon metier. Ma quete incessante de connaissances et mon amour pour l'apprentissage automatique et les algorithmes me motivent a explorer les possibilites infinies offertes par l'IA.</p>
+          <div class="lang-tags">
+            <span class="lang-tag">&#127467;&#127479; Francais</span>
+            <span class="lang-tag">&#127468;&#127463; Anglais</span>
+          </div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a href="https://github.com/Pierre-Portfolio" target="_blank" class="action-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://linkedin.com/in/ppetillion/" target="_blank" class="action-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="mailto:petillion99@gmail.com" class="action-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <span data-fr="Contact" data-en="Contact">Contact</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 TECH -->
+    <div class="slide slide-box" id="s1">
+      <div class="slide-title-wrap"><span class="slide-title" data-fr="Competences Techniques" data-en="Technical Skills">Competences Techniques</span></div>
+      <div class="logo-grid" id="tech-grid"></div>
+    </div>
+
+    <!-- SLIDE 3 SOFT -->
+    <div class="slide slide-box" id="s2">
+      <div class="slide-title-wrap"><span class="slide-title">Soft Skills</span></div>
+      <div class="soft-grid" id="soft-grid"></div>
+    </div>
+
+    <!-- SLIDE 4 EDU -->
+    <div class="slide slide-box" id="s3" style="padding:38px 52px">
+      <div class="slide-title-wrap"><span class="slide-title" data-fr="Formations" data-en="Education">Formations</span></div>
+      <div class="edu-scroll">
+        <div class="timeline">
+          <div class="tl-line"></div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="t-card">
+              <div class="t-head"><span class="t-title" data-fr="DUT Informatique" data-en="Computer Science HND">DUT Informatique</span><span class="t-badge">2017-2019</span></div>
+              <div class="t-place">Universite Paris-Saclay — IUT d'Orsay</div>
+              <div class="t-sub" data-fr="POO · Programmation Web · Reseaux · Administration systemes" data-en="OOP · Web Programming · Networks · System Admin">POO · Programmation Web · Reseaux · Administration systemes</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="t-card">
+              <div class="t-head"><span class="t-title" data-fr="Classe Preparatoire ATS" data-en="ATS Preparatory Class">Classe Preparatoire ATS</span><span class="t-badge">2019-2020</span></div>
+              <div class="t-place">Lycee Cesar Baggio</div>
+              <div class="t-sub" data-fr="Maths · Physique · Sciences de l'ingenieur · Anglais" data-en="Maths · Physics · Engineering Science · English">Maths · Physique · Sciences de l'ingenieur · Anglais</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="t-card">
+              <div class="t-head"><span class="t-title" data-fr="Diplome d'Ingenieur" data-en="Engineering Degree">Diplome d'Ingenieur</span><span class="t-badge">2020-2023</span></div>
+              <div class="t-place">ESILV — Ecole Superieure d'Ingenieurs Leonard de Vinci</div>
+              <div class="t-sub" data-fr="Data Science & IA · Machine Learning · Deep Learning · Big Data" data-en="Data Science & AI · Machine Learning · Deep Learning · Big Data">Data Science & IA · Machine Learning · Deep Learning · Big Data</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5 EXP -->
+    <div class="slide slide-box" id="s4" style="gap:18px">
+      <div class="slide-title-wrap"><span class="slide-title" data-fr="Experiences" data-en="Experience">Experiences</span></div>
+      <div class="exp-scroll">
+        <div class="exp-card">
+          <div class="exp-head">
+            <span class="exp-icon">&#127970;</span>
+            <div>
+              <div class="exp-company">VPWhite <span style="font-weight:400;font-size:14px;opacity:.72">— Boulogne-Billancourt</span></div>
+              <div class="exp-period">2021 → 2026</div>
+            </div>
+          </div>
+          <div class="exp-roles">
+            <div class="exp-role"><div class="exp-dot"></div><div>
+              <span class="exp-rl" data-fr="CDI — Consultant Developpeur Pole Accompagnement" data-en="Full-time — Client Support Consultant">CDI — Consultant Developpeur Pole Accompagnement</span>
+              <span class="exp-rp">2023 → 2026</span>
+              <div class="exp-rd" data-fr="Gestion portefeuille clients, respect des SLA, developpement nouvelles fonctionnalites, resolution incidents. Referent d'une dizaine d'applications (VPSoft, Enablon)." data-en="Client portfolio management, SLA compliance, feature development, incident resolution. Owner of ~10 apps (VPSoft, Enablon).">Gestion portefeuille clients, respect des SLA, developpement nouvelles fonctionnalites, resolution incidents. Referent d'une dizaine d'applications (VPSoft, Enablon).</div>
+            </div></div>
+            <div class="exp-role"><div class="exp-dot"></div><div>
+              <span class="exp-rl" data-fr="Alternance — Pole Produit & Service" data-en="Apprentice — Product & Service">Alternance — Pole Produit & Service</span>
+              <span class="exp-rp">Mars – Sept. 2023</span>
+              <div class="exp-rd" data-fr="Developpement applications web VPSoft & Enablon. 3 mois a Londres puis Paris." data-en="VPSoft & Enablon web app development. 3 months London then Paris.">Developpement applications web VPSoft & Enablon. 3 mois a Londres puis Paris.</div>
+            </div></div>
+            <div class="exp-role"><div class="exp-dot"></div><div>
+              <span class="exp-rl" data-fr="Alternance — Pole R&D" data-en="Apprentice — R&D">Alternance — Pole R&D</span>
+              <span class="exp-rp">Sept. 2021 – Mars 2023</span>
+              <div class="exp-rd" data-fr="Evolution et maintenance solution VPSoft (C#, .NET, JS, SQL)." data-en="Evolution and maintenance of VPSoft (C#, .NET, JS, SQL).">Evolution et maintenance solution VPSoft (C#, .NET, JS, SQL).</div>
+            </div></div>
+          </div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-head">
+            <span class="exp-icon">&#128187;</span>
+            <div>
+              <div class="exp-company">Linutop</div>
+              <div class="exp-period">Avr. 2019 – Aout 2019</div>
+            </div>
+          </div>
+          <div class="exp-roles">
+            <div class="exp-role"><div class="exp-dot"></div><div>
+              <span class="exp-rl" data-fr="CDD — Developpeur Web Full Stack" data-en="Fixed-term — Full Stack Web Dev">CDD — Developpeur Web Full Stack</span>
+              <span class="exp-rp">Juil. – Aout 2019</span>
+              <div class="exp-rd" data-fr="Amelioration ergonomie site web. PHP, HTML, CSS, JavaScript." data-en="Website UX improvement. PHP, HTML, CSS, JavaScript.">Amelioration ergonomie site web. PHP, HTML, CSS, JavaScript.</div>
+            </div></div>
+            <div class="exp-role"><div class="exp-dot"></div><div>
+              <span class="exp-rl" data-fr="Stage — Developpeur Logiciel" data-en="Intern — Software Developer">Stage — Developpeur Logiciel</span>
+              <span class="exp-rp">Avr. – Juin 2019</span>
+              <div class="exp-rd" data-fr="Outils Qt pour la gestion d'affichage dynamique sur ecrans." data-en="Qt tools for dynamic screen display management.">Outils Qt pour la gestion d'affichage dynamique sur ecrans.</div>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6 CONTACT -->
+    <div class="slide slide-box" id="s5">
+      <div class="slide-title-wrap"><span class="slide-title" data-fr="Contact" data-en="Contact">Contact</span></div>
+      <div class="contact-row">
+        <div class="contact-tile">
+          <div class="contact-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+          <div class="contact-info"><span class="contact-label">Email</span><span class="contact-detail">petillion99@gmail.com</span></div>
+          <a href="mailto:petillion99@gmail.com" class="contact-btn" data-fr="Envoyer" data-en="Send">Envoyer</a>
+        </div>
+        <div class="contact-tile">
+          <div class="contact-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+          <div class="contact-info"><span class="contact-label">LinkedIn</span><span class="contact-detail">linkedin.com/in/ppetillion</span></div>
+          <a href="https://linkedin.com/in/ppetillion/" target="_blank" class="contact-btn" data-fr="Voir le profil" data-en="View profile">Voir le profil</a>
+        </div>
+        <div class="contact-tile">
+          <div class="contact-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></div>
+          <div class="contact-info"><span class="contact-label">GitHub</span><span class="contact-detail">Pierre-Portfolio</span></div>
+          <a href="https://github.com/Pierre-Portfolio" target="_blank" class="contact-btn" data-fr="Voir les projets" data-en="View projects">Voir les projets</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="dots">
+    <button class="dot active" onclick="goTo(0)"></button>
+    <button class="dot" onclick="goTo(1)"></button>
+    <button class="dot" onclick="goTo(2)"></button>
+    <button class="dot" onclick="goTo(3)"></button>
+    <button class="dot" onclick="goTo(4)"></button>
+    <button class="dot" onclick="goTo(5)"></button>
+  </div>
+</section>
+
+<section>
+  <div class="cat-grid">
+    <div class="cat-card" style="background:linear-gradient(135deg,#0a4040,#1a7f7f,#2bb8b8)" onclick="toggleCat('ds',this)"><span class="cat-emoji">&#129302;</span><div class="cat-label-bar"><span class="cat-name" data-fr="Data Science" data-en="Data Science">Data Science</span></div></div>
+    <div class="cat-card" style="background:linear-gradient(135deg,#083030,#1a7f7f,#4dd0d0)" onclick="toggleCat('web',this)"><span class="cat-emoji">&#127760;</span><div class="cat-label-bar"><span class="cat-name" data-fr="Sites Web" data-en="Web Projects">Sites Web</span></div></div>
+    <div class="cat-card" style="background:linear-gradient(135deg,#052020,#0e5f5f,#2bb8b8)" onclick="toggleCat('soft',this)"><span class="cat-emoji">&#128187;</span><div class="cat-label-bar"><span class="cat-name" data-fr="Logiciels" data-en="Software">Logiciels</span></div></div>
+  </div>
+</section>
+
+<section id="proj-detail" style="display:none">
+  <div class="proj-section-title" id="proj-detail-title"></div>
+  <div class="proj-grid" id="proj-grid"></div>
+</section>
+
+</div></main>
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<footer><strong data-fr="&copy; 2026 Pierre Petillion &mdash; Software Consultant &amp; Engineer" data-en="&copy; 2026 Pierre Petillion &mdash; Software Consultant &amp; Engineer">&copy; 2026 Pierre Petillion &mdash; Software Consultant &amp; Engineer</strong></footer>
+
+<script>
+const RAW="https://raw.githubusercontent.com/Pierre-Portfolio/Pierre-Portfolio/main/photos/competence/";
+const TECH=[
+  {s:RAW+"Tensorflow.png",l:"TensorFlow"},{s:RAW+"PyTorch.png",l:"PyTorch"},{s:RAW+"Keras.png",l:"Keras"},
+  {s:RAW+"scikit-learn.png",l:"Scikit-learn"},{s:RAW+"pandas.png",l:"Pandas"},{s:RAW+"numpy.png",l:"NumPy"},
+  {s:RAW+"seaborn.png",l:"Seaborn"},{s:RAW+"hf.png",l:"HuggingFace"},{s:RAW+"python.png",l:"Python"},
+  {s:RAW+"csharps.png",l:"C#"},{s:RAW+"js.png",l:"JavaScript"},{s:RAW+"Java.png",l:"Java"},
+  {s:RAW+"c++.png",l:"C++"},{s:RAW+"sql.png",l:"SQL"},{s:RAW+"web.png",l:"HTML"},
+  {s:RAW+"css.png",l:"CSS"},{s:RAW+"PHP.jpg",l:"PHP"},{s:RAW+"react.png",l:"React"},
+  {s:RAW+"Tailwind.png",l:"Tailwind"},{s:RAW+"NodeJs2.png",l:"Node.js"},{s:RAW+"Bootstrap.png",l:"Bootstrap"},
+  {s:RAW+"Vue.png",l:"Vue"},{s:RAW+"docker.png",l:"Docker"},{s:RAW+"jupyter.png",l:"Jupyter"},
+  {s:RAW+"Visual_Studio.png",l:"Visual Studio"},{s:RAW+"Visual_Studio_Code.png",l:"VS Code"},
+  {s:RAW+"django.png",l:"Django"},{s:RAW+"qt.png",l:"Qt"},{s:RAW+"Unity.png",l:"Unity"},
+  {s:RAW+"mysql.png",l:"MySQL"},{s:RAW+"mongodb.png",l:"MongoDB"},{s:RAW+"neo4j.png",l:"Neo4j"},
+  {s:RAW+"elastic-elasticsearch.png",l:"Elasticsearch"},{s:RAW+"power-bi.png",l:"Power BI"},
+  {s:RAW+"tableau.png",l:"Tableau"},{s:RAW+"bash.png",l:"Bash"},{s:RAW+"arduino.png",l:"Arduino"},
+  {s:RAW+"Rasberry.png",l:"Raspberry Pi"},{s:RAW+"android.png",l:"Android"},{s:RAW+"Ubuntu.png",l:"Ubuntu"}
+];
+const SOFT=[
+  {e:"\u{1F4CA}",fr:"Esprit d'analyse",en:"Analytical mind"},{e:"\u{1F504}",fr:"Methodes Agiles",en:"Agile Methods"},
+  {e:"\u{1F4A1}",fr:"Force de proposition",en:"Proactive"},{e:"\u{1F9E9}",fr:"Resolution de problemes",en:"Problem solving"},
+  {e:"\u{1F465}",fr:"Travail en equipe",en:"Teamwork"},{e:"\u{1F3AF}",fr:"Autonomie",en:"Autonomy"},
+  {e:"\u{1F52D}",fr:"Veille technologique",en:"Tech watch"},{e:"\u{1F4AC}",fr:"Communication",en:"Communication"},
+  {e:"\u{1F9E0}",fr:"Intelligence emotionnelle",en:"Emotional intelligence"},{e:"\u{1F4CB}",fr:"Gestion de projet",en:"Project management"},
+  {e:"\u{1F451}",fr:"Leadership",en:"Leadership"},{e:"\u{1F4C8}",fr:"Reporting & SLA",en:"Reporting & SLA"},
+  {e:"\u{1F91D}",fr:"Gestion clients",en:"Client management"},{e:"\u{23F1}",fr:"Respect des delais",en:"On-time delivery"}
+];
+const TAG_MAP={"Python":"tPy","C#":"tCs","JavaScript":"tJs","Java":"tJv","C":"tC_","C++":"tCp","R":"tR_","SQL":"tSq","HTML":"tHt","CSS":"tCss","PHP":"tPh",".NET":"tNt","TensorFlow":"tTf","PyTorch":"tPt","Pandas":"tPd","Scikit-learn":"tSk","React":"tRc","Tailwind":"tTw","Node.js":"tNj","Docker":"tDk","Spark":"tSp","Hadoop":"tHd","Unity":"tUn","Qt":"tQt","Scala":"tSc","HuggingFace":"tHf","Jupyter":"tJp","Bootstrap":"tBs","Bash":"tBh","Keras":"tKr","Seaborn":"tSb","Markdown":"tMd"};
+const CAT_META={ds:{emoji:"\u{1F916}",fr:"\u{1F916} Data Science",en:"\u{1F916} Data Science"},web:{emoji:"\u{1F310}",fr:"\u{1F310} Sites Web",en:"\u{1F310} Web Projects"},soft:{emoji:"\u{1F4BB}",fr:"\u{1F4BB} Logiciels",en:"\u{1F4BB} Software"}};
+const PROJECTS=[
+  {id:1,t:"ValeurFonciereFrance",y:2022,c:"ds",fr:"Analyse des valeurs foncieres francaises 2020.",en:"Analysis of French property values 2020.",lg:["Python","Pandas","Jupyter"],r:"ValeurFonciereFrance",st:2},
+  {id:2,t:"GamesComparator",y:2022,c:"ds",fr:"Comparateur de prix jeux video toutes plateformes.",en:"Cross-platform video game price comparator.",lg:["Python","Pandas"],r:"GamesComparator",st:3},
+  {id:3,t:"StockMarketAI",y:2023,c:"ds",fr:"Prediction boursiere avec LSTM et TensorFlow/Keras.",en:"Stock prediction with LSTM and TensorFlow/Keras.",lg:["Python","TensorFlow","Keras"],r:"StockMarketAI"},
+  {id:4,t:"SentimentAnalysis",y:2022,c:"ds",fr:"Analyse de sentiments sur tweets avec HuggingFace.",en:"Tweet sentiment analysis with HuggingFace.",lg:["Python","HuggingFace"],r:"SentimentAnalysis"},
+  {id:5,t:"RecommendationSystem",y:2023,c:"ds",fr:"Systeme de recommandation films par filtrage collaboratif.",en:"Movie recommendation via collaborative filtering.",lg:["Python","Scikit-learn","Pandas"],r:"RecommendationSystem"},
+  {id:6,t:"FraudDetection",y:2022,c:"ds",fr:"Detection de fraudes bancaires — algorithmes supervises.",en:"Banking fraud detection.",lg:["Python","Scikit-learn","Seaborn"],r:"FraudDetection"},
+  {id:7,t:"ImageClassifier",y:2022,c:"ds",fr:"Classificateur PyTorch — ResNet, VGG, transfer learning.",en:"PyTorch image classifier.",lg:["Python","PyTorch"],r:"ImageClassifier"},
+  {id:8,t:"NLP-Pipeline",y:2023,c:"ds",fr:"Pipeline NLP : tokenisation, embeddings, NER.",en:"Full NLP pipeline: tokenization, embeddings, NER.",lg:["Python","Pandas"],r:"NLP-Pipeline"},
+  {id:9,t:"DataVisualization",y:2021,c:"ds",fr:"Dashboards Power BI et visualisations Matplotlib/Seaborn.",en:"Power BI dashboards and Matplotlib/Seaborn.",lg:["Python","Jupyter","Seaborn"],r:"DataVisualization"},
+  {id:10,t:"BigDataHadoop",y:2022,c:"ds",fr:"Pipeline de traitement massif — Hadoop, Spark, MapReduce.",en:"Massive data pipeline.",lg:["Python","Spark","Hadoop"],r:"BigDataHadoop"},
+  {id:11,t:"ChurnPrediction",y:2022,c:"ds",fr:"Prediction churn — Random Forest, XGBoost, SHAP.",en:"Customer churn prediction.",lg:["Python","Scikit-learn"],r:"ChurnPrediction"},
+  {id:12,t:"DeepLearning-GAN",y:2023,c:"ds",fr:"Autoencoders, GANs et transfer learning.",en:"Autoencoders, GANs and transfer learning.",lg:["Python","TensorFlow","PyTorch"],r:"DeepLearning-GAN"},
+  {id:13,t:"GraphNeo4j",y:2022,c:"ds",fr:"Analyse de graphes relationnels avec Neo4j.",en:"Relational graph analysis with Neo4j.",lg:["Python"],r:"GraphNeo4j"},
+  {id:14,t:"TimeSeriesAnalysis",y:2023,c:"ds",fr:"Series temporelles — ARIMA, SARIMA, modeles ML.",en:"Time series — ARIMA, SARIMA, hybrid ML.",lg:["Python","R"],r:"TimeSeriesAnalysis"},
+  {id:15,t:"Celia",y:2025,c:"web",fr:"Portfolio creatif interactif — HTML/CSS/JS + Tailwind.",en:"Interactive portfolio — HTML/CSS/JS + Tailwind.",lg:["HTML","CSS","JavaScript","Tailwind"],r:"Celia",st:0},
+  {id:16,t:"Pierre-Portfolio",y:2021,c:"web",fr:"README GitHub interactif — competences, outils, projets.",en:"Interactive GitHub README.",lg:["Markdown"],r:"Pierre-Portfolio",st:17},
+  {id:17,t:"EcommerceShop",y:2021,c:"web",fr:"E-commerce complet — panier, paiement, commandes.",en:"Full e-commerce.",lg:["PHP","SQL","Bootstrap","JavaScript"],r:"EcommerceShop"},
+  {id:18,t:"BlogPlatform",y:2021,c:"web",fr:"Blog avec commentaires, auth et panneau admin.",en:"Blog with comments and admin panel.",lg:["PHP","SQL","Bootstrap"],r:"BlogPlatform"},
+  {id:19,t:"WeatherDashboard",y:2022,c:"web",fr:"Dashboard meteo temps reel via API REST.",en:"Real-time weather dashboard.",lg:["JavaScript","HTML","CSS"],r:"WeatherDashboard"},
+  {id:20,t:"TaskManager-Kanban",y:2022,c:"web",fr:"Kanban avec drag & drop et sync temps reel.",en:"Kanban with drag & drop.",lg:["JavaScript","Node.js","CSS"],r:"TaskManager-Kanban"},
+  {id:21,t:"ChatApp-WS",y:2022,c:"web",fr:"Chat temps reel WebSockets, rooms, auth JWT.",en:"Real-time chat WebSockets.",lg:["Node.js","JavaScript"],r:"ChatApp-WS"},
+  {id:22,t:"MovieDB",y:2021,c:"web",fr:"Base de films avec recherche avancee et filtres.",en:"Movie database with advanced search.",lg:["JavaScript","HTML","CSS"],r:"MovieDB"},
+  {id:23,t:"DjangoAPI",y:2023,c:"web",fr:"API REST Django, OAuth2, Swagger, Docker.",en:"Django REST API.",lg:["Python","SQL","Docker"],r:"DjangoAPI"},
+  {id:24,t:"VueDashboard",y:2023,c:"web",fr:"Dashboard analytics Vue.js avec D3.js.",en:"Vue.js analytics dashboard.",lg:["JavaScript","HTML","CSS"],r:"VueDashboard"},
+  {id:25,t:"LinutopWebsite",y:2019,c:"web",fr:"Refonte ergonomique du site Linutop.",en:"Ergonomic redesign of Linutop website.",lg:["PHP","HTML","CSS","JavaScript"],r:"LinutopWebsite"},
+  {id:26,t:"PortfolioReact",y:2022,c:"web",fr:"Portfolio SPA React avec animations GSAP.",en:"React SPA portfolio.",lg:["React","JavaScript","CSS"],r:"PortfolioReact"},
+  {id:27,t:"Pizzeria",y:2020,c:"soft",fr:"Gestion complete pizzeria — commandes, stock, caisse.",en:"Complete pizzeria management.",lg:["C#",".NET"],r:"Pizzeria",st:4},
+  {id:28,t:"VeloMax",y:2021,c:"soft",fr:"Gestion magasin velos — inventaire, ventes, clients.",en:"Bike shop management.",lg:["C#",".NET"],r:"VeloMax",st:3},
+  {id:29,t:"POWER",y:2020,c:"soft",fr:"Jeu de plateau en C avec IA minimax.",en:"Board game in C with minimax AI.",lg:["C"],r:"POWER",st:2},
+  {id:30,t:"VPSoft-Evolutions",y:2023,c:"soft",fr:"Evolutions VPSoft — digitalisation processus metier.",en:"VPSoft evolutions.",lg:["C#",".NET","SQL","JavaScript"],r:"VPSoft-Evolutions"},
+  {id:31,t:"QtDisplayManager",y:2019,c:"soft",fr:"Outils Qt pour affichage dynamique sur ecrans.",en:"Qt tools for dynamic screen display.",lg:["Qt","C++"],r:"QtDisplayManager"},
+  {id:32,t:"UnityGame-3D",y:2021,c:"soft",fr:"Jeu 3D Unity — physique, IA ennemis, niveaux.",en:"3D Unity game.",lg:["C#","Unity"],r:"UnityGame-3D"},
+  {id:33,t:"AndroidApp",y:2022,c:"soft",fr:"App Android — notifications push, SQLite.",en:"Android app.",lg:["Java"],r:"AndroidApp"},
+  {id:34,t:"SystemeTicketing",y:2023,c:"soft",fr:"Outil ticketing VPWhite — SLA, incidents.",en:"VPWhite ticketing tool.",lg:["C#",".NET","SQL"],r:"SystemeTicketing"},
+  {id:35,t:"AlgorithmesIA",y:2022,c:"soft",fr:"A*, minimax, algorithmes genetiques.",en:"A*, minimax, genetic algorithms.",lg:["Python","C++"],r:"AlgorithmesIA"},
+  {id:36,t:"Compilateur",y:2021,c:"soft",fr:"Mini compilateur — analyse lexicale, syntaxique.",en:"Mini compiler.",lg:["C","Java"],r:"Compilateur"},
+  {id:37,t:"NetworkMonitor",y:2022,c:"soft",fr:"Monitoring reseau — alertes, dashboard temps reel.",en:"Network monitoring.",lg:["Python","Bash"],r:"NetworkMonitor"},
+  {id:38,t:"ScalaDataPipeline",y:2023,c:"soft",fr:"Pipeline Scala/Spark — HDFS.",en:"Scala/Spark log pipeline.",lg:["Scala","Spark","Hadoop"],r:"ScalaDataPipeline"},
+  {id:39,t:"APIRestFull",y:2022,c:"soft",fr:"API RESTful — JWT, Swagger, NUnit, CI/CD.",en:"RESTful API.",lg:["C#",".NET","SQL"],r:"APIRestFull"},
+  {id:40,t:"DataETL",y:2022,c:"soft",fr:"Pipeline ETL multi-sources.",en:"Multi-source ETL pipeline.",lg:["Python","SQL","Pandas"],r:"DataETL"}
+];
+
+// BUILD TECH
+(function(){
+  const g=document.getElementById("tech-grid");
+  TECH.forEach(t=>{
+    const d=document.createElement("div");
+    d.className="logo-box";
+    const img=document.createElement("img");
+    img.src=t.s; img.alt=t.l;
+    img.onerror=function(){this.style.display="none";const s=document.createElement("span");s.style.cssText="font-size:10px;opacity:.6;text-align:center;padding:3px";s.textContent=t.l;d.appendChild(s);};
+    const tip=document.createElement("span");
+    tip.className="tip"; tip.textContent=t.l;
+    d.appendChild(img); d.appendChild(tip);
+    g.appendChild(d);
+  });
+})();
+
+// BUILD SOFT
+(function(){
+  const g=document.getElementById("soft-grid");
+  SOFT.forEach(s=>{
+    const d=document.createElement("div"); d.className="soft-box";
+    const inner=document.createElement("div"); inner.className="soft-inner";
+    const e=document.createElement("span"); e.className="emoji-big"; e.textContent=s.e;
+    const tip=document.createElement("span"); tip.className="tip"; tip.textContent=s.fr;
+    inner.appendChild(e); inner.appendChild(tip);
+    const lbl=document.createElement("span"); lbl.className="soft-label";
+    lbl.setAttribute("data-fr",s.fr); lbl.setAttribute("data-en",s.en);
+    lbl.textContent=s.fr;
+    d.appendChild(inner); d.appendChild(lbl);
+    g.appendChild(d);
+  });
+})();
+
+// CAROUSEL
+let current=0;
+const N=6;
+function goTo(n){
+  document.querySelectorAll(".slide").forEach((s,i)=>s.classList.toggle("active",i===n));
+  document.querySelectorAll(".dot").forEach((d,i)=>d.classList.toggle("active",i===n));
+  current=n;
+}
+function changeSlide(d){goTo((current+d+N)%N);}
+document.addEventListener("keydown",e=>{if(e.key==="ArrowLeft")changeSlide(-1);if(e.key==="ArrowRight")changeSlide(1);});
+let tx=0;
+document.getElementById("carousel").addEventListener("touchstart",e=>{tx=e.touches[0].clientX;},{passive:true});
+document.getElementById("carousel").addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>45)changeSlide(dx<0?1:-1);},{passive:true});
+
+// PROJECTS
+let activeCat=null;
+function toggleCat(cat,el){
+  document.querySelectorAll(".cat-card").forEach(c=>c.classList.remove("active"));
+  const det=document.getElementById("proj-detail");
+  if(activeCat===cat){activeCat=null;det.style.display="none";return;}
+  activeCat=cat; el.classList.add("active");
+  renderProj(cat); det.style.display="block";
+  setTimeout(()=>det.scrollIntoView({behavior:"smooth",block:"start"}),50);
+}
+function renderProj(cat){
+  const lang=document.documentElement.getAttribute("data-lang")||"fr";
+  const m=CAT_META[cat];
+  document.getElementById("proj-detail-title").textContent=lang==="en"?m.en:m.fr;
+  const grid=document.getElementById("proj-grid");
+  const list=PROJECTS.filter(p=>p.c===cat).sort((a,b)=>b.y-a.y);
+  grid.innerHTML=list.map(p=>{
+    const desc=lang==="en"?p.en:p.fr;
+    const tags=p.lg.map(l=>`<span class="proj-tag ${TAG_MAP[l]||""}">${l}</span>`).join("");
+    const stars=p.st?`<span class="proj-stars">&#9733; ${p.st}</span>`:"";
+    return `<a href="https://github.com/Pierre-Portfolio/${p.r}" target="_blank" class="proj-card">
+      <img src="https://opengraph.githubassets.com/1/Pierre-Portfolio/${p.r}" alt="${p.t}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="proj-fallback">&#128187;</div>
+      <div class="proj-body">
+        <div class="proj-meta"><span class="proj-year">${p.y}</span>${stars}</div>
+        <div class="proj-title">${p.t}</div>
+        <div class="proj-desc">${desc}</div>
+        <div class="proj-tags">${tags}</div>
+        <div class="proj-gh">${lang==="en"?"View on GitHub":"Voir sur GitHub"}</div>
+      </div></a>`;
+  }).join("");
+}
+
+// LANG
+function setLang(lang){
+  document.documentElement.setAttribute("data-lang",lang);
+  document.getElementById("flag-en").classList.toggle("active",lang==="en");
+  document.getElementById("flag-fr").classList.toggle("active",lang==="fr");
+  document.querySelectorAll("[data-fr]").forEach(el=>{const v=el.getAttribute("data-"+lang);if(v)el.textContent=v;});
+  document.querySelectorAll(".soft-label").forEach((el,i)=>{if(SOFT[i])el.textContent=SOFT[i][lang]||SOFT[i].fr;});
+  document.querySelectorAll(".soft-inner .tip").forEach((tip,i)=>{if(SOFT[i])tip.textContent=SOFT[i][lang]||SOFT[i].fr;});
+  if(activeCat)renderProj(activeCat);
+}
+
+// SCROLL TOP
+window.addEventListener("scroll",()=>document.getElementById("scrollTop").classList.toggle("visible",window.scrollY>200));
+</script>
+</body>
+</html>
