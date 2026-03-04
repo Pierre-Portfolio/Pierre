@@ -79,6 +79,19 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;padding:52px 2
 .logo-box .tip{position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);background:var(--teal-dk);color:#fff;font-size:11px;padding:4px 10px;border-radius:5px;white-space:nowrap;z-index:999;pointer-events:none;opacity:0;transition:opacity .15s;box-shadow:0 2px 8px rgba(0,0,0,.25)}
 .logo-box:hover .tip{opacity:1}
 
+
+/* TECH2 GENERAL SKILLS */
+.tech2-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%;margin-top:4px}
+.t2-cat{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);border-radius:14px;padding:18px 16px;transition:border-color .2s}
+.t2-cat:hover{border-color:rgba(255,255,255,.42)}
+.t2-cat-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;opacity:.65;margin-bottom:12px;padding-bottom:8px;border-bottom:1.5px solid rgba(255,255,255,.18)}
+.t2-items{display:flex;flex-direction:column;gap:7px}
+.t2-item{display:flex;align-items:center;gap:10px;padding:7px 10px;background:rgba(255,255,255,.1);border-radius:8px;transition:background .2s,transform .15s}
+.t2-item:hover{background:rgba(255,255,255,.2);transform:translateX(3px)}
+.t2-icon{font-size:18px;flex-shrink:0;width:24px;text-align:center}
+.t2-label{font-size:13px;font-weight:500;opacity:.92}
+@media(max-width:750px){.tech2-grid{grid-template-columns:1fr}}
+
 /* SOFT SKILLS */
 .soft-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:16px;justify-items:center}
 @media(max-width:900px){.soft-grid{grid-template-columns:repeat(4,1fr)}}
@@ -180,8 +193,8 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 <body>
 
 <div id="flags">
-  <img id="flag-fr" src="https://raw.githubusercontent.com/Pierre-Portfolio/Celia/main/assets/images/profil/uk.png" onerror="this.src='https://flagcdn.com/w40/gb.png'" alt="EN" onclick="setLang('en')" class="active">
-  <img id="flag-en" src="https://raw.githubusercontent.com/Pierre-Portfolio/Celia/main/assets/images/profil/fr.png" onerror="this.src='https://flagcdn.com/w40/fr.png'" alt="FR" onclick="setLang('fr')">
+  <img id="flag-fr" src="https://raw.githubusercontent.com/Pierre-Portfolio/Celia/main/assets/images/profil/fr.png" onerror="this.src='https://flagcdn.com/w40/fr.png'" alt="FR" onclick="setLang('fr')" class="active">
+  <img id="flag-en" src="https://raw.githubusercontent.com/Pierre-Portfolio/Celia/main/assets/images/profil/uk.png" onerror="this.src='https://flagcdn.com/w40/gb.png'" alt="EN" onclick="setLang('en')">
 </div>
 
 <main><div class="container">
@@ -243,14 +256,55 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
       <div class="logo-grid" id="tech-grid"></div>
     </div>
 
-    <!-- SLIDE 3 SOFT -->
+    <!-- SLIDE 2b TECH GENERAL -->
     <div class="slide slide-box" id="s2">
+      <div class="slide-title-wrap"><span class="slide-title" data-fr="Compétences Générales" data-en="General Skills">Compétences Générales</span></div>
+      <div class="tech2-grid">
+
+        <div class="t2-cat">
+          <div class="t2-cat-title" data-fr="Data Science & IA" data-en="Data Science & AI">Data Science & IA</div>
+          <div class="t2-items">
+            <div class="t2-item"><span class="t2-icon">📊</span><span class="t2-label" data-fr="Visualisation de données" data-en="Data Visualization">Visualisation de données</span></div>
+            <div class="t2-item"><span class="t2-icon">🤖</span><span class="t2-label" data-fr="Machine Learning" data-en="Machine Learning">Machine Learning</span></div>
+            <div class="t2-item"><span class="t2-icon">🧠</span><span class="t2-label" data-fr="Deep Learning & NLP" data-en="Deep Learning & NLP">Deep Learning & NLP</span></div>
+            <div class="t2-item"><span class="t2-icon">📈</span><span class="t2-label" data-fr="Analyse prédictive" data-en="Predictive Analytics">Analyse prédictive</span></div>
+            <div class="t2-item"><span class="t2-icon">⚡</span><span class="t2-label" data-fr="Big Data (Hadoop / Spark)" data-en="Big Data (Hadoop / Spark)">Big Data (Hadoop / Spark)</span></div>
+          </div>
+        </div>
+
+        <div class="t2-cat">
+          <div class="t2-cat-title" data-fr="Développement" data-en="Development">Développement</div>
+          <div class="t2-items">
+            <div class="t2-item"><span class="t2-icon">🌐</span><span class="t2-label" data-fr="Dev Web Full Stack" data-en="Full Stack Web Dev">Dev Web Full Stack</span></div>
+            <div class="t2-item"><span class="t2-icon">🖥️</span><span class="t2-label" data-fr="Dev Logiciel (C# / .NET)" data-en="Software Dev (C# / .NET)">Dev Logiciel (C# / .NET)</span></div>
+            <div class="t2-item"><span class="t2-icon">🔌</span><span class="t2-label" data-fr="API REST & Intégration" data-en="REST API & Integration">API REST & Intégration</span></div>
+            <div class="t2-item"><span class="t2-icon">🗄️</span><span class="t2-label" data-fr="Bases de données (SQL / NoSQL)" data-en="Databases (SQL / NoSQL)">Bases de données (SQL / NoSQL)</span></div>
+            <div class="t2-item"><span class="t2-icon">🐳</span><span class="t2-label" data-fr="Docker & CI/CD" data-en="Docker & CI/CD">Docker & CI/CD</span></div>
+          </div>
+        </div>
+
+        <div class="t2-cat">
+          <div class="t2-cat-title" data-fr="Conseil & Outils" data-en="Consulting & Tools">Conseil & Outils</div>
+          <div class="t2-items">
+            <div class="t2-item"><span class="t2-icon">📋</span><span class="t2-label" data-fr="Gestion portefeuille clients" data-en="Client Portfolio Management">Gestion portefeuille clients</span></div>
+            <div class="t2-item"><span class="t2-icon">🔄</span><span class="t2-label" data-fr="Méthode Agile / Scrum" data-en="Agile / Scrum">Méthode Agile / Scrum</span></div>
+            <div class="t2-item"><span class="t2-icon">📉</span><span class="t2-label" data-fr="Power BI & Tableau" data-en="Power BI & Tableau">Power BI & Tableau</span></div>
+            <div class="t2-item"><span class="t2-icon">🛠️</span><span class="t2-label" data-fr="Maintenance & SLA" data-en="Maintenance & SLA">Maintenance & SLA</span></div>
+            <div class="t2-item"><span class="t2-icon">🔍</span><span class="t2-label" data-fr="Tests & Qualité logicielle" data-en="Testing & Quality">Tests & Qualité logicielle</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SLIDE 3 SOFT -->
+    <div class="slide slide-box" id="s3">
       <div class="slide-title-wrap"><span class="slide-title">Soft Skills</span></div>
       <div class="soft-grid" id="soft-grid"></div>
     </div>
 
     <!-- SLIDE 4 EDU -->
-    <div class="slide slide-box" id="s3" style="padding:38px 52px">
+    <div class="slide slide-box" id="s4" style="padding:38px 52px">
       <div class="slide-title-wrap"><span class="slide-title" data-fr="Formations" data-en="Education">Formations</span></div>
       <div class="edu-scroll">
         <div class="timeline">
@@ -284,7 +338,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
     </div>
 
     <!-- SLIDE 5 EXP -->
-    <div class="slide slide-box" id="s4" style="gap:18px">
+    <div class="slide slide-box" id="s5" style="gap:18px">
       <div class="slide-title-wrap"><span class="slide-title" data-fr="Experiences" data-en="Experience">Experiences</span></div>
       <div class="exp-scroll">
         <div class="exp-card">
@@ -338,7 +392,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
     </div>
 
     <!-- SLIDE 6 CONTACT -->
-    <div class="slide slide-box" id="s5">
+    <div class="slide slide-box" id="s6">
       <div class="slide-title-wrap"><span class="slide-title" data-fr="Contact" data-en="Contact">Contact</span></div>
       <div class="contact-row">
         <div class="contact-tile">
@@ -367,6 +421,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
     <button class="dot" onclick="goTo(3)"></button>
     <button class="dot" onclick="goTo(4)"></button>
     <button class="dot" onclick="goTo(5)"></button>
+    <button class="dot" onclick="goTo(6)"></button>
   </div>
 </section>
 
@@ -388,6 +443,18 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 <footer><strong data-fr="&copy; 2026 Pierre Petillion &mdash; Software Consultant &amp; Engineer" data-en="&copy; 2026 Pierre Petillion &mdash; Software Consultant &amp; Engineer">&copy; 2026 Pierre Petillion &mdash; Software Consultant &amp; Engineer</strong></footer>
 
 <script>
+var current=0,N=7;
+function goTo(n){
+  document.querySelectorAll(".slide").forEach(function(s,i){s.classList.toggle("active",i===n);});
+  document.querySelectorAll(".dot").forEach(function(d,i){d.classList.toggle("active",i===n);});
+  current=n;
+}
+function changeSlide(d){goTo((current+d+N)%N);}
+document.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")changeSlide(-1);if(e.key==="ArrowRight")changeSlide(1);});
+var tx=0;
+document.getElementById("carousel").addEventListener("touchstart",function(e){tx=e.touches[0].clientX;},{passive:true});
+document.getElementById("carousel").addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>45)changeSlide(dx<0?1:-1);},{passive:true});
+
 const RAW="https://raw.githubusercontent.com/Pierre-Portfolio/Pierre-Portfolio/main/photos/competence/";
 const TECH=[
   {s:RAW+"Tensorflow.png",l:"TensorFlow"},{s:RAW+"PyTorch.png",l:"PyTorch"},{s:RAW+"Keras.png",l:"Keras"},
@@ -490,18 +557,6 @@ const PROJECTS=[
     d.appendChild(inner);d.appendChild(lbl);g.appendChild(d);
   });
 })();
-
-var current=0,N=6;
-function goTo(n){
-  document.querySelectorAll(".slide").forEach(function(s,i){s.classList.toggle("active",i===n);});
-  document.querySelectorAll(".dot").forEach(function(d,i){d.classList.toggle("active",i===n);});
-  current=n;
-}
-function changeSlide(d){goTo((current+d+N)%N);}
-document.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")changeSlide(-1);if(e.key==="ArrowRight")changeSlide(1);});
-var tx=0;
-document.getElementById("carousel").addEventListener("touchstart",function(e){tx=e.touches[0].clientX;},{passive:true});
-document.getElementById("carousel").addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>45)changeSlide(dx<0?1:-1);},{passive:true});
 
 var activeCat=null;
 function toggleCat(cat,el){
