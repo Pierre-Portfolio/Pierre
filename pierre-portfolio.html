@@ -45,13 +45,13 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;padding:52px 2
 .dot.active{background:#fff;transform:scale(1.3)}
 
 /* ── SLIDE 1 PROFILE ── */
-.profile-row{position:relative;min-height:300px}
+.profile-row{position:relative;height:300px;width:850px;margin:0 auto}
 
 /* Avatar PP circle */
 
 .avatar-circle .initials{font-size:56px;font-weight:800;color:#fff;letter-spacing:3px;user-select:none;text-shadow:0 2px 14px rgba(0,0,0,.15)}
 
-.profile-info{margin-left:calc(50% - 110px);max-width:520px}
+.profile-info{position:absolute;left:330px;top:50%;transform:translateY(-50%);max-width:520px}
 .profile-info h1{font-size:44px;font-weight:800;letter-spacing:-.5px;line-height:1.1;margin-bottom:8px}
 .job-title{font-size:18px;font-weight:700;margin-bottom:3px;display:inline-block;background:linear-gradient(90deg,rgba(43,184,184,0.6) 0%,rgba(127,255,212,1) 25%,rgba(255,255,255,1) 50%,rgba(127,255,212,1) 75%,rgba(43,184,184,0.6) 100%);background-size:250% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:nameFlow 25s linear infinite}
 .job-sub{font-size:14px;font-weight:400;opacity:.72;margin-bottom:14px}
@@ -178,7 +178,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 
 #bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 ./* ── AVATAR + ORBITES SVG ─────────────────────────────────────────────────── */
-.av-wrap{position:absolute;left:calc(50% - 410px);top:50%;transform:translateY(-50%);width:290px;height:290px}
+.av-wrap{position:absolute;left:0;top:50%;transform:translateY(-50%);width:290px;height:290px}
 .av-wrap .avatar-circle{position:absolute;top:50px;left:50px;width:190px;height:190px;border-radius:50%;border:2.5px solid rgba(43,184,184,0.6);overflow:hidden;box-shadow:0 0 0 5px rgba(43,184,184,0.08),0 0 28px rgba(43,184,184,0.2);z-index:1}
 .av-svg{position:absolute;top:0;left:0;width:290px;height:290px;pointer-events:none;z-index:2;overflow:visible}
 .o-ring1{transform-origin:145px 145px;animation:svgSpin1 25s linear infinite}
