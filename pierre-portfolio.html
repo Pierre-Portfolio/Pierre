@@ -45,10 +45,10 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;padding:52px 2
 .dot.active{background:#fff;transform:scale(1.3)}
 
 /* ── SLIDE 1 PROFILE ── */
-.profile-row{display:flex;align-items:center;justify-content:center;gap:56px;flex-wrap:wrap}
+.profile-row{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
 
 /* Avatar PP circle */
-.avatar-circle{width:190px;height:190px;border-radius:50%;flex-shrink:0;background:linear-gradient(145deg,rgba(255,255,255,.25) 0%,rgba(255,255,255,.08) 100%);border:3px solid rgba(255,255,255,.65);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 7px rgba(255,255,255,.1);position:relative;overflow:hidden}
+
 .avatar-circle .initials{font-size:56px;font-weight:800;color:#fff;letter-spacing:3px;user-select:none;text-shadow:0 2px 14px rgba(0,0,0,.15)}
 
 .profile-info{max-width:520px}
@@ -177,7 +177,19 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 .tSb{background:#4c72b0;color:#fff}.tMd{background:#083fa1;color:#fff}
 
 #bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none}
-.name-stellar{font-size:32px;font-weight:300;letter-spacing:9px;text-transform:uppercase;margin-bottom:6px;line-height:1.2;font-family:inherit;display:inline-block;position:relative;background:linear-gradient(110deg,rgba(180,220,255,0.7) 0%,rgba(255,255,255,1) 25%,rgba(127,255,212,0.9) 40%,rgba(43,184,184,1) 55%,rgba(255,255,255,0.95) 70%,rgba(180,220,255,0.7) 100%);background-size:250% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:nameShimmer 3.5s ease-in-out infinite alternate;filter:drop-shadow(0 0 8px rgba(43,184,184,0.4))}@keyframes nameShimmer{0%{background-position:100% 0}100%{background-position:0% 0}}
+./* ── AVATAR + ORBITES SVG ─────────────────────────────────────────────────── */
+.av-wrap{position:relative;width:290px;height:290px;min-width:290px;min-height:290px;flex-shrink:0}
+.av-wrap .avatar-circle{position:absolute;top:50px;left:50px;width:190px;height:190px;border-radius:50%;border:2.5px solid rgba(43,184,184,0.6);overflow:hidden;box-shadow:0 0 0 5px rgba(43,184,184,0.08),0 0 28px rgba(43,184,184,0.2);z-index:1}
+.av-svg{position:absolute;top:0;left:0;width:290px;height:290px;pointer-events:none;z-index:2;overflow:visible}
+.o-ring1{transform-origin:145px 145px;animation:svgSpin1 25s linear infinite}
+.o-ring2{transform-origin:145px 145px;animation:svgSpin2 40s linear infinite reverse}
+@keyframes svgSpin1{to{transform:rotate(360deg)}}
+@keyframes svgSpin2{to{transform:rotate(360deg)}}
+
+/* ── NOM LIÉ AUX ORBITES : même animation de pulsation ───────────────────── */
+.name-stellar{font-size:32px;font-weight:300;letter-spacing:9px;text-transform:uppercase;margin-bottom:6px;line-height:1.2;font-family:inherit;display:inline-block;background:linear-gradient(90deg,rgba(43,184,184,0.5) 0%,rgba(127,255,212,0.85) 30%,rgba(255,255,255,1) 50%,rgba(127,255,212,0.85) 70%,rgba(43,184,184,0.5) 100%);background-size:250% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:nameFlow 25s linear infinite}@keyframes nameFlow{0%{background-position:200% center}100%{background-position:-200% center}}
+100%{background-position:-200% center}}
+50%{filter:drop-shadow(0 0 14px rgba(43,184,184,0.75)) drop-shadow(0 0 28px rgba(127,255,212,0.35))}}
 .slide-box{background:rgba(255,255,255,.045)!important;backdrop-filter:blur(3px);box-shadow:0 8px 32px rgba(0,0,0,.28),inset 0 0 0 1px rgba(255,255,255,.09);transition:box-shadow .35s!important}
 .slide-box:hover{box-shadow:0 14px 52px rgba(0,0,0,.36),inset 0 0 0 1px rgba(255,255,255,.16)!important}
 .action-btn{position:relative;overflow:hidden}
@@ -236,7 +248,22 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
     <!-- SLIDE 1 PROFIL -->
     <div class="slide slide-box active" id="s0">
       <div class="profile-row">
-        <div class="avatar-circle"><img src="https://avatars.githubusercontent.com/u/60719810?v=4" alt="Pierre Petillion" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block"></div>
+        <div class="av-wrap">
+          <div class="avatar-circle"><img src="https://avatars.githubusercontent.com/u/60719810?v=4" alt="Pierre Petillion" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block"></div>
+          <svg class="av-svg" viewBox="0 0 290 290" xmlns="http://www.w3.org/2000/svg">
+            <g class="o-ring1">
+              <circle cx="145" cy="145" r="118" fill="none" stroke="rgba(43,184,184,0.4)" stroke-width="1.5" stroke-dasharray="5 9"/>
+              <circle cx="145" cy="27" r="4.5" fill="rgba(43,184,184,1)"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.2s" repeatCount="indefinite"/><animate attributeName="r" values="3;6;3" dur="2.2s" repeatCount="indefinite"/></circle>
+              <circle cx="249" cy="183" r="3" fill="rgba(127,255,212,0.9)"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.2s" begin="0.7s" repeatCount="indefinite"/><animate attributeName="r" values="2;4;2" dur="2.2s" begin="0.7s" repeatCount="indefinite"/></circle>
+              <circle cx="57" cy="196" r="2.5" fill="rgba(200,240,255,0.85)"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.2s" begin="1.4s" repeatCount="indefinite"/><animate attributeName="r" values="1.5;3.5;1.5" dur="2.2s" begin="1.4s" repeatCount="indefinite"/></circle>
+            </g>
+            <g class="o-ring2">
+              <circle cx="145" cy="145" r="138" fill="none" stroke="rgba(150,220,255,0.22)" stroke-width="1.5" stroke-dasharray="3 14"/>
+              <circle cx="145" cy="7" r="3.5" fill="rgba(150,220,255,0.9)"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.8s" begin="0.4s" repeatCount="indefinite"/><animate attributeName="r" values="2.5;5;2.5" dur="2.8s" begin="0.4s" repeatCount="indefinite"/></circle>
+              <circle cx="270" cy="223" r="2.5" fill="rgba(43,184,184,0.85)"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.8s" begin="1.1s" repeatCount="indefinite"/><animate attributeName="r" values="1.5;3.5;1.5" dur="2.8s" begin="1.1s" repeatCount="indefinite"/></circle>
+            </g>
+          </svg>
+        </div>
         <div class="profile-info">
           <h1 class="name-stellar">Pierre Petillion</h1>
           <div class="job-title" data-fr="Software Consultant at VPWhite" data-en="Software Consultant at VPWhite">Software Consultant at VPWhite</div>
@@ -314,7 +341,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
             <div class="t-card">
               <div class="t-head"><span class="t-title" data-fr="Diplome d'Ingenieur" data-en="Engineering Degree">Diplome d'Ingenieur</span><span class="t-badge">2020-2023</span></div>
               <div class="t-place">ESILV — Ecole Superieure d'Ingenieurs Leonard de Vinci</div>
-              <div class="t-sub" data-fr="Data Science & IA · Machine Learning · Deep Learning · Big Data" data-en="Data Science & AI · Machine Learning · Deep Learning · Big Data">Data Science & IA · Machine Learning · Deep Learning · Big Data</div>
+              <div class="t-sub" data-fr="Data Science &amp; IA · Machine Learning · Deep Learning · Big Data" data-en="Data Science &amp; AI · Machine Learning · Deep Learning · Big Data">Data Science &amp; IA · Machine Learning · Deep Learning · Big Data</div>
             </div>
           </div>
           <div class="tl-item">
@@ -330,14 +357,14 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
             <div class="t-card">
               <div class="t-head"><span class="t-title" data-fr="DUT Informatique" data-en="Computer Science HND">DUT Informatique</span><span class="t-badge">2017-2019</span></div>
               <div class="t-place">Universite Paris-Saclay — IUT d'Orsay</div>
-              <div class="t-sub" data-fr="POO · Programmation Web · Reseaux · Administration systemes" data-en="OOP · Web Programming · Networks · System Admin">POO · Programmation Web · Reseaux · Administration systemes</div>
+              <div class="t-sub" data-fr="POO · Programmation Web · Reseaux · Administration systemes" data-en="OOP · Web · Networks · System Administration">POO · Programmation Web · Reseaux · Administration systemes</div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 5 EXP -->
+<!-- SLIDE 5 EXP -->
     <div class="slide slide-box" id="s4" style="gap:18px">
       <div class="slide-title-wrap"><span class="slide-title" data-fr="Experiences" data-en="Experience">Experiences</span></div>
       <div class="exp-scroll">
@@ -356,42 +383,21 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
               <div class="exp-rd" data-fr="Gestion portefeuille clients, respect des SLA, developpement nouvelles fonctionnalites, resolution incidents. Referent d'une dizaine d'applications (VPSoft, Enablon)." data-en="Client portfolio management, SLA compliance, feature development, incident resolution. Owner of ~10 apps (VPSoft, Enablon).">Gestion portefeuille clients, respect des SLA, developpement nouvelles fonctionnalites, resolution incidents. Referent d'une dizaine d'applications (VPSoft, Enablon).</div>
             </div></div>
             <div class="exp-role"><div class="exp-dot"></div><div>
-              <span class="exp-rl" data-fr="Alternance — Pole Produit & Service" data-en="Apprentice — Product & Service">Alternance — Pole Produit & Service</span>
+              <span class="exp-rl" data-fr="Alternance — Pole Produit &amp; Service" data-en="Apprentice — Product &amp; Service">Alternance — Pole Produit &amp; Service</span>
               <span class="exp-rp">Mars – Sept. 2023</span>
-              <div class="exp-rd" data-fr="Developpement applications web VPSoft & Enablon. 3 mois a Londres puis Paris." data-en="VPSoft & Enablon web app development. 3 months London then Paris.">Developpement applications web VPSoft & Enablon. 3 mois a Londres puis Paris.</div>
+              <div class="exp-rd" data-fr="Developpement applications web VPSoft &amp; Enablon. 3 mois a Londres puis Paris." data-en="VPSoft &amp; Enablon web app development. 3 months London then Paris.">Developpement applications web VPSoft &amp; Enablon. 3 mois a Londres puis Paris.</div>
             </div></div>
             <div class="exp-role"><div class="exp-dot"></div><div>
-              <span class="exp-rl" data-fr="Alternance — Pole R&D" data-en="Apprentice — R&D">Alternance — Pole R&D</span>
-              <span class="exp-rp">Sept. 2021 – Mars 2023</span>
-              <div class="exp-rd" data-fr="Evolution et maintenance solution VPSoft (C#, .NET, JS, SQL)." data-en="Evolution and maintenance of VPSoft (C#, .NET, JS, SQL).">Evolution et maintenance solution VPSoft (C#, .NET, JS, SQL).</div>
-            </div></div>
-          </div>
-        </div>
-        <div class="exp-card">
-          <div class="exp-head">
-            <span class="exp-icon">&#128187;</span>
-            <div>
-              <div class="exp-company">Linutop <span style="font-weight:400;font-size:14px;opacity:.72">— Paris</span></div>
-              <div class="exp-period">Avr. 2019 – Aout 2019</div>
-            </div>
-          </div>
-          <div class="exp-roles">
-            <div class="exp-role"><div class="exp-dot"></div><div>
-              <span class="exp-rl" data-fr="CDD — Developpeur Web Full Stack" data-en="Fixed-term — Full Stack Web Dev">CDD — Developpeur Web Full Stack</span>
-              <span class="exp-rp">Juil. – Aout 2019</span>
-              <div class="exp-rd" data-fr="Amelioration ergonomie site web. PHP, HTML, CSS, JavaScript." data-en="Website UX improvement. PHP, HTML, CSS, JavaScript.">Amelioration ergonomie site web. PHP, HTML, CSS, JavaScript.</div>
-            </div></div>
-            <div class="exp-role"><div class="exp-dot"></div><div>
-              <span class="exp-rl" data-fr="Stage — Developpeur Logiciel" data-en="Intern — Software Developer">Stage — Developpeur Logiciel</span>
-              <span class="exp-rp">Avr. – Juin 2019</span>
-              <div class="exp-rd" data-fr="Outils Qt pour la gestion d'affichage dynamique sur ecrans." data-en="Qt tools for dynamic screen display management.">Outils Qt pour la gestion d'affichage dynamique sur ecrans.</div>
+              <span class="exp-rl" data-fr="Stage — Pole Produit &amp; Service" data-en="Intern — Product &amp; Service">Stage — Pole Produit &amp; Service</span>
+              <span class="exp-rp">Avr. – Sept. 2021</span>
+              <div class="exp-rd" data-fr="Developpement d'une extension Chrome et d'une application web pour la gestion d'affichage dynamique sur ecrans." data-en="Developed a Chrome extension and web application for dynamic screen display management.">Developpement d'une extension Chrome et d'une application web pour la gestion d'affichage dynamique sur ecrans.</div>
             </div></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 6 CONTACT -->
+<!-- SLIDE 6 CONTACT -->
     <div class="slide slide-box" id="s5">
       <div class="slide-title-wrap"><span class="slide-title" data-fr="Contact" data-en="Contact">Contact</span></div>
       <div class="contact-row">
@@ -433,7 +439,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
       <div class="cat-label-bar"><span class="cat-name" data-fr="Data Science" data-en="Data Science">Data Science</span></div>
     </div>
     <div class="cat-card" onclick="toggleCat('web',this)" style="background:#040e20">
-      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&q=80" alt="Sites Web" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55">
+      <img src="data:image/jpeg;base64,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" alt="Sites Web" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:0% center;opacity:0.62">
       <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(3,8,25,0.5) 0%,rgba(8,65,95,0.4) 100%)"></div>
       <div class="cat-label-bar"><span class="cat-name" data-fr="Sites Web" data-en="Web Projects">Sites Web</span></div>
     </div>
