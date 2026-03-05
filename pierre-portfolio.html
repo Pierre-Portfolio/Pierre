@@ -45,15 +45,15 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;padding:52px 2
 .dot.active{background:#fff;transform:scale(1.3)}
 
 /* ── SLIDE 1 PROFILE ── */
-.profile-row{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.profile-row{position:relative;min-height:300px}
 
 /* Avatar PP circle */
 
 .avatar-circle .initials{font-size:56px;font-weight:800;color:#fff;letter-spacing:3px;user-select:none;text-shadow:0 2px 14px rgba(0,0,0,.15)}
 
-.profile-info{max-width:520px}
+.profile-info{margin-left:calc(50% - 110px);max-width:520px}
 .profile-info h1{font-size:44px;font-weight:800;letter-spacing:-.5px;line-height:1.1;margin-bottom:8px}
-.job-title{font-size:18px;font-weight:700;margin-bottom:3px}
+.job-title{font-size:18px;font-weight:700;margin-bottom:3px;display:inline-block;background:linear-gradient(90deg,rgba(43,184,184,0.6) 0%,rgba(127,255,212,1) 25%,rgba(255,255,255,1) 50%,rgba(127,255,212,1) 75%,rgba(43,184,184,0.6) 100%);background-size:250% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:nameFlow 25s linear infinite}
 .job-sub{font-size:14px;font-weight:400;opacity:.72;margin-bottom:14px}
 .meta-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:14px}
 .meta-item{display:flex;align-items:center;gap:6px;font-size:13.5px;opacity:.85}
@@ -178,7 +178,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 
 #bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 ./* ── AVATAR + ORBITES SVG ─────────────────────────────────────────────────── */
-.av-wrap{position:relative;width:290px;height:290px;min-width:290px;min-height:290px;flex-shrink:0}
+.av-wrap{position:absolute;left:calc(50% - 410px);top:50%;transform:translateY(-50%);width:290px;height:290px}
 .av-wrap .avatar-circle{position:absolute;top:50px;left:50px;width:190px;height:190px;border-radius:50%;border:2.5px solid rgba(43,184,184,0.6);overflow:hidden;box-shadow:0 0 0 5px rgba(43,184,184,0.08),0 0 28px rgba(43,184,184,0.2);z-index:1}
 .av-svg{position:absolute;top:0;left:0;width:290px;height:290px;pointer-events:none;z-index:2;overflow:visible}
 .o-ring1{transform-origin:145px 145px;animation:svgSpin1 25s linear infinite}
@@ -187,7 +187,10 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 @keyframes svgSpin2{to{transform:rotate(360deg)}}
 
 /* ── NOM LIÉ AUX ORBITES : même animation de pulsation ───────────────────── */
-.name-stellar{font-size:32px;font-weight:300;letter-spacing:9px;text-transform:uppercase;margin-bottom:6px;line-height:1.2;font-family:inherit;display:inline-block;background:linear-gradient(90deg,rgba(43,184,184,0.5) 0%,rgba(127,255,212,0.85) 30%,rgba(255,255,255,1) 50%,rgba(127,255,212,0.85) 70%,rgba(43,184,184,0.5) 100%);background-size:250% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:nameFlow 25s linear infinite}@keyframes nameFlow{0%{background-position:200% center}100%{background-position:-200% center}}
+.name-stellar{font-size:32px;font-weight:300;letter-spacing:9px;text-transform:uppercase;margin-bottom:6px;line-height:1.2;font-family:inherit;display:inline-block;position:relative;color:#e8f4ff}
+@keyframes nameFlow{}
+@keyframes nameFlow{0%{background-position:200% center}100%{background-position:-200% center}}
+40%,60%{opacity:1;transform:scale(1.2)}80%{opacity:0.3;transform:scale(0.8)}}100%{background-position:-200% center}}
 100%{background-position:-200% center}}
 50%{filter:drop-shadow(0 0 14px rgba(43,184,184,0.75)) drop-shadow(0 0 28px rgba(127,255,212,0.35))}}
 .slide-box{background:rgba(255,255,255,.045)!important;backdrop-filter:blur(3px);box-shadow:0 8px 32px rgba(0,0,0,.28),inset 0 0 0 1px rgba(255,255,255,.09);transition:box-shadow .35s!important}
@@ -223,7 +226,28 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .cat-card2{position:relative;border-radius:14px;overflow:hidden;border:3px solid rgba(255,255,255,.36);cursor:pointer;height:200px;display:flex;align-items:center;justify-content:center;transition:transform .22s,border-color .22s}
 
+
+/* ── SPARKLES sur job-title ──────────────────────────────────────────────── */
+.job-title{position:relative;display:inline-block}
+.sparkle{position:absolute;pointer-events:none;border-radius:50%;background:#fff;animation:sparkleFade 5s ease-in-out infinite}
+.sp1{width:3px;height:3px;top:-4px;left:15%;animation-delay:0s;box-shadow:0 0 4px 1px rgba(127,255,212,0.9)}
+.sp2{width:2px;height:2px;top:2px;left:42%;animation-delay:0.6s;box-shadow:0 0 3px 1px rgba(255,255,255,0.8)}
+.sp3{width:3px;height:3px;top:-2px;left:68%;animation-delay:1.1s;box-shadow:0 0 4px 1px rgba(150,220,255,0.9)}
+.sp4{width:2px;height:2px;bottom:-3px;left:28%;animation-delay:1.7s;box-shadow:0 0 3px 1px rgba(43,184,184,0.9)}
+.sp5{width:2px;height:2px;top:0px;left:85%;animation-delay:0.9s;box-shadow:0 0 3px 1px rgba(200,240,255,0.8)}
+.sp6{width:3px;height:3px;bottom:-2px;left:55%;animation-delay:2.0s;box-shadow:0 0 4px 1px rgba(127,255,212,0.7)}
+40%,60%{opacity:1;transform:scale(1.2)}80%{opacity:0.3;transform:scale(0.8)}}
+
+/* ── EXP TOGGLE ─────────────────────────────────────────────────────────── */
+.exp-toggle{cursor:pointer;user-select:none}
+.exp-toggle .exp-head{display:flex;align-items:center}
+.exp-chevron{font-size:18px;color:rgba(43,184,184,1);transition:transform .3s ease;margin-right:12px;flex-shrink:0;line-height:1;filter:drop-shadow(0 0 4px rgba(43,184,184,0.6))}
+.exp-body{max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease;opacity:0;margin-top:0}
+.exp-toggle.open .exp-body{max-height:600px;opacity:1;margin-top:12px}
+.exp-toggle.open .exp-chevron{transform:rotate(90deg)}
+.exp-toggle:hover{border-color:rgba(43,184,184,0.55)}
 </style>
+<script>function toggleExp(el){el.classList.toggle("open");}</script>
 </head>
 <body>
 
@@ -265,7 +289,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
           </svg>
         </div>
         <div class="profile-info">
-          <h1 class="name-stellar">Pierre Petillion</h1>
+          <h1 class="name-stellar"><span class="sparkle sp1"></span><span class="sparkle sp2"></span><span class="sparkle sp3"></span><span class="sparkle sp4"></span><span class="sparkle sp5"></span><span class="sparkle sp6"></span>Pierre Petillion</h1>
           <div class="job-title" data-fr="Software Consultant at VPWhite" data-en="Software Consultant at VPWhite">Software Consultant at VPWhite</div>
           <div class="job-sub">Data &amp; AI Developer</div>
           <div class="meta-row">
@@ -368,15 +392,18 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
     <div class="slide slide-box" id="s4" style="gap:18px">
       <div class="slide-title-wrap"><span class="slide-title" data-fr="Experiences" data-en="Experience">Experiences</span></div>
       <div class="exp-scroll">
-        <div class="exp-card">
+
+        <div class="exp-card exp-toggle" onclick="toggleExp(this)">
           <div class="exp-head">
+            <span class="exp-chevron">❯</span>
             <span class="exp-icon">&#127970;</span>
-            <div>
+            <div style="flex:1">
               <div class="exp-company">VPWhite <span style="font-weight:400;font-size:14px;opacity:.72">— Boulogne-Billancourt</span></div>
+              <div style="font-size:13px;opacity:.75;margin-top:1px" data-fr="Developpeur Logiciel" data-en="Software Developer">Developpeur Logiciel</div>
               <div class="exp-period">2021 → 2026</div>
             </div>
           </div>
-          <div class="exp-roles">
+          <div class="exp-roles exp-body">
             <div class="exp-role"><div class="exp-dot"></div><div>
               <span class="exp-rl" data-fr="CDI — Consultant Developpeur Pole Accompagnement" data-en="Full-time — Client Support Consultant">CDI — Consultant Developpeur Pole Accompagnement</span>
               <span class="exp-rp">2023 → 2026</span>
@@ -394,6 +421,31 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
             </div></div>
           </div>
         </div>
+
+        <div class="exp-card exp-toggle" onclick="toggleExp(this)">
+          <div class="exp-head">
+            <span class="exp-chevron">❯</span>
+            <span class="exp-icon">&#128187;</span>
+            <div style="flex:1">
+              <div class="exp-company">Linutop <span style="font-weight:400;font-size:14px;opacity:.72">— Paris</span></div>
+              <div style="font-size:13px;opacity:.75;margin-top:1px" data-fr="Developpeur Logiciel" data-en="Software Developer">Developpeur Logiciel</div>
+              <div class="exp-period">2019</div>
+            </div>
+          </div>
+          <div class="exp-roles exp-body">
+            <div class="exp-role"><div class="exp-dot"></div><div>
+              <span class="exp-rl" data-fr="CDD — Developpeur Web Full Stack" data-en="Fixed-term — Full Stack Web Developer">CDD — Developpeur Web Full Stack</span>
+              <span class="exp-rp">Juil. – Août 2019 · 2 mois</span>
+              <div class="exp-rd" data-fr="Amelioration du site web de l'entreprise afin d'en accroitre son ergonomie et sa fluidite. Resolution de problemes, developpement web." data-en="Improved the company website to enhance ergonomics and fluidity. Problem solving, web development.">Amelioration du site web de l'entreprise afin d'en accroitre son ergonomie et sa fluidite. Resolution de problemes, developpement web.</div>
+            </div></div>
+            <div class="exp-role"><div class="exp-dot"></div><div>
+              <span class="exp-rl" data-fr="Stage — Developpeur Logiciel" data-en="Intern — Software Developer">Stage — Developpeur Logiciel</span>
+              <span class="exp-rp">Avr. – Juin 2019 · 3 mois</span>
+              <div class="exp-rd" data-fr="Realisation de plusieurs outils en Qt afin de proposer une solution centralisee simple et efficace de gestion d'affichage d'ecran dynamique." data-en="Built several tools in Qt to provide a simple and efficient centralized solution for dynamic screen display management.">Realisation de plusieurs outils en Qt afin de proposer une solution centralisee simple et efficace de gestion d'affichage d'ecran dynamique.</div>
+            </div></div>
+          </div>
+        </div>
+
       </div>
     </div>
 
