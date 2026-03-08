@@ -27,8 +27,8 @@ Portfolio interactif et créatif présentant mon parcours, mes compétences, mes
 
 ## Auteur
 
-* [Pierre-Portfolio](https://github.com/Pierre-Portfolio/)
+- [Pierre-Portfolio](https://github.com/Pierre-Portfolio/)
 
 ---
 
-Projet démarré en 2026 et mis à jour régulièrement.
+<p align="center">Projet démarré en 2026 et mis à jour régulièrement.</p>
