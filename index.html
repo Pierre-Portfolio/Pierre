@@ -684,46 +684,191 @@ const SOFT=[
 const TAG_MAP={"Python":"tPy","C#":"tCs","JavaScript":"tJs","Java":"tJv","C":"tC_","C++":"tCp","R":"tR_","SQL":"tSq","HTML":"tHt","CSS":"tCss","PHP":"tPh",".NET":"tNt","TensorFlow":"tTf","PyTorch":"tPt","Pandas":"tPd","Scikit-learn":"tSk","React":"tRc","Tailwind":"tTw","Node.js":"tNj","Docker":"tDk","Spark":"tSp","Hadoop":"tHd","Unity":"tUn","Qt":"tQt","Scala":"tSc","HuggingFace":"tHf","Jupyter":"tJp","Bootstrap":"tBs","Bash":"tBh","Keras":"tKr","Seaborn":"tSb","Markdown":"tMd"};
 const CAT_META={ds:{fr:"\u{1F916} Data Science",en:"\u{1F916} Data Science"},web:{fr:"\u{1F310} Sites Web",en:"\u{1F310} Web Projects"},soft:{fr:"\u{1F4BB} Logiciels",en:"\u{1F4BB} Software"}};
 const PROJECTS=[
-  {id:1,t:"ValeurFonciereFrance",y:2022,c:"ds",fr:"Analyse des valeurs foncieres francaises 2020.",en:"Analysis of French property values 2020.",lg:["Python","Pandas","Jupyter"],r:"ValeurFonciereFrance",st:2},
-  {id:2,t:"GamesComparator",y:2022,c:"ds",fr:"Comparateur de prix jeux video.",en:"Cross-platform game price comparator.",lg:["Python","Pandas"],r:"GamesComparator",st:3},
-  {id:3,t:"StockMarketAI",y:2023,c:"ds",fr:"Prediction boursiere avec LSTM.",en:"Stock prediction with LSTM.",lg:["Python","TensorFlow","Keras"],r:"StockMarketAI"},
-  {id:4,t:"SentimentAnalysis",y:2022,c:"ds",fr:"Analyse de sentiments sur tweets.",en:"Tweet sentiment analysis.",lg:["Python","HuggingFace"],r:"SentimentAnalysis"},
-  {id:5,t:"RecommendationSystem",y:2023,c:"ds",fr:"Systeme de recommandation films.",en:"Movie recommendation system.",lg:["Python","Scikit-learn","Pandas"],r:"RecommendationSystem"},
-  {id:6,t:"FraudDetection",y:2022,c:"ds",fr:"Detection de fraudes bancaires.",en:"Banking fraud detection.",lg:["Python","Scikit-learn","Seaborn"],r:"FraudDetection"},
-  {id:7,t:"ImageClassifier",y:2022,c:"ds",fr:"Classificateur PyTorch.",en:"PyTorch image classifier.",lg:["Python","PyTorch"],r:"ImageClassifier"},
-  {id:8,t:"NLP-Pipeline",y:2023,c:"ds",fr:"Pipeline NLP : tokenisation, embeddings, NER.",en:"Full NLP pipeline.",lg:["Python","Pandas"],r:"NLP-Pipeline"},
-  {id:9,t:"DataVisualization",y:2021,c:"ds",fr:"Dashboards Power BI et Matplotlib/Seaborn.",en:"Power BI dashboards.",lg:["Python","Jupyter","Seaborn"],r:"DataVisualization"},
-  {id:10,t:"BigDataHadoop",y:2022,c:"ds",fr:"Pipeline Hadoop, Spark, MapReduce.",en:"Big data pipeline.",lg:["Python","Spark","Hadoop"],r:"BigDataHadoop"},
-  {id:11,t:"ChurnPrediction",y:2022,c:"ds",fr:"Prediction churn.",en:"Customer churn prediction.",lg:["Python","Scikit-learn"],r:"ChurnPrediction"},
-  {id:12,t:"DeepLearning-GAN",y:2023,c:"ds",fr:"Autoencoders, GANs et transfer learning.",en:"Autoencoders and GANs.",lg:["Python","TensorFlow","PyTorch"],r:"DeepLearning-GAN"},
-  {id:13,t:"GraphNeo4j",y:2022,c:"ds",fr:"Analyse de graphes avec Neo4j.",en:"Graph analysis with Neo4j.",lg:["Python"],r:"GraphNeo4j"},
-  {id:14,t:"TimeSeriesAnalysis",y:2023,c:"ds",fr:"Series temporelles — ARIMA, SARIMA.",en:"Time series forecasting.",lg:["Python","R"],r:"TimeSeriesAnalysis"},
-  {id:15,t:"Celia",y:2025,c:"web",fr:"Portfolio creatif — HTML/CSS/JS + Tailwind.",en:"Interactive portfolio.",lg:["HTML","CSS","JavaScript","Tailwind"],r:"Celia",st:0},
-  {id:16,t:"Pierre-Portfolio",y:2021,c:"web",fr:"README GitHub interactif.",en:"Interactive GitHub README.",lg:["Markdown"],r:"Pierre-Portfolio",st:17},
-  {id:17,t:"EcommerceShop",y:2021,c:"web",fr:"E-commerce complet.",en:"Full e-commerce shop.",lg:["PHP","SQL","Bootstrap","JavaScript"],r:"EcommerceShop"},
-  {id:18,t:"BlogPlatform",y:2021,c:"web",fr:"Blog avec commentaires et admin.",en:"Blog with admin panel.",lg:["PHP","SQL","Bootstrap"],r:"BlogPlatform"},
-  {id:19,t:"WeatherDashboard",y:2022,c:"web",fr:"Dashboard meteo via API REST.",en:"Real-time weather dashboard.",lg:["JavaScript","HTML","CSS"],r:"WeatherDashboard"},
-  {id:20,t:"TaskManager-Kanban",y:2022,c:"web",fr:"Kanban avec drag & drop.",en:"Kanban with drag & drop.",lg:["JavaScript","Node.js","CSS"],r:"TaskManager-Kanban"},
-  {id:21,t:"ChatApp-WS",y:2022,c:"web",fr:"Chat temps reel WebSockets.",en:"Real-time chat app.",lg:["Node.js","JavaScript"],r:"ChatApp-WS"},
-  {id:22,t:"MovieDB",y:2021,c:"web",fr:"Base de films avec recherche avancee.",en:"Movie database.",lg:["JavaScript","HTML","CSS"],r:"MovieDB"},
-  {id:23,t:"DjangoAPI",y:2023,c:"web",fr:"API REST Django, OAuth2, Docker.",en:"Django REST API.",lg:["Python","SQL","Docker"],r:"DjangoAPI"},
-  {id:24,t:"VueDashboard",y:2023,c:"web",fr:"Dashboard Vue.js avec D3.js.",en:"Vue.js analytics dashboard.",lg:["JavaScript","HTML","CSS"],r:"VueDashboard"},
-  {id:25,t:"LinutopWebsite",y:2019,c:"web",fr:"Refonte du site Linutop.",en:"Linutop website redesign.",lg:["PHP","HTML","CSS","JavaScript"],r:"LinutopWebsite"},
-  {id:26,t:"PortfolioReact",y:2022,c:"web",fr:"Portfolio SPA React avec GSAP.",en:"React SPA portfolio.",lg:["React","JavaScript","CSS"],r:"PortfolioReact"},
-  {id:27,t:"Pizzeria",y:2020,c:"soft",fr:"Gestion complete pizzeria.",en:"Pizzeria management app.",lg:["C#",".NET"],r:"Pizzeria",st:4},
-  {id:28,t:"VeloMax",y:2021,c:"soft",fr:"Gestion magasin velos.",en:"Bike shop management.",lg:["C#",".NET"],r:"VeloMax",st:3},
-  {id:29,t:"POWER",y:2020,c:"soft",fr:"Jeu de plateau avec IA minimax.",en:"Board game with minimax AI.",lg:["C"],r:"POWER",st:2},
-  {id:30,t:"VPSoft-Evolutions",y:2023,c:"soft",fr:"Evolutions VPSoft.",en:"VPSoft evolutions.",lg:["C#",".NET","SQL","JavaScript"],r:"VPSoft-Evolutions"},
-  {id:31,t:"QtDisplayManager",y:2019,c:"soft",fr:"Outils Qt pour affichage dynamique.",en:"Qt display manager.",lg:["Qt","C++"],r:"QtDisplayManager"},
-  {id:32,t:"UnityGame-3D",y:2021,c:"soft",fr:"Jeu 3D Unity avec IA ennemis.",en:"3D Unity game.",lg:["C#","Unity"],r:"UnityGame-3D"},
-  {id:33,t:"AndroidApp",y:2022,c:"soft",fr:"App Android — notifications, SQLite.",en:"Android app.",lg:["Java"],r:"AndroidApp"},
-  {id:34,t:"SystemeTicketing",y:2023,c:"soft",fr:"Outil ticketing VPWhite.",en:"VPWhite ticketing tool.",lg:["C#",".NET","SQL"],r:"SystemeTicketing"},
-  {id:35,t:"AlgorithmesIA",y:2022,c:"soft",fr:"A*, minimax, algorithmes genetiques.",en:"AI algorithms.",lg:["Python","C++"],r:"AlgorithmesIA"},
-  {id:36,t:"Compilateur",y:2021,c:"soft",fr:"Mini compilateur.",en:"Mini compiler.",lg:["C","Java"],r:"Compilateur"},
-  {id:37,t:"NetworkMonitor",y:2022,c:"soft",fr:"Monitoring reseau temps reel.",en:"Network monitoring.",lg:["Python","Bash"],r:"NetworkMonitor"},
-  {id:38,t:"ScalaDataPipeline",y:2023,c:"soft",fr:"Pipeline Scala/Spark.",en:"Scala/Spark pipeline.",lg:["Scala","Spark","Hadoop"],r:"ScalaDataPipeline"},
-  {id:39,t:"APIRestFull",y:2022,c:"soft",fr:"API RESTful — JWT, Swagger, CI/CD.",en:"RESTful API.",lg:["C#",".NET","SQL"],r:"APIRestFull"},
-  {id:40,t:"DataETL",y:2022,c:"soft",fr:"Pipeline ETL multi-sources.",en:"Multi-source ETL pipeline.",lg:["Python","SQL","Pandas"],r:"DataETL"}
+
+  // ── DATA SCIENCE & IA ──────────────────────────────────────────────────
+  {id:1,t:"Analyse du Marché Immobilier Français",y:2021,c:"ds",
+   fr:"Exploration de plusieurs millions de transactions immobilières françaises (2020) : nettoyage, analyse exploratoire, visualisations géographiques et API Django pour interroger les résultats par département.",
+   en:"Exploration of millions of French real estate transactions (2020): cleaning, exploratory analysis, geographic visualisations and a Django API to query results by department.",
+   lg:["Python","Jupyter","Django","Tailwind"],
+   img:"https://raw.githubusercontent.com/Pierre-Portfolio/ValeurFonciereFrance/main/Assets/header.jpg",
+   r:"ValeurFonciereFrance",st:2},
+
+  {id:2,t:"Prédiction de Demande de Vélos en Libre-Service",y:2022,c:"ds",
+   fr:"Modèle de régression prédisant la demande horaire de vélos à Séoul selon la météo et la saisonnalité. Neuf algorithmes comparés (XGBoost, Bagging, Random Forest…) avec une API Flask déployée.",
+   en:"Regression model predicting hourly bike-sharing demand in Seoul based on weather and seasonality. Nine algorithms benchmarked (XGBoost, Bagging, Random Forest…) with a deployed Flask API.",
+   lg:["Python","Flask","Scikit-learn","Jupyter"],
+   img:"https://raw.githubusercontent.com/Pierre-Portfolio/Seoul-Bike-Sharing/main/static/Velo-Gif.gif",
+   r:"Seoul-Bike-Sharing",st:2},
+
+  {id:3,t:"Comparateur de Prix Multi-Plateformes — Jeux Vidéo",y:2023,c:"ds",
+   fr:"Scraping automatisé de Steam, G2A, Epic Games, Instant Gaming et GOG couplé à une interface web Django/Tailwind permettant de comparer les prix en temps réel sur toutes les plateformes.",
+   en:"Automated scraping of Steam, G2A, Epic Games, Instant Gaming and GOG paired with a Django/Tailwind web interface for real-time price comparison across all platforms.",
+   lg:["Python","Django","JavaScript","Tailwind"],
+   img:"https://raw.githubusercontent.com/Pierre-Portfolio/GamesComparator/main/Assets/header.gif",
+   r:"GamesComparator",st:3},
+
+  {id:4,t:"Détection de Détresse sur Twitter",y:2023,c:"ds",
+   fr:"Système de détection automatique de messages de détresse sur Twitter par traitement du langage naturel : classification, analyse de sentiment et pipeline de modélisation en Python/Jupyter.",
+   en:"Automatic detection of distress messages on Twitter using NLP: text classification, sentiment analysis and a full modelling pipeline in Python/Jupyter.",
+   lg:["Python","Jupyter"],
+   img:"https://images.unsplash.com/photo-1611605698335-8b1569810432?w=700&q=80",
+   r:"TwitterFeelingAnalyse",st:0},
+
+  {id:5,t:"Optimisation du Temps de Préparation de Colis",y:2022,c:"ds",
+   fr:"Modèle d'IA prédit le temps nécessaire à la préparation d'un colis en entrepôt à partir de variables opérationnelles, permettant d'optimiser la planification logistique.",
+   en:"AI model predicting the time required to prepare a parcel in a warehouse from operational variables, enabling optimised logistics planning.",
+   lg:["Python","Jupyter"],
+   img:"https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=700&q=80",
+   r:"ProductionTime",st:0},
+
+  {id:6,t:"Résolution Algorithmique du Redi Cube",y:2022,c:"ds",
+   fr:"Exploration algorithmique exhaustive de toutes les combinaisons d'un Redi Cube pour en trouver la solution optimale — croisement d'algorithmes de recherche et de machine learning.",
+   en:"Exhaustive algorithmic exploration of all Redi Cube combinations to find the optimal solution — combining tree-search and machine learning approaches.",
+   lg:["Python","Scikit-learn"],
+   img:"https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=700&q=80",
+   r:"RediCube",st:1},
+
+  {id:7,t:"Implémentation from Scratch de l'Algorithme KNN",y:2021,c:"ds",
+   fr:"Développement complet d'un classificateur K-Nearest Neighbors sans bibliothèque ML, avec visualisation des frontières de décision et benchmark sur plusieurs datasets.",
+   en:"Full implementation of a K-Nearest Neighbors classifier from scratch without ML libraries, with decision boundary visualisation and benchmarking across multiple datasets.",
+   lg:["Python","Scikit-learn"],
+   img:"https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=700&q=80",
+   r:"KNN",st:1},
+
+  {id:8,t:"Génération de Bannières & Logos par IA",y:2026,c:"ds",
+   fr:"Pipeline de génération automatique de bannières et logos personnalisés à partir de prompts textuels, explorant les derniers modèles de génération d'images par intelligence artificielle.",
+   en:"Automated pipeline generating custom banners and logos from text prompts, exploring the latest AI image generation models.",
+   lg:["Python","Jupyter"],
+   img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80",
+   r:"GenerateBannerLogo",st:0},
+
+  {id:9,t:"Analyse de Survie — 33 Rounds",y:2026,c:"ds",
+   fr:"Modèle probabiliste de simulation de scénarios de survie sur 33 rounds, explorant les limites statistiques et les distributions de probabilité dans des contextes extrêmes.",
+   en:"Probabilistic model simulating survival scenarios over 33 rounds, exploring statistical limits and probability distributions in extreme contexts.",
+   lg:["Python","Jupyter"],
+   img:"https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&q=80",
+   r:"33-Rounds-Before-end-of-Humanity",st:0},
+
+  {id:10,t:"Analyse de Données — Displate Limited Editions",y:2025,c:"ds",
+   fr:"Analyse de données des éditions limitées Displate : suivi des ventes, visualisation des tendances et détection des patterns de rareté sur le marché des affiches collector.",
+   en:"Data analysis of Displate limited editions: sales tracking, trend visualisation and rarity pattern detection in the collector poster market.",
+   lg:["Kotlin","Python"],
+   img:"https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80",
+   r:"displate",st:1},
+
+  // ── SITES WEB ───────────────────────────────────────────────────────────
+  {id:11,t:"Calculateur d'Échéancier Bancaire",y:2026,c:"web",
+   fr:"Script JavaScript générant automatiquement un tableau d'amortissement mensuel complet (capital, intérêts, frais) depuis deux lignes sources, exportable en Excel ou Google Sheets.",
+   en:"JavaScript script automatically generating a complete monthly amortisation schedule (principal, interest, fees) from two source rows, exportable to Excel or Google Sheets.",
+   lg:["JavaScript"],
+   img:"https://raw.githubusercontent.com/Pierre-Portfolio/Bank-Interest-Calcul/main/assets/images/github/header.png",
+   r:"Bank-Interest-Calcul",st:0},
+
+  {id:12,t:"Portfolio Créatif — Célia",y:2025,c:"web",
+   fr:"Portfolio personnel d'une designer : animations CSS avancées, design glassmorphism, navigation fluide et mise en page moderne construite avec HTML/CSS/JS et Tailwind.",
+   en:"Personal portfolio for a designer: advanced CSS animations, glassmorphism design, smooth navigation and modern layout built with HTML/CSS/JS and Tailwind.",
+   lg:["HTML","CSS","JavaScript","Tailwind"],
+   img:"https://images.unsplash.com/photo-1545235617-9465d2a55698?w=700&q=80",
+   r:"Celia",st:0},
+
+  {id:13,t:"Interface Fan Spotify — Clone UI",y:2023,c:"web",
+   fr:"Recréation fidèle de l'interface Spotify en HTML/CSS/JavaScript pur : navigation, player, playlists et gestion de l'état — exercice avancé de CSS et de DOM manipulation.",
+   en:"Faithful recreation of the Spotify interface in pure HTML/CSS/JavaScript: navigation, player, playlists and state management — an advanced CSS and DOM manipulation exercise.",
+   lg:["HTML","CSS","JavaScript"],
+   img:"https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?w=700&q=80",
+   r:"Spotify",st:1},
+
+  {id:14,t:"Suivi de Trains en Temps Réel",y:2022,c:"web",
+   fr:"Application web Node.js suivant la position des trains en direct via une ontologie RDF/RDFa. Architecture sémantique du web des données combinée à un serveur en temps réel.",
+   en:"Node.js web app tracking train positions live via an RDF/RDFa ontology. Semantic web-of-data architecture combined with a real-time server.",
+   lg:["JavaScript","Node.js"],
+   img:"https://images.unsplash.com/photo-1474487548417-781cb6d646b4?w=700&q=80",
+   r:"TrainStalk",st:1},
+
+  {id:15,t:"Moteur de Recherche Custom",y:2018,c:"web",
+   fr:"Moteur de recherche full-stack développé en PHP/SQL : indexation de pages, algorithme de pertinence, interface de recherche et résultats paginés.",
+   en:"Full-stack search engine built with PHP/SQL: page indexing, relevance algorithm, search interface and paginated results.",
+   lg:["PHP","HTML","CSS"],
+   img:"https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=700&q=80",
+   r:"MoteurRecherche",st:1},
+
+  {id:16,t:"Compteur de Visites GitHub Personnalisé",y:2022,c:"web",
+   fr:"Service Node.js générant dynamiquement un badge de compteur de visites pour profils GitHub, avec personnalisation du style et persistance des données.",
+   en:"Node.js service dynamically generating a visit counter badge for GitHub profiles, with style customisation and data persistence.",
+   lg:["JavaScript","Node.js"],
+   img:"https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=700&q=80",
+   r:"Counter-Visit-Github",st:2},
+
+  {id:17,t:"FPS Browser — Jeu de Tir Temps Réel",y:2019,c:"web",
+   fr:"Jeu de tir à la première personne jouable directement dans un navigateur web, développé en JavaScript pur : moteur de rendu, collisions, gestion des ennemis et scoring.",
+   en:"First-person shooter playable directly in a web browser, built in pure JavaScript: rendering engine, collisions, enemy AI and scoring system.",
+   lg:["HTML","JavaScript","CSS"],
+   img:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=700&q=80",
+   r:"JeuDeTir",st:2},
+
+  // ── LOGICIELS ───────────────────────────────────────────────────────────
+  {id:18,t:"Système de Gestion de Pizzeria",y:2021,c:"soft",
+   fr:"Application de bureau C# gérant l'intégralité du cycle de commande d'une pizzeria : catalogue, commandes clients, livraison et suivi. Architecture UML complète, interface WinForms.",
+   en:"C# desktop application managing the full order cycle of a pizzeria: catalogue, customer orders, delivery and tracking. Full UML architecture with WinForms UI.",
+   lg:["C#",".NET"],
+   img:"https://raw.githubusercontent.com/Pierre-Portfolio/Pizzeria/main/static/pizza.gif",
+   r:"Pizzeria",st:4},
+
+  {id:19,t:"VéloMax — Logiciel de Gestion de Magasin",y:2021,c:"soft",
+   fr:"Application C#/WPF de gestion complète d'un magasin de vélos : stocks (vélos + pièces détachées), clients, fournisseurs et commandes. Base MySQL avec modélisation MCD/UML.",
+   en:"C#/WPF application for complete bicycle shop management: inventory (bikes + spare parts), customers, suppliers and orders. MySQL database with MCD/UML modelling.",
+   lg:["C#","WPF","SQL","MySQL"],
+   img:"https://raw.githubusercontent.com/Pierre-Portfolio/VeloMax/main/Assets/Picture/Velo-Gif.gif",
+   r:"VeloMax",st:3},
+
+  {id:20,t:"TriBot — Robot Intelligent de Tri des Déchets",y:2021,c:"soft",
+   fr:"Robot Arduino de tri automatique des déchets par détection matière (capteurs). Destiné aux professionnels, grandes surfaces et institutions publiques souhaitant optimiser leur gestion écologique des déchets.",
+   en:"Arduino waste-sorting robot using material-detection sensors. Designed for businesses, supermarkets and public institutions seeking to optimise their ecological waste management.",
+   lg:["C++","Arduino"],
+   img:"https://raw.githubusercontent.com/Pierre-Portfolio/TriBot/main/Assets/header.png",
+   r:"TriBot",st:2},
+
+  {id:21,t:"Puissance 4 — Duel d'Intelligences Artificielles",y:2021,c:"soft",
+   fr:"Implémentation d'un Puissance 4 avec affrontement entre plusieurs agents IA (Minimax, Alpha-Beta, aléatoire) pour comparer les stratégies et évaluer les performances de chaque algorithme.",
+   en:"Connect Four implementation pitting multiple AI agents against each other (Minimax, Alpha-Beta, random) to compare strategies and benchmark algorithm performance.",
+   lg:["Python"],
+   img:"https://images.unsplash.com/photo-1606924842584-a836dcd67bc8?w=700&q=80",
+   r:"Morpion_4",st:1},
+
+  {id:22,t:"Lampe Connectée — Application Android IoT",y:2019,c:"soft",
+   fr:"Application Android pilotant une lampe connectée via protocole IoT : interface de contrôle de la couleur et de l'intensité, notifications push et persistance des préférences utilisateur.",
+   en:"Android app controlling a smart lamp via IoT protocol: colour and brightness control interface, push notifications and user preference persistence.",
+   lg:["Java"],
+   img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80",
+   r:"Lampe",st:2},
+
+  {id:23,t:"Lettric — Système Embarqué Connecté",y:2020,c:"soft",
+   fr:"Système embarqué Arduino communicant via le protocole MQTT/Mosquitto pour piloter des actionneurs à distance — architecture IoT légère et réactive.",
+   en:"Arduino embedded system communicating via MQTT/Mosquitto protocol to control remote actuators — lightweight and reactive IoT architecture.",
+   lg:["C++","Arduino"],
+   img:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=80",
+   r:"Lettric",st:1},
+
+  {id:24,t:"GameCenter — Launcher d'Applications",y:2018,c:"soft",
+   fr:"Launcher centralisé en VB.NET permettant de gérer et lancer des applications depuis une interface unifiée, avec gestion des raccourcis, mises à jour et profils utilisateurs.",
+   en:"Centralised VB.NET launcher managing and launching applications from a unified interface, with shortcut management, updates and user profiles.",
+   lg:["Visual Basic .NET"],
+   img:"https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=700&q=80",
+   r:"GameCenter",st:1},
+
+  {id:25,t:"Morpion — Jeu en Visual Basic",y:2017,c:"soft",
+   fr:"Implémentation classique du jeu de Morpion en VB.NET avec interface graphique, gestion de tours, détection de victoire et mode deux joueurs.",
+   en:"Classic Tic-Tac-Toe implementation in VB.NET with graphical interface, turn management, win detection and two-player mode.",
+   lg:["Visual Basic .NET"],
+   img:"https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=700&q=80",
+   r:"Morpion",st:1},
+
+  {id:26,t:"JeuxDeMot — Application de Jeux Linguistiques",y:2017,c:"soft",
+   fr:"Application VB.NET proposant plusieurs jeux de mots et devinettes : pendu, mots mêlés, anagrammes — avec gestion des scores et niveaux de difficulté.",
+   en:"VB.NET application offering word games and riddles: hangman, word search, anagrams — with score tracking and difficulty levels.",
+   lg:["Visual Basic .NET"],
+   img:"https://images.unsplash.com/photo-1455390582262-044cdead277a?w=700&q=80",
+   r:"JeuxDeMot",st:1}
 ];
 var activeCat=null;
 function toggleCat(cat,el){
@@ -744,8 +889,9 @@ function renderProj(cat){
     var desc=lang==="en"?p.en:p.fr;
     var tags=p.lg.map(function(l){return '<span class="proj-tag '+(TAG_MAP[l]||'')+'">'+l+'</span>';}).join("");
     var stars=p.st?'<span class="proj-stars">&#9733; '+p.st+'</span>':"";
+    var imgSrc=p.img?p.img:'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+p.r;
     return '<a href="https://github.com/Pierre-Portfolio/'+p.r+'" target="_blank" class="proj-card">'
-      +'<img src="https://opengraph.githubassets.com/1/Pierre-Portfolio/'+p.r+'" alt="'+p.t+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
+      +'<img src="'+imgSrc+'" alt="'+p.t+'" onerror="this.src=\'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+p.r+'\'">'
       +'<div class="proj-fallback">&#128187;</div>'
       +'<div class="proj-body"><div class="proj-meta"><span class="proj-year">'+p.y+'</span>'+stars+'</div>'
       +'<div class="proj-title">'+p.t+'</div><div class="proj-desc">'+desc+'</div>'
