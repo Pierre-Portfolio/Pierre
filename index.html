@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pierre Petillion — Software Consultant & Data Engineer</title>
+<meta name="description" content="Portfolio de Pierre Petillion, Ingénieur en Data et IA, Software Consultant chez VPWhite. Découvrez mes projets en Data Science, Sites Web et Logiciels.">
+
+<!-- Open Graph / Instagram / Facebook / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pierre-portfolio.github.io/">
+<meta property="og:title" content="Pierre Petillion — Software Consultant & Data Engineer">
+<meta property="og:description" content="Ingénieur en Data et IA. Découvrez mes projets en Data Science, Sites Web et Logiciels.">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/60719810?v=4">
+<meta property="og:image:width" content="400">
+<meta property="og:image:height" content="400">
+<meta property="og:locale" content="fr_FR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pierre Petillion — Software Consultant & Data Engineer">
+<meta name="twitter:description" content="Ingénieur en Data et IA. Data Science, Sites Web, Logiciels.">
+<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/60719810?v=4">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA5NiA5Nic+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSdnMScgeDE9JzAlJyB5MT0nMCUnIHgyPScxMDAlJyB5Mj0nMTAwJSc+PHN0b3Agb2Zmc2V0PScwJScgc3RvcC1jb2xvcj0nIzBkMjEzNycvPjxzdG9wIG9mZnNldD0nMTAwJScgc3RvcC1jb2xvcj0nIzBhMWEyZScvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSdncCcgeDE9JzAlJyB5MT0nMCUnIHgyPScxMDAlJyB5Mj0nMTAwJSc+PHN0b3Agb2Zmc2V0PScwJScgc3RvcC1jb2xvcj0nIzdmZmZkNCcvPjxzdG9wIG9mZnNldD0nMTAwJScgc3RvcC1jb2xvcj0nIzJiYjhiOCcvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSc5NicgaGVpZ2h0PSc5Nicgcng9JzIwJyBmaWxsPSd1cmwoI2cxKScvPjx0ZXh0IHg9JzUwJScgeT0nNjglJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmb250LWZhbWlseT0nR2VvcmdpYSxzZXJpZicgZm9udC1zaXplPSc2MicgZm9udC13ZWlnaHQ9J2JvbGQnIGZpbGw9J25vbmUnIHN0cm9rZT0nIzJiYjhiOCcgc3Ryb2tlLXdpZHRoPScyLjUnPlA8L3RleHQ+PHRleHQgeD0nNTAlJyB5PSc2OCUnIHRleHQtYW5jaG9yPSdtaWRkbGUnIGZvbnQtZmFtaWx5PSdHZW9yZ2lhLHNlcmlmJyBmb250LXNpemU9JzYyJyBmb250LXdlaWdodD0nYm9sZCcgZmlsbD0ndXJsKCNncCknPlA8L3RleHQ+PHBvbHlnb24gcG9pbnRzPSc2MywyMiA2NS41LDI5LjUgNzMsMjkuNSA2NywzNCA2OS41LDQxLjUgNjMsMzcgNTYuNSw0MS41IDU5LDM0IDUzLDI5LjUgNjAuNSwyOS41JyBmaWxsPScjZmZkNzAwJyBvcGFjaXR5PScwLjkyJy8+PC9zdmc+">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +43,7 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;padding:52px 2
 .container{max-width:1120px;width:100%;display:flex;flex-direction:column;gap:28px}
 
 /* SLIDE BOX */
-.slide-box{border:3px solid rgba(255,255,255,.42);border-radius:18px;padding:48px 56px;min-height:520px;display:flex;flex-direction:column;justify-content:center;gap:22px;background:transparent}
+.slide-box{border:3px solid rgba(255,255,255,.42);border-radius:18px;padding:48px 56px 54px;min-height:520px;display:flex;flex-direction:column;justify-content:center;gap:22px;background:transparent;position:relative}
 
 /* CAROUSEL */
 #carousel{position:relative}
@@ -423,38 +443,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
   .cat-card{ aspect-ratio:16/9 !important; height:auto !important; }
 }
 
-/* ── FLECHES + DOTS SUR MÊME LIGNE EN MOBILE ─────────────────── */
-@media(max-width:860px){
-  /* Carousel: position relative pour que les flèches soient dans le flux */
-  #carousel{ position:static !important; }
 
-  /* Wrapper dots+flèches */
-  #dots{
-    display:flex !important;
-    flex-direction:row !important;
-    align-items:center !important;
-    justify-content:center !important;
-    gap:10px !important;
-    margin-top:14px !important;
-  }
-
-  /* Flèches repositionnées: dans le flux, pas en absolute */
-  .carousel-ctrl{
-    position:static !important;
-    transform:none !important;
-    top:auto !important;
-    left:auto !important;
-    right:auto !important;
-    width:34px !important;
-    height:34px !important;
-    background:rgba(255,255,255,0.18) !important;
-    box-shadow:none !important;
-    flex-shrink:0 !important;
-    display:flex !important;
-    color:#ffffff !important;
-  }
-  .carousel-ctrl svg{ width:16px !important; height:16px !important; stroke:#ffffff !important; }
-}
 
 /* ── CONSTELLATION SVG — redimensionnement mobile ─────────────── */
 @media(max-width:860px){
@@ -464,6 +453,148 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
     top:0 !important;
     left:0 !important;
   }
+}
+
+/* ── FLÈCHE SCROLL BAS (desktop uniquement) ────────────────────── */
+.scroll-down-btn{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:rgba(255,255,255,.85);
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.15);
+  transition:background .2s;
+  animation:aBounceDown 2.5s ease-in-out infinite;
+  position:absolute;
+  bottom:18px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:10;
+}
+.scroll-down-btn:hover{ background:#fff; }
+.scroll-down-btn svg{ color:var(--teal-dk); }
+@keyframes aBounceDown{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(4px); }
+}
+@media(max-width:860px){
+  .scroll-down-btn{ display:none !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BOTTOM BAR MOBILE
+   ═══════════════════════════════════════════════════════════════ */
+
+
+/* ══════════════════════════════════════════════════════════════
+   BOTTOM NAV BAR — mobile uniquement
+   ══════════════════════════════════════════════════════════════ */
+#mobile-nav{
+  display:none;
+}
+@media(max-width:860px){
+  /* Espace en bas pour ne pas cacher le contenu derrière la barre */
+
+  #mobile-nav{
+    display:flex;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:56px;
+    background:rgba(10,14,26,0.82);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(43,184,184,0.25);
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    z-index:500;
+    padding:0 12px;
+  }
+
+  /* Flèches dans la barre */
+  #mobile-nav .nav-arrow{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.13);
+    border:1px solid rgba(255,255,255,0.18);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    flex-shrink:0;
+    transition:background .2s;
+  }
+  #mobile-nav .nav-arrow:hover{ background:rgba(255,255,255,0.22); }
+  #mobile-nav .nav-arrow svg{ stroke:#fff; width:16px; height:16px; }
+
+  /* Dots dans la barre */
+  #mobile-nav .nav-dots{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    flex:1;
+    justify-content:center;
+  }
+  #mobile-nav .nav-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.3);
+    border:none;
+    cursor:pointer;
+    padding:0;
+    transition:background .2s, transform .2s;
+    flex-shrink:0;
+  }
+  #mobile-nav .nav-dot.active{
+    background:rgba(43,184,184,1);
+    transform:scale(1.3);
+  }
+
+  /* Séparateur */
+  #mobile-nav .nav-sep{
+    width:1px; height:24px;
+    background:rgba(255,255,255,0.2);
+    flex-shrink:0;
+    margin:0 2px;
+  }
+
+  /* Drapeaux dans la barre */
+  #mobile-nav .nav-flags{
+    display:flex;
+    gap:7px;
+    align-items:center;
+    flex-shrink:0;
+  }
+  #mobile-nav .nav-flags img{
+    width:26px;
+    height:26px;
+    border-radius:4px;
+    object-fit:cover;
+    cursor:pointer;
+    opacity:0.45;
+    transition:opacity .2s, transform .2s;
+  }
+  #mobile-nav .nav-flags img.active{
+    opacity:1;
+    transform:scale(1.12);
+  }
+
+  /* Cacher les anciens dots/flags dans le carousel sur mobile */
+  #dots{ display:none !important; }
+  #flags{ display:none !important; }
+  /* Scroll bas aussi caché sur mobile */
+  #scroll-down{ display:none !important; }
+  /* Flèches desktop cachées */
+  .carousel-ctrl{ display:none !important; }
 }
 </style>
 <script>function toggleExp(el){el.classList.toggle("open");}</script>
@@ -494,7 +625,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
       <div id="flags">
   <img id="flag-fr" src="https://raw.githubusercontent.com/Pierre-Portfolio/Celia/main/assets/images/profil/fr.png" onerror="this.src='https://flagcdn.com/w40/fr.png'" alt="FR" onclick="setLang('fr')" class="active">
   <img id="flag-en" src="https://raw.githubusercontent.com/Pierre-Portfolio/Celia/main/assets/images/profil/uk.png" onerror="this.src='https://flagcdn.com/w40/gb.png'" alt="EN" onclick="setLang('en')">
-</div>
+    </div>
       <div class="profile-row">
         <div class="av-wrap">
           <div class="avatar-circle"><img src="https://avatars.githubusercontent.com/u/60719810?v=4" alt="Pierre Petillion" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block"></div>
@@ -538,7 +669,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           <span>LinkedIn</span>
         </a>
-        <a href="/cdn-cgi/l/email-protection#21514455484d4d484e4f181861464c40484d0f424e4c" class="action-btn">
+        <a href="/cdn-cgi/l/email-protection#2d5d485944414144424314146d4a404c4441034e4240" class="action-btn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
           <span data-fr="Email" data-en="Email">Email</span>
         </a>
@@ -547,11 +678,14 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
           <span data-fr="CV" data-en="CV">CV</span>
         </a>
       </div>
-    </div>
+    
+      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Scroll vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button></div>
 
         <!-- SLIDE 2 -->
     <div class="slide slide-box" id="s1">
-      <div class="slide-title-wrap"><span class="slide-title" data-fr="Compétences Générales" data-en="General Skills">Compétences Générales</span></div>
+      <div class="slide-title-wrap"><span class="slide-title" data-fr="Compétences Générales" data-en="General Skills">Compétences Générales</span>
+      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Scroll vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+    </div>
       <div class="tech2-grid">
         <div class="t2-cat"><div class="t2-cat-title" data-fr="Data Science & IA" data-en="Data Science & AI">Data Science & IA</div><div class="t2-items"><div class="t2-item"><span class="t2-icon">📈</span><span class="t2-label" data-fr="Analyse prédictive" data-en="Predictive Analytics">Analyse prédictive</span></div>
 <div class="t2-item"><span class="t2-icon">⚡</span><span class="t2-label" data-fr="Big Data (Hadoop / Spark)" data-en="Big Data (Hadoop / Spark)">Big Data (Hadoop / Spark)</span></div>
@@ -574,13 +708,17 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 
     <!-- SLIDE 3 SOFT -->
     <div class="slide slide-box" id="s2">
-      <div class="slide-title-wrap"><span class="slide-title">Soft Skills</span></div>
+      <div class="slide-title-wrap"><span class="slide-title">Soft Skills</span>
+      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Scroll vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+    </div>
       <div class="soft-grid" id="soft-grid"></div>
     </div>
 
     <!-- SLIDE 4 EDU -->
     <div class="slide slide-box" id="s3" style="padding:38px 52px">
-      <div class="slide-title-wrap"><span class="slide-title" data-fr="Formations" data-en="Education">Formations</span></div>
+      <div class="slide-title-wrap"><span class="slide-title" data-fr="Formations" data-en="Education">Formations</span>
+      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Scroll vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+    </div>
       <div class="edu-scroll">
         <div class="timeline">
           <div class="tl-line"></div>
@@ -614,7 +752,9 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 
 <!-- SLIDE 5 EXP -->
     <div class="slide slide-box" id="s4" style="gap:18px">
-      <div class="slide-title-wrap"><span class="slide-title" data-fr="Experiences" data-en="Experience">Experiences</span></div>
+      <div class="slide-title-wrap"><span class="slide-title" data-fr="Experiences" data-en="Experience">Experiences</span>
+      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Scroll vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+    </div>
       <div class="exp-scroll">
 
         <div class="exp-card exp-toggle" onclick="toggleExp(this)">
@@ -675,7 +815,9 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 
 <!-- SLIDE 6 CONTACT -->
     <div class="slide slide-box" id="s5">
-      <div class="slide-title-wrap"><span class="slide-title" data-fr="Contact" data-en="Contact">Contact</span></div>
+      <div class="slide-title-wrap"><span class="slide-title" data-fr="Contact" data-en="Contact">Contact</span>
+      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Scroll vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+    </div>
       <div class="contact-row">
         <div class="contact-tile">
           <div class="contact-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></div>
@@ -689,8 +831,8 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
         </div>
         <div class="contact-tile">
           <div class="contact-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
-          <div class="contact-info"><span class="contact-label">Email</span><span class="contact-detail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9eeefbeaf7f2f2f7f1f0a7a7def9f3fff7f2b0fdf1f3">[email&#160;protected]</a></span></div>
-          <a href="/cdn-cgi/l/email-protection#572732233e3b3b3e38396e6e17303a363e3b7934383a" class="contact-btn" data-fr="Envoyer" data-en="Send">Envoyer</a>
+          <div class="contact-info"><span class="contact-label">Email</span><span class="contact-detail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="96e6f3e2fffafafff9f8afafd6f1fbf7fffab8f5f9fb">[email&#160;protected]</a></span></div>
+          <a href="/cdn-cgi/l/email-protection#156570617c79797c7a7b2c2c557278747c793b767a78" class="contact-btn" data-fr="Envoyer" data-en="Send">Envoyer</a>
         </div>
       </div>
     </div>
@@ -743,7 +885,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 <footer><strong data-fr="&copy; 2026 Pierre Petillion &mdash; Engineer &amp; Software Consultant" data-en="&copy; 2026 Pierre Petillion &mdash; Engineer &amp; Software Consultant">&copy; 2026 Pierre Petillion &mdash; Engineer &amp; Software Consultant</strong></footer>
 
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
   var canvas=document.getElementById('bg-canvas');
   var ctx=canvas.getContext('2d');
@@ -810,7 +952,11 @@ var current=0,N=6;
 function goTo(n){
   document.querySelectorAll(".slide").forEach(function(s,i){s.classList.toggle("active",i===n);});
   document.querySelectorAll(".dot").forEach(function(d,i){d.classList.toggle("active",i===n);});
+  document.querySelectorAll(".mbb-dot").forEach(function(d,i){d.classList.toggle("active",i===n);});
+  document.querySelectorAll(".nav-dot").forEach(function(d,i){d.classList.toggle("active",i===n);});
   current=n;
+  // Anti-scroll : on remonte en haut sans animation pour rester sur le carousel
+  window.scrollTo({top:0,behavior:'instant'});
 }
 function changeSlide(d){goTo((current+d+N)%N);}
 document.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")changeSlide(-1);if(e.key==="ArrowRight")changeSlide(1);});
@@ -1057,6 +1203,10 @@ function setLang(lang){
   document.documentElement.setAttribute("data-lang",lang);
   document.getElementById("flag-en").classList.toggle("active",lang==="en");
   document.getElementById("flag-fr").classList.toggle("active",lang==="fr");
+  var mbbFr=document.getElementById("mbb-fr"); if(mbbFr) mbbFr.classList.toggle("active",lang==="fr");
+  var mbbEn=document.getElementById("mbb-en"); if(mbbEn) mbbEn.classList.toggle("active",lang==="en");
+  var navFr=document.getElementById("nav-flag-fr"); if(navFr) navFr.classList.toggle("active",lang==="fr");
+  var navEn=document.getElementById("nav-flag-en"); if(navEn) navEn.classList.toggle("active",lang==="en");
   document.querySelectorAll("[data-fr]").forEach(function(el){var v=el.getAttribute("data-"+lang);if(v)el.textContent=v;});
   document.querySelectorAll(".soft-label").forEach(function(el,i){if(SOFT[i])el.textContent=SOFT[i][lang]||SOFT[i].fr;});
   document.querySelectorAll(".soft-inner .tip").forEach(function(tip,i){if(SOFT[i])tip.textContent=SOFT[i][lang]||SOFT[i].fr;});
@@ -1138,5 +1288,35 @@ window.addEventListener("scroll",function(){document.getElementById("scrollTop")
 })();
 
 </script>
+
+<!-- BOTTOM NAV BAR mobile -->
+<div id="mobile-nav">
+  <div class="nav-flags">
+    <img src="https://raw.githubusercontent.com/Pierre-Portfolio/Celia/main/assets/images/profil/fr.png"
+         onerror="this.src='https://flagcdn.com/w40/fr.png'" alt="FR"
+         onclick="setLang('fr')" class="active" id="nav-flag-fr">
+    <img src="https://raw.githubusercontent.com/Pierre-Portfolio/Celia/main/assets/images/profil/uk.png"
+         onerror="this.src='https://flagcdn.com/w40/gb.png'" alt="EN"
+         onclick="setLang('en')" id="nav-flag-en">
+  </div>
+  <div class="nav-sep"></div>
+  <button class="nav-arrow" onclick="changeSlide(-1)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <div class="nav-dots">
+    <button class="nav-dot active" onclick="goTo(0)"></button>
+    <button class="nav-dot" onclick="goTo(1)"></button>
+    <button class="nav-dot" onclick="goTo(2)"></button>
+    <button class="nav-dot" onclick="goTo(3)"></button>
+    <button class="nav-dot" onclick="goTo(4)"></button>
+    <button class="nav-dot" onclick="goTo(5)"></button>
+  </div>
+  <button class="nav-arrow" onclick="changeSlide(1)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
 </body>
-</html>
+</html  body{ padding-top:64px !important; }
+  main{ padding-top:8px !important; }
+
+>
