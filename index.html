@@ -318,9 +318,9 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 /* ── TABLET (≤ 860px) ─────────────────────────────────────────── */
 @media(max-width:860px){
   main{padding:36px 14px 28px;}
-  .profile-row{width:100% !important;height:auto !important;position:static !important;display:flex;flex-direction:column;align-items:center;gap:18px;padding:10px 0;}
-  .av-wrap{position:static !important;transform:none !important;width:220px !important;height:220px !important;margin:0 auto;}
-  .av-wrap .avatar-circle{top:36px !important;left:36px !important;width:148px !important;height:148px !important;}
+  .profile-row{width:100% !important;height:auto !important;position:static !important;display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;gap:18px;padding:10px 0;}
+  .av-wrap{position:relative !important;transform:none !important;left:auto !important;top:auto !important;width:275px !important;height:275px !important;margin:0 auto !important;display:block !important;}
+  .av-wrap .avatar-circle{top:45px !important;left:45px !important;width:185px !important;height:185px !important;}
   .profile-info{position:static !important;transform:none !important;left:auto !important;max-width:100% !important;width:100%;text-align:center;}
   .profile-info h1,.name-stellar{font-size:26px !important;letter-spacing:5px !important;}
   .job-title{font-size:15px !important;}
@@ -336,12 +336,12 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 /* ── MOBILE (≤ 600px) ─────────────────────────────────────────── */
 @media(max-width:600px){
   main{padding:24px 10px 20px;}
-  .slide-box{padding:18px 14px !important;border-radius:18px !important;}
+  .slide-box{padding:18px 14px !important;border-radius:18px !important;align-items:center !important;}
 
   /* Profil — stack vertical centré */
-  .profile-row{gap:12px;}
-  .av-wrap{width:180px !important;height:180px !important;}
-  .av-wrap .avatar-circle{top:28px !important;left:28px !important;width:124px !important;height:124px !important;}
+  .profile-row{gap:12px;display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;width:100% !important;height:auto !important;position:static !important;}
+  .av-wrap{width:225px !important;height:225px !important;position:relative !important;transform:none !important;left:auto !important;top:auto !important;margin:0 auto !important;display:block !important;float:none !important;}
+  .av-wrap .avatar-circle{top:35px !important;left:35px !important;width:155px !important;height:155px !important;}
   .name-stellar{font-size:20px !important;letter-spacing:3px !important;}
   .job-title{font-size:14px !important;}
   .bio{font-size:12.5px !important;}
@@ -385,8 +385,8 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 /* ── PETIT MOBILE (≤ 390px) ──────────────────────────────────── */
 @media(max-width:390px){
   .name-stellar{font-size:17px !important;letter-spacing:2px !important;}
-  .av-wrap{width:160px !important;height:160px !important;}
-  .av-wrap .avatar-circle{top:24px !important;left:24px !important;width:112px !important;height:112px !important;}
+  .av-wrap{width:200px !important;height:200px !important;}
+  .av-wrap .avatar-circle{top:30px !important;left:30px !important;width:140px !important;height:140px !important;}
   .soft-grid{grid-template-columns:repeat(2,1fr) !important;}
   .cat-card{height:110px !important;}
 }
@@ -396,9 +396,6 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
    ═══════════════════════════════════════════════════════════════ */
 
 @media(max-width:860px){
-  /* Cacher les boutons prev/next — swipe suffit */
-  .carousel-ctrl{ display:none !important; }
-
   /* Flags : sortir du fixed, les mettre dans le flux du slide-box */
   #flags{
     position:static !important;
@@ -416,8 +413,6 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 }
 
 @media(max-width:600px){
-  .carousel-ctrl{ display:none !important; }
-
   #flags{ margin-bottom:8px; }
   #flags img{ width:28px !important; height:28px !important; }
 
@@ -426,6 +421,49 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 
 @media(max-width:390px){
   .cat-card{ aspect-ratio:16/9 !important; height:auto !important; }
+}
+
+/* ── FLECHES + DOTS SUR MÊME LIGNE EN MOBILE ─────────────────── */
+@media(max-width:860px){
+  /* Carousel: position relative pour que les flèches soient dans le flux */
+  #carousel{ position:static !important; }
+
+  /* Wrapper dots+flèches */
+  #dots{
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:10px !important;
+    margin-top:14px !important;
+  }
+
+  /* Flèches repositionnées: dans le flux, pas en absolute */
+  .carousel-ctrl{
+    position:static !important;
+    transform:none !important;
+    top:auto !important;
+    left:auto !important;
+    right:auto !important;
+    width:34px !important;
+    height:34px !important;
+    background:rgba(255,255,255,0.18) !important;
+    box-shadow:none !important;
+    flex-shrink:0 !important;
+    display:flex !important;
+    color:#ffffff !important;
+  }
+  .carousel-ctrl svg{ width:16px !important; height:16px !important; stroke:#ffffff !important; }
+}
+
+/* ── CONSTELLATION SVG — redimensionnement mobile ─────────────── */
+@media(max-width:860px){
+  .av-svg{
+    width:100% !important;
+    height:100% !important;
+    top:0 !important;
+    left:0 !important;
+  }
 }
 </style>
 <script>function toggleExp(el){el.classList.toggle("open");}</script>
@@ -446,12 +484,8 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 <main><div class="container">
 
 <section id="carousel">
-  <button id="prev" class="carousel-ctrl" onclick="changeSlide(-1)">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
-  </button>
-  <button id="next" class="carousel-ctrl" onclick="changeSlide(1)">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-  </button>
+  
+  
 
   <div class="slides">
 
@@ -663,12 +697,18 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 
 
   <div id="dots">
+    <button id="prev" class="carousel-ctrl" onclick="changeSlide(-1)">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
     <button class="dot active" onclick="goTo(0)"></button>
     <button class="dot" onclick="goTo(1)"></button>
     <button class="dot" onclick="goTo(2)"></button>
     <button class="dot" onclick="goTo(3)"></button>
     <button class="dot" onclick="goTo(4)"></button>
     <button class="dot" onclick="goTo(5)"></button>
+    <button id="next" class="carousel-ctrl" onclick="changeSlide(1)">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
   </div>
 
 </section>
@@ -775,8 +815,7 @@ function goTo(n){
 function changeSlide(d){goTo((current+d+N)%N);}
 document.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")changeSlide(-1);if(e.key==="ArrowRight")changeSlide(1);});
 var tx=0;
-document.getElementById("carousel").addEventListener("touchstart",function(e){tx=e.touches[0].clientX;},{passive:true});
-document.getElementById("carousel").addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>45)changeSlide(dx<0?1:-1);},{passive:true});
+/* swipe désactivé */
 
 const SOFT=[
   {e:"\u{1F3AF}",fr:"Autonomie",en:"Autonomy"},{e:"\u{1F4AC}",fr:"Communication",en:"Communication"},
