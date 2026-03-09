@@ -47,8 +47,40 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;padding:52px 2
 
 /* CAROUSEL */
 #carousel{position:relative}
-.slide{display:none}
-.slide.active{display:flex;flex-direction:column}
+.slide{
+  display:none;
+  flex-direction:column;
+}
+.slide.active{
+  display:flex;
+  animation:slideIn .4s cubic-bezier(.4,0,.2,1) both;
+}
+.slide.slide-out-left{
+  display:flex !important;
+  animation:slideOutLeft .35s cubic-bezier(.4,0,.2,1) both;
+  pointer-events:none;
+  position:absolute;
+  top:0; left:0; right:0;
+}
+.slide.slide-out-right{
+  display:flex !important;
+  animation:slideOutRight .35s cubic-bezier(.4,0,.2,1) both;
+  pointer-events:none;
+  position:absolute;
+  top:0; left:0; right:0;
+}
+@keyframes slideIn{
+  from{opacity:0; transform:translateX(var(--slide-from,40px));}
+  to{opacity:1; transform:translateX(0);}
+}
+@keyframes slideOutLeft{
+  from{opacity:1; transform:translateX(0);}
+  to{opacity:0; transform:translateX(-40px);}
+}
+@keyframes slideOutRight{
+  from{opacity:1; transform:translateX(0);}
+  to{opacity:0; transform:translateX(40px);}
+}
 
 /* ARROWS */
 .carousel-ctrl{position:absolute;top:50%;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:20;box-shadow:0 2px 14px rgba(0,0,0,.18);transition:background .2s}
@@ -950,12 +982,28 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 
 var current=0,N=6;
 function goTo(n){
-  document.querySelectorAll(".slide").forEach(function(s,i){s.classList.toggle("active",i===n);});
+  var slides = document.querySelectorAll(".slide");
+  var dir = n > current ? 1 : -1;
+  var prev = current;
+
+  // Slide sortante
+  if(slides[prev] && prev !== n){
+    var outClass = dir > 0 ? 'slide-out-left' : 'slide-out-right';
+    slides[prev].classList.remove('active');
+    slides[prev].classList.add(outClass);
+    (function(s, cls){ setTimeout(function(){ s.classList.remove(cls); }, 370); })(slides[prev], outClass);
+  }
+
+  // Slide entrante : définir la direction d'arrivée
+  if(slides[n]){
+    slides[n].style.setProperty('--slide-from', dir > 0 ? '40px' : '-40px');
+    slides[n].classList.add('active');
+  }
+
   document.querySelectorAll(".dot").forEach(function(d,i){d.classList.toggle("active",i===n);});
   document.querySelectorAll(".mbb-dot").forEach(function(d,i){d.classList.toggle("active",i===n);});
   document.querySelectorAll(".nav-dot").forEach(function(d,i){d.classList.toggle("active",i===n);});
   current=n;
-  // Anti-scroll : on remonte en haut sans animation pour rester sur le carousel
   window.scrollTo({top:0,behavior:'instant'});
 }
 function changeSlide(d){goTo((current+d+N)%N);}
