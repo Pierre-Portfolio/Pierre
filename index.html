@@ -1094,7 +1094,7 @@ const PROJECTS=[
    en:"Regression model predicting hourly bike-sharing demand in Seoul based on weather and seasonality. Nine algorithms benchmarked (XGBoost, Bagging, Random Forest…) with a deployed Flask API.",
    lg:["Python","Flask","Scikit-learn","Jupyter"],
    img:"https://raw.githubusercontent.com/Pierre-Portfolio/Seoul-Bike-Sharing/main/static/Velo-Gif.gif",
-   r:"Seoul-Bike-Sharing",st:2},
+   r:"Seoul-Bike-Sharing",fit:"contain",st:2},
 
   {id:3,t:"Comparateur de Prix Multi-Plateformes — Jeux Vidéo",y:2023,c:"ds",
    fr:"Scraping automatisé de Steam, G2A, Epic Games, Instant Gaming et GOG couplé à une interface web Django/Tailwind permettant de comparer les prix en temps réel sur toutes les plateformes.",
@@ -1259,7 +1259,21 @@ const PROJECTS=[
    en:"VB.NET application offering word games and riddles: hangman, word search, anagrams — with score tracking and difficulty levels.",
    lg:["Visual Basic .NET"],
    img:"https://images.unsplash.com/photo-1455390582262-044cdead277a?w=700&q=80",
-   r:"JeuxDeMot",st:1}
+   r:"JeuxDeMot",st:1},
+
+  {id:27,t:"Visualisation Interactive de Ticketing",y:2024,c:"ds",
+   fr:"Visualisation interactive de données de ticketing sous forme de graphe nœuds/arêtes, permettant d'explorer les relations entre tickets, priorités et assignations de manière dynamique.",
+   en:"Interactive graph visualization of ticketing data using a nodes/edges approach, enabling dynamic exploration of ticket relationships, priorities and assignments.",
+   lg:["HTML","JavaScript","D3.js"],
+   img:"https://cdn.prod.website-files.com/65d609edcc331dd0e4eb519b/683e5357b029e44c78368470_AD_4nXfxlXT3frqYTWxta-cGGwr-MeeOYAneTUrKViqRVyOJlQQphBEdNM1k9jMbq1KZhMpwBXdsGz3Kz3_wvSycetBe5AI8hQgF1uk9QsI-RQLqqwk2zOR0RZWWT38T16YSzfR_6LGUgA.png",
+   r:"Ticketing-Visualisation-Interactive-Data"},
+
+  {id:28,t:"MarathonInscription — Système d'Inscription en Ligne",y:2024,c:"soft",
+   fr:"Application web de gestion des inscriptions à un marathon : formulaire dynamique, validation des données, gestion des participants et export des résultats.",
+   en:"Web application for marathon registration management: dynamic form, data validation, participant management and results export.",
+   lg:["JavaScript","HTML","CSS"],
+   img:"https://wallpapers.com/images/hd/athlete-silhouette-marathon-h2u2efp37ylfcv9f.jpg",
+   r:"MarathonInscription"}
 ];
 var activeCat=null;
 function toggleCat(cat,el){
@@ -1282,7 +1296,7 @@ function renderProj(cat){
     var stars='';
     var imgSrc=p.img?p.img:'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+p.r;
     return '<a href="https://github.com/Pierre-Portfolio/'+p.r+'" target="_blank" class="proj-card">'
-      +'<img src="'+imgSrc+'" alt="'+p.t+'" onerror="this.src=\'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+p.r+'\'">'
+      +'<img src="'+imgSrc+'" alt="'+p.t+'" style="object-fit:'+(p.fit||'cover')+'"' +' onerror="this.src=\'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+p.r+'\'">'
       +'<div class="proj-fallback">&#128187;</div>'
       +'<div class="proj-body"><div class="proj-meta"><span class="proj-year">'+p.y+'</span>'+stars+'</div>'
       +'<div class="proj-title">'+p.t+'</div><div class="proj-desc">'+desc+'</div>'
