@@ -671,7 +671,8 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
     display:block !important;
   }
 }
-</style>
+
+.tag-d3{background:#f68e56;color:#fff;}</style>
 <script>function toggleExp(el){el.classList.toggle("open");}</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PPQR892T58"></script>
@@ -1136,7 +1137,14 @@ const PROJECTS=[
    en:"Automated pipeline generating custom banners and logos from text prompts, exploring the latest AI image generation models.",
    lg:["Python","Jupyter"],
    img:"https://t4.ftcdn.net/jpg/08/54/98/77/360_F_854987794_aPwf9Ilntls67DATksezc6bgn9jYhcpO.jpg",
-   r:"GenerateBannerLogo",st:0},
+   r:"GenerateBannerLogo",st:0},,
+
+  {id:27,t:"Visualisation Interactive de Ticketing",y:2026,c:"ds",
+   fr:"Visualisation interactive de données de ticketing sous forme de graphe nœuds/arêtes, permettant d'explorer les relations entre tickets, priorités et assignations de manière dynamique.",
+   en:"Interactive graph visualization of ticketing data using a nodes/edges approach, enabling dynamic exploration of ticket relationships, priorities and assignments.",
+   lg:["HTML","JavaScript","D3.js"],
+   img:"https://cdn.prod.website-files.com/65d609edcc331dd0e4eb519b/683e5357b029e44c78368470_AD_4nXfxlXT3frqYTWxta-cGGwr-MeeOYAneTUrKViqRVyOJlQQphBEdNM1k9jMbq1KZhMpwBXdsGz3Kz3_wvSycetBe5AI8hQgF1uk9QsI-RQLqqwk2zOR0RZWWT38T16YSzfR_6LGUgA.png",
+   r:"Ticketing-Visualisation-Interactive-Data"},
 
   {id:9,t:"Analyse de Survie",y:2026,c:"ds",
    fr:"Modèle probabiliste de simulation de scénarios de survie sur 33 rounds, explorant les limites statistiques et les distributions de probabilité dans des contextes extrêmes.",
@@ -1166,7 +1174,7 @@ const PROJECTS=[
    fr:"Recréation fidèle de l'interface Spotify en HTML/CSS/JavaScript pur : navigation, player, playlists et gestion de l'état — exercice avancé de CSS et de DOM manipulation.",
    en:"Faithful recreation of the Spotify interface in pure HTML/CSS/JavaScript: navigation, player, playlists and state management — an advanced CSS and DOM manipulation exercise.",
    lg:["HTML","CSS","JavaScript"],
-   img:"https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?w=700&q=80",
+   img:"https://wallpapers.com/images/hd/spotify-neon-green-sw8td453uh40k0j7.jpg",
    r:"Spotify",st:1},
 
   {id:14,t:"Suivi de Trains en Temps Réel",y:2022,c:"web",
@@ -1261,17 +1269,10 @@ const PROJECTS=[
    img:"https://images.unsplash.com/photo-1455390582262-044cdead277a?w=700&q=80",
    r:"JeuxDeMot",st:1},
 
-  {id:27,t:"Visualisation Interactive de Ticketing",y:2024,c:"ds",
-   fr:"Visualisation interactive de données de ticketing sous forme de graphe nœuds/arêtes, permettant d'explorer les relations entre tickets, priorités et assignations de manière dynamique.",
-   en:"Interactive graph visualization of ticketing data using a nodes/edges approach, enabling dynamic exploration of ticket relationships, priorities and assignments.",
-   lg:["HTML","JavaScript","D3.js"],
-   img:"https://cdn.prod.website-files.com/65d609edcc331dd0e4eb519b/683e5357b029e44c78368470_AD_4nXfxlXT3frqYTWxta-cGGwr-MeeOYAneTUrKViqRVyOJlQQphBEdNM1k9jMbq1KZhMpwBXdsGz3Kz3_wvSycetBe5AI8hQgF1uk9QsI-RQLqqwk2zOR0RZWWT38T16YSzfR_6LGUgA.png",
-   r:"Ticketing-Visualisation-Interactive-Data"},
-
-  {id:28,t:"MarathonInscription — Système d'Inscription en Ligne",y:2024,c:"soft",
+  {id:28,t:"MarathonInscription — Système d'Inscription en Ligne",y:2026,c:"soft",
    fr:"Application web de gestion des inscriptions à un marathon : formulaire dynamique, validation des données, gestion des participants et export des résultats.",
    en:"Web application for marathon registration management: dynamic form, data validation, participant management and results export.",
-   lg:["JavaScript","HTML","CSS"],
+   lg:["Python"],
    img:"https://wallpapers.com/images/hd/athlete-silhouette-marathon-h2u2efp37ylfcv9f.jpg",
    r:"MarathonInscription"}
 ];
@@ -1415,4 +1416,12 @@ window.addEventListener("scroll",function(){document.getElementById("scrollTop")
     <button class="nav-dot" onclick="goTo(2)"></button>
     <button class="nav-dot" onclick="goTo(3)"></button>
     <button class="nav-dot" onclick="goTo(4)"></button>
-   
+    <button class="nav-dot" onclick="goTo(5)"></button>
+  </div>
+  <button class="nav-arrow" onclick="changeSlide(1)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+</body>
+</html>
