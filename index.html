@@ -559,14 +559,48 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
   }
 
   /* Flèches dans la barre */
-  #mobile-nav 
-  #mobile-nav 
-  #mobile-nav 
+  #mobile-nav .nav-arrow{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.13);
+    border:1px solid rgba(255,255,255,0.18);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    flex-shrink:0;
+    transition:background .2s;
+  }
+  #mobile-nav .nav-arrow:hover{ background:rgba(255,255,255,0.22); }
+  #mobile-nav .nav-arrow svg{ stroke:#fff; width:16px; height:16px; }
 
   /* Dots dans la barre */
-  #mobile-nav 
-  #mobile-nav 
-  #mobile-nav 
+  #mobile-nav .nav-dots{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    flex:1;
+    justify-content:center;
+    min-width:0;
+    flex-shrink:1;
+  }
+  #mobile-nav .nav-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.3);
+    border:none;
+    cursor:pointer;
+    padding:0;
+    transition:background .2s, transform .2s;
+    flex-shrink:0;
+  }
+  #mobile-nav .nav-dot.active{
+    background:rgba(43,184,184,1);
+    transform:scale(1.3);
+  }
 
   /* Séparateur */
   #mobile-nav .nav-sep{
@@ -642,52 +676,94 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 }
 
 .tag-d3{background:#f68e56;color:#fff;}@media(max-width:860px){
-  
-  
-  
-  
-}
-
-/* ── MOBILE NAV LAYOUT (définitif) ───────────────────────── */
-@media(max-width:860px){
-  #mobile-nav{
-    gap:8px !important;
-  }
-  #mobile-nav .nav-dots{
+  .nav-dots{
     gap:4px !important;
-    flex-shrink:1 !important;
-    min-width:0 !important;
   }
-  #mobile-nav .nav-dot{
-    flex-shrink:0 !important;
+  .nav-dot{
+    flex-shrink:1 !important;
     width:7px !important;
     height:7px !important;
-    border-radius:50% !important;
-    background:rgba(255,255,255,0.3) !important;
-    border:none !important;
-    padding:0 !important;
   }
-  #mobile-nav .nav-dot.active{
-    background:rgba(43,184,184,1) !important;
-    transform:scale(1.3) !important;
-  }
-  #mobile-nav .nav-arrow{
+  .nav-arrow{
     flex-shrink:0 !important;
     width:34px !important;
     height:34px !important;
-    border-radius:50% !important;
-    background:rgba(255,255,255,0.13) !important;
-    border:1px solid rgba(255,255,255,0.18) !important;
-    display:flex !important;
-    align-items:center !important;
-    justify-content:center !important;
-    cursor:pointer !important;
   }
-  #mobile-nav .nav-arrow svg{
-    stroke:#fff !important;
-    width:14px !important;
-    height:14px !important;
+  #mobile-nav{
+    gap:6px !important;
   }
+
+/* ── MOBILE NAV ───────────────────────────────────────────── */
+#mobile-nav .nav-arrow{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.13);
+    border:1px solid rgba(255,255,255,0.18);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    flex-shrink:0;
+    transition:background .2s;
+  }
+#mobile-nav .nav-arrow:hover{ background:rgba(255,255,255,0.22); }
+#mobile-nav .nav-arrow svg{ stroke:#fff; width:16px; height:16px; }
+#mobile-nav .nav-dots{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    flex:1;
+    justify-content:center;
+    min-width:0;
+    flex-shrink:1;
+  }
+#mobile-nav .nav-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.3);
+    border:none;
+    cursor:pointer;
+    padding:0;
+    transition:background .2s, transform .2s;
+    flex-shrink:0;
+  }
+#mobile-nav .nav-dot.active{
+    background:rgba(43,184,184,1);
+    transform:scale(1.3);
+  }
+#mobile-nav .nav-sep{
+    width:1px; height:24px;
+    background:rgba(255,255,255,0.2);
+    flex-shrink:0;
+    margin:0 2px;
+  }
+#mobile-nav .nav-flags{
+    display:flex;
+    gap:7px;
+    align-items:center;
+    flex-shrink:0;
+  }
+#mobile-nav .nav-flags img{
+    width:26px;
+    height:26px;
+    border-radius:4px;
+    object-fit:cover;
+    cursor:pointer;
+    opacity:0.45;
+    transition:opacity .2s, transform .2s;
+  }
+#mobile-nav .nav-flags img.active{
+    opacity:1;
+    transform:scale(1.12);
+  }
+@media(max-width:860px){
+  .nav-dots{ gap:4px !important; }
+  .nav-dot{ flex-shrink:1 !important; width:7px !important; height:7px !important; }
+  .nav-arrow{ flex-shrink:0 !important; width:34px !important; height:34px !important; }
+  #mobile-nav{ gap:6px !important; }
 }
 </style>
 <script>function toggleExp(el){el.classList.toggle("open");}</script>
