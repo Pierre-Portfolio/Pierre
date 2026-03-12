@@ -771,6 +771,19 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 .tAR{background:#FF6B35;color:#fff}
 .tD3{background:#f68e56;color:#fff}
 .tSvg{background:#FFB13B;color:#222}
+
+.proj-no-gh .proj-gh{
+  color:#888 !important;
+  opacity:0.5;
+}
+.proj-no-gh .proj-gh::before{
+  content:"⬛ ";
+  font-size:10px;
+}
+.proj-no-gh{
+  cursor:default;
+}
+.tag-tDpy{background:#5865F2;color:#fff;}
 </style>
 <script>function toggleExp(el){el.classList.toggle("open");}</script>
 <!-- Google tag (gtag.js) -->
@@ -1420,7 +1433,8 @@ const PROJECTS=[
    fr:"Conception d'une application mobile pour piloter une attelle de rééducation connectée : contrôle des mouvements, suivi des sessions et interface patient simplifiée.",
    en:"Mobile application to control a connected rehabilitation splint: movement control, session tracking and simplified patient interface.",
    lg:["Mobile","Arduino"],
-   img:"https://ts2i.ac-besancon.fr/wp-content/uploads/sites/97/2021/02/attellegenou.png",
+   img:"https://raw.githubusercontent.com/Pierre-Portfolio/Pierre/main/assets/images/projets/attelle.png",
+   noGithub:true,
    r:"AtelleR-ducation"},
 
   {id:28,t:"MarathonInscription — Système d'Inscription en Ligne",y:2026,c:"soft",
@@ -1435,7 +1449,32 @@ const PROJECTS=[
    en:"Automated pipeline generating custom banners and logos from text prompts, exploring the latest AI image génération models.",
    lg:["Python","Jupyter"],
    img:"https://t4.ftcdn.net/jpg/08/54/98/77/360_F_854987794_aPwf9Ilntls67DATksezc6bgn9jYhcpO.jpg",
-   r:"GenerateBannerLogo",st:0}
+   r:"GenerateBannerLogo",st:0},
+
+  // ── NOUVEAUX LOGICIELS ──────────────────────────────────────
+  {id:40,t:"Piano Numérique",y:2018,c:"soft",
+   fr:"Simulation d'un piano numérique en Java avec interface graphique Swing : clavier interactif, lecture des notes en temps réel et gestion des octaves.",
+   en:"Java digital piano simulation with Swing graphical interface: interactive keyboard, real-time note playback and octave management.",
+   lg:["Java","Java Swing"],
+   img:"https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=700&q=80",
+   noGithub:true,
+   r:"Piano"},
+
+  {id:41,t:"Calculatrice Graphique",y:2018,c:"soft",
+   fr:"Calculatrice scientifique développée en Java avec interface graphique Swing : opérations de base, fonctions trigonométriques, historique de calcul et affichage dynamique.",
+   en:"Scientific calculator built in Java with Swing graphical interface: basic operations, trigonometric functions, calculation history and dynamic display.",
+   lg:["Java","Java Swing"],
+   img:"https://img.pikbest.com/ai/illus_our/20230426/f0733f3f4e08ebf312772edfb2142540.jpg!w700wp",
+   noGithub:true,
+   r:"CalculatriceGraphique"},
+
+  {id:42,t:"Bot Discord — Serveur Tout-en-Un",y:2023,c:"soft",
+   fr:"Bot Discord complet gérant statistiques, modération automatique et mini-jeux pour animer un serveur : commandes slash, système de niveaux, logs et filtres anti-spam.",
+   en:"Full-featured Discord bot handling statistics, automatic moderation and mini-games: slash commands, levelling system, logs and anti-spam filters.",
+   lg:["Python","Discord.py"],
+   img:"https://static0.anpoimages.com/wordpress/wp-content/uploads/2024/05/discord-3-ap24-hero.jpg",
+   noGithub:true,
+   r:"BotDiscord"}
 ];
 var activeCat=null;
 function toggleCat(cat,el){
@@ -1457,7 +1496,8 @@ function renderProj(cat){
     var tags=p.lg.map(function(l){return '<span class="proj-tag '+(TAG_MAP[l]||'')+'">'+l+'</span>';}).join("");
     var stars='';
     var imgSrc=p.img?p.img:'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+p.r;
-    return '<a href="https://github.com/Pierre-Portfolio/'+p.r+'" target="_blank" class="proj-card">'
+    var ghUrl='https://github.com/Pierre-Portfolio/'+p.r;
+    return '<a href="'+(p.noGithub?'#':ghUrl)+'" '+(p.noGithub?'onclick="return false"':"target=\"_blank\"")+' class="proj-card'+(p.noGithub?' proj-no-gh':'')+'">'
       +'<img src="'+imgSrc+'" alt="'+p.t+'" style="object-fit:'+(p.fit||'cover')+'"' +' onerror="this.src=\'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+p.r+'\'">'
       +'<div class="proj-fallback">&#128187;</div>'
       +'<div class="proj-body"><div class="proj-meta"><span class="proj-year">'+p.y+'</span>'+stars+'</div>'
