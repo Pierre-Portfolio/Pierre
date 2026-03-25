@@ -187,6 +187,19 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;padding:52px 2
 #scrollTop.visible{opacity:1;pointer-events:auto}
 footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-weight:500}
 
+/* TAG COLORS */
+.tPy{background:#3776AB;color:#fff}.tCs{background:#68217a;color:#fff}.tJs{background:#f0db4f;color:#000}
+.tJv{background:#b07219;color:#fff}.tC_{background:#555;color:#fff}.tCp{background:#f34b7d;color:#fff}
+.tR_{background:#276dc3;color:#fff}.tSq{background:#f29111;color:#fff}.tHt{background:#e34c26;color:#fff}
+.tCss{background:#563d7c;color:#fff}.tPh{background:#4F5D95;color:#fff}.tNt{background:#512bd4;color:#fff}
+.tTf{background:#FF6F00;color:#fff}.tPt{background:#EE4C2C;color:#fff}.tPd{background:#150458;color:#fff}
+.tSk{background:#f89939;color:#000}.tRc{background:#20232a;color:#61dafb}.tTw{background:#06B6D4;color:#000}
+.tNj{background:#339933;color:#fff}.tDk{background:#2496ED;color:#fff}.tSp{background:#E25A1C;color:#fff}
+.tHd{background:#ffd900;color:#000}.tUn{background:#222;color:#fff}.tQt{background:#41cd52;color:#000}
+.tDj{background:#092E20;color:#44b78b}.tFl{background:#000;color:#fff}.tWp{background:#0078d4;color:#fff}.tAr{background:#00878A;color:#fff}.tMy{background:#4479A1;color:#fff}.tKo{background:#7F52FF;color:#fff}.tVb{background:#68217a;color:#fff}
+.tSc{background:#DC322F;color:#fff}.tHf{background:#FFD21E;color:#000}.tJp{background:#F37626;color:#fff}
+.tBs{background:#7952B3;color:#fff}.tBh{background:#4EAA25;color:#fff}.tKr{background:#D00000;color:#fff}
+.tSb{background:#4c72b0;color:#fff}.tMd{background:#083fa1;color:#fff}
 
 #bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 ./* ── AVATAR + ORBITES SVG ─────────────────────────────────────────────────── */
@@ -633,7 +646,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
   }
 }
 
-@media(max-width:860px){
+.tag-d3{background:#f68e56;color:#fff;}@media(max-width:860px){
   .nav-dots{
     gap:4px !important;
   }
@@ -724,69 +737,21 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
   #mobile-nav{ gap:6px !important; }
 }
 
+.tPg{background:#3776AB;color:#fff}
+.tAnd{background:#3DDC84;color:#222}
+.tAR{background:#FF6B35;color:#fff}
+.tD3{background:#f68e56;color:#fff}
+.tSvg{background:#FFB13B;color:#222}
 
 .proj-no-gh .proj-gh{
-  color:rgba(255,255,255,0.18) !important;
-  opacity:0.35;
-  text-decoration:line-through;
-  pointer-events:none;
+  color:#888 !important;
+  opacity:0.5;
 }
 .proj-no-gh .proj-gh::before{
-  content:"";
+  content:"⬛ ";
+  font-size:10px;
 }
 .proj-no-gh{
   cursor:default;
 }
-
-/* ── TAGS COULEURS ─────────────────────────────────────── */
-
-/* ── TAG COLORS ───────────────────────────────────────────────── */
-.tag-tPy{background:#3776AB;color:#fff}
-.tag-tCs{background:#239120;color:#fff}
-.tag-tJs{background:#F7DF1E;color:#222}
-.tag-tJv{background:#ED8B00;color:#fff}
-.tag-tC_{background:#555;color:#fff}
-.tag-tCp{background:#f34b7d;color:#fff}
-.tag-tR_{background:#276DC3;color:#fff}
-.tag-tSq{background:#f29111;color:#fff}
-.tag-tHt{background:#E34F26;color:#fff}
-.tag-tCss{background:#1572B6;color:#fff}
-.tag-tPh{background:#777BB4;color:#fff}
-.tag-tNt{background:#512BD4;color:#fff}
-.tag-tTf{background:#FF6F00;color:#fff}
-.tag-tPt{background:#EE4C2C;color:#fff}
-.tag-tPd{background:#150458;color:#fff}
-.tag-tSk{background:#F7931E;color:#000}
-.tag-tRc{background:#61DAFB;color:#222}
-.tag-tTw{background:#06B6D4;color:#fff}
-.tag-tNj{background:#339933;color:#fff}
-.tag-tDk{background:#2496ED;color:#fff}
-.tag-tSp{background:#E25A1C;color:#fff}
-.tag-tHd{background:#ffd900;color:#000}
-.tag-tUn{background:#222;color:#fff}
-.tag-tQt{background:#41CD52;color:#000}
-.tag-tSc{background:#DC322F;color:#fff}
-.tag-tHf{background:#FFD21E;color:#000}
-.tag-tJp{background:#F37626;color:#fff}
-.tag-tBs{background:#7952B3;color:#fff}
-.tag-tBh{background:#4EAA25;color:#fff}
-.tag-tKr{background:#D00000;color:#fff}
-.tag-tSb{background:#4DABCF;color:#fff}
-.tag-tMd{background:#083FA1;color:#fff}
-.tag-tDj{background:#092E20;color:#44b78b}
-.tag-tFl{background:#000;color:#fff}
-.tag-tWp{background:#0C54A0;color:#fff}
-.tag-tAr{background:#00979C;color:#fff}
-.tag-tMy{background:#4479A1;color:#fff}
-.tag-tKo{background:#7F52FF;color:#fff}
-.tag-tVb{background:#5C2D91;color:#fff}
-.tag-tPg{background:#FFE066;color:#222}
-.tag-tAnd{background:#3DDC84;color:#222}
-.tag-tAR{background:#FF375F;color:#fff}
-.tag-tD3{background:#F68E56;color:#fff}
-.tag-tSvg{background:#FFB13B;color:#222}
-.tag-tJsw{background:#007396;color:#fff}
-.tag-tBs2{background:#4CAF50;color:#fff}
-.tag-tScr{background:#FF6B35;color:#fff}
-.tag-tDpy{background:#5865F2;color:#fff}
-.tag-tMob{background:#34A853;color:#fff}
+.tag-tDpy{background:#5865F2;color:#fff;}

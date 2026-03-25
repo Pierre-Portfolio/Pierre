@@ -115,7 +115,7 @@ const SOFT=[
   });
 })();
 
-const TAG_MAP={"Python":"tPy","C#":"tCs","JavaScript":"tJs","Java":"tJv","C":"tC_","C++":"tCp","R":"tR_","SQL":"tSq","HTML":"tHt","CSS":"tCss","PHP":"tPh",".NET":"tNt","TensorFlow":"tTf","PyTorch":"tPt","Pandas":"tPd","Scikit-learn":"tSk","React":"tRc","Tailwind":"tTw","Node.js":"tNj","Docker":"tDk","Spark":"tSp","Hadoop":"tHd","Unity":"tUn","Qt":"tQt","Scala":"tSc","HuggingFace":"tHf","Jupyter":"tJp","Bootstrap":"tBs","Bash":"tBh","Keras":"tKr","Seaborn":"tSb","Markdown":"tMd","Django":"tDj","Flask":"tFl","WPF":"tWp","Arduino":"tAr","MySQL":"tMy","Kotlin":"tKo","Visual Basic .NET":"tVb","Pygame":"tPg","Android":"tAnd","AR":"tAR","D3.js":"tD3","SVG":"tSvg","Java Swing":"tJsw","BeautifulSoup":"tBs2","Scrapping":"tScr","Discord.py":"tDpy","Mobile":"tMob"};
+const TAG_MAP={"Python":"tPy","C#":"tCs","JavaScript":"tJs","Java":"tJv","C":"tC_","C++":"tCp","R":"tR_","SQL":"tSq","HTML":"tHt","CSS":"tCss","PHP":"tPh",".NET":"tNt","TensorFlow":"tTf","PyTorch":"tPt","Pandas":"tPd","Scikit-learn":"tSk","React":"tRc","Tailwind":"tTw","Node.js":"tNj","Docker":"tDk","Spark":"tSp","Hadoop":"tHd","Unity":"tUn","Qt":"tQt","Scala":"tSc","HuggingFace":"tHf","Jupyter":"tJp","Bootstrap":"tBs","Bash":"tBh","Keras":"tKr","Seaborn":"tSb","Markdown":"tMd","Django":"tDj","Flask":"tFl","WPF":"tWp","Arduino":"tAr","MySQL":"tMy","Kotlin":"tKo","Visual Basic .NET":"tVb","Pygame":"tPg","Android":"tAnd","AR":"tAR","D3.js":"tD3","SVG":"tSvg"};
 const CAT_META={ds:{fr:"\u{1F916} Data Science",en:"\u{1F916} Data Science"},web:{fr:"\u{1F310} Sites Web",en:"\u{1F310} Web Projects"},soft:{fr:"\u{1F4BB} Logiciels",en:"\u{1F4BB} Software"}};
 const PROJECTS=[
 
@@ -301,7 +301,7 @@ const PROJECTS=[
   {id:22,t:"Lampe Connectée — Application Android IoT",y:2019,c:"soft",
    fr:"Application Android pilotant une lampe connectée via protocole IoT : interface de contrôle de la couleur et de l'intensité, notifications push et persistance des préférences utilisateur.",
    en:"Android app controlling a smart lamp via IoT protocol: colour and brightness control interface, push notifications and user preference persistence.",
-   lg:["Android","Mobile"],
+   lg:["Android"],
    img:"assets/images/projets/lampe.png",
    r:"Lampe",st:2},
 
@@ -418,7 +418,7 @@ function renderProj(cat){
   var list=PROJECTS.filter(function(p){return p.c===cat;}).sort(function(a,b){return b.y-a.y;});
   grid.innerHTML=list.map(function(p){
     var desc=lang==="en"?p.en:p.fr;
-    var tags=p.lg.map(function(l){return '<span class="proj-tag '+(TAG_MAP[l]?'tag-'+TAG_MAP[l]:'')+'">'+l+'</span>';}).join("");
+    var tags=p.lg.map(function(l){return '<span class="proj-tag '+(TAG_MAP[l]||'')+'">'+l+'</span>';}).join("");
     var stars='';
     var imgSrc=p.img?p.img:'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+p.r;
     var ghUrl='https://github.com/Pierre-Portfolio/'+p.r;
