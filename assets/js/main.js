@@ -399,7 +399,28 @@ const PROJECTS=[
    lg:["Python","Discord.py"],
    img:"assets/images/projets/bot_discord.jpg",
    noGithub:true,
-   r:"BotDiscord"}
+   r:"BotDiscord"},
+
+  {id:43,t:"Instagram Unfollow Detector — Extension Chrome",y:2026,c:"web",
+   fr:"Extension Chrome analysant ton compte Instagram et détectant automatiquement les comptes qui ne te suivent pas en retour. Liste les « ghost followers » directement depuis ton navigateur.",
+   en:"Chrome extension analyzing your Instagram account and automatically detecting accounts that don't follow you back. List 'ghost followers' directly from your browser.",
+   lg:["JavaScript","Chrome Extension API","HTML"],
+   img:"assets/images/projets/instagram_unfollow.jpg",
+   r:"Instagram-Unfollow-Detector"},
+
+  {id:44,t:"Retail Dashboard — Looker Studio",y:2026,c:"web",
+   fr:"Tableau de bord eCommerce interactif avec Looker Studio : dataset Excel prêt à l'emploi incluant KPIs de vente, analyse par pays/catégorie et visualisations filtables.",
+   en:"Interactive eCommerce dashboard with Looker Studio: ready-to-use Excel dataset with sales KPIs, country/category analysis and filterable visualisations.",
+   lg:["Google Looker Studio","Excel"],
+   img:"assets/images/projets/retail_dashboard.jpg",
+   r:"Retail-Dashboard-Looker-Studio"},
+
+  {id:45,t:"Pierre-FM — Lecteur Radio Local",y:2026,c:"web",
+   fr:"Application web pour écouter et gérer des stations de radio locales avec interface ergonomique simplifié.",
+   en:"Web application for listening to and managing local radio stations with a simplified and ergonomic interface.",
+   lg:["JavaScript","HTML","CSS"],
+   img:"assets/images/projets/pierre_fm.jpg",
+   r:"Pierre-FM"}
 ];
 var activeCat=null;
 function toggleCat(cat,el){
