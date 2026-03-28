@@ -515,8 +515,8 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 .scroll-down-btn:hover{ background:#fff; }
 .scroll-down-btn svg{ color:var(--teal-dk); }
 @keyframes aBounceDown{
-  0%,100%{ transform:translateY(0); }
-  50%{ transform:translateY(4px); }
+  0%,100%{ transform:translateX(-50%) translateY(0); }
+  50%{ transform:translateX(-50%) translateY(4px); }
 }
 @media(max-width:860px){
   .scroll-down-btn{ display:none !important; }
