@@ -227,10 +227,10 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 .tDj{background:#092E20;color:#44b78b}.tFl{background:#000;color:#fff}.tWp{background:#0078d4;color:#fff}.tAr{background:#00878A;color:#fff}.tMy{background:#4479A1;color:#fff}.tKo{background:#7F52FF;color:#fff}.tVb{background:#68217a;color:#fff}
 .tSc{background:#DC322F;color:#fff}.tHf{background:#FFD21E;color:#000}.tJp{background:#F37626;color:#fff}
 .tBs{background:#7952B3;color:#fff}.tBh{background:#4EAA25;color:#fff}.tKr{background:#D00000;color:#fff}
-.tSb{background:#4c72b0;color:#fff}.tMd{background:#083fa1;color:#fff}.tCe{background:#D97935;color:#fff}.tGls{background:#EA4335;color:#fff}.tXl{background:#217346;color:#fff}.tScr{background:#3668B7;color:#fff}.tBSp{background:#4B8BBE;color:#fff}.tDpy{background:#7289DA;color:#fff}.tJSw{background:#007396;color:#fff}.tMob{background:#0071C5;color:#fff}.tAnd{background:#3DDC84;color:#000}.tPg{background:#6C6C6C;color:#fff}.tD3{background:#F9A825;color:#000}.tDj{background:#092E20;color:#fff}
+.tSb{background:#4c72b0;color:#fff}.tMd{background:#083fa1;color:#fff}.tCe{background:#D97935;color:#fff}.tGls{background:#EA4335;color:#fff}.tXl{background:#217346;color:#fff}.tScr{background:#3668B7;color:#fff}.tBSp{background:#4B8BBE;color:#fff}.tDpy{background:#7289DA;color:#fff}.tJSw{background:#007396;color:#fff}.tMob{background:#0071C5;color:#fff}.tAnd{background:#3DDC84;color:#000}.tPg{background:#6C6C6C;color:#fff}.tD3{background:#F9A825;color:#000}
 
 #bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none}
-./* ── AVATAR + ORBITES SVG ─────────────────────────────────────────────────── */
+/* ── AVATAR + ORBITES SVG ─────────────────────────────────────────────────── */
 .av-wrap{position:absolute;left:0;top:50%;transform:translateY(-50%);width:290px;height:290px;cursor:pointer}
 .av-wrap .avatar-circle{position:absolute;top:50px;left:50px;width:190px;height:190px;border-radius:50%;border:2.5px solid rgba(43,184,184,0.6);overflow:hidden;box-shadow:0 0 0 5px rgba(43,184,184,0.08),0 0 28px rgba(43,184,184,0.2);z-index:1}
 .av-svg{position:absolute;top:0;left:0;width:290px;height:290px;pointer-events:none;z-index:2;overflow:visible}
@@ -241,11 +241,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 
 /* ── NOM LIÉ AUX ORBITES : même animation de pulsation ───────────────────── */
 .name-stellar{font-size:32px;font-weight:300;letter-spacing:9px;text-transform:uppercase;margin-bottom:6px;line-height:1.2;font-family:inherit;display:inline-block;position:relative;color:#e8f4ff}
-@keyframes nameFlow{}
 @keyframes nameFlow{0%{background-position:200% center}100%{background-position:-200% center}}
-40%,60%{opacity:1;transform:scale(1.2)}80%{opacity:0.3;transform:scale(0.8)}}100%{background-position:-200% center}}
-100%{background-position:-200% center}}
-50%{filter:drop-shadow(0 0 14px rgba(43,184,184,0.75)) drop-shadow(0 0 28px rgba(127,255,212,0.35))}}
 .slide-box{background:rgba(255,255,255,.045)!important;backdrop-filter:blur(3px);box-shadow:0 8px 32px rgba(0,0,0,.28),inset 0 0 0 1px rgba(255,255,255,.09);transition:box-shadow .35s!important}
 .slide-box:hover{box-shadow:0 14px 52px rgba(0,0,0,.36),inset 0 0 0 1px rgba(255,255,255,.16)!important}
 .action-btn{position:relative;overflow:hidden}
@@ -289,7 +285,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 .sp4{width:2px;height:2px;bottom:-3px;left:28%;animation-delay:1.7s;box-shadow:0 0 3px 1px rgba(43,184,184,0.9)}
 .sp5{width:2px;height:2px;top:0px;left:85%;animation-delay:0.9s;box-shadow:0 0 3px 1px rgba(200,240,255,0.8)}
 .sp6{width:3px;height:3px;bottom:-2px;left:55%;animation-delay:2.0s;box-shadow:0 0 4px 1px rgba(127,255,212,0.7)}
-40%,60%{opacity:1;transform:scale(1.2)}80%{opacity:0.3;transform:scale(0.8)}}
+@keyframes sparkleFade{0%,100%{opacity:0;transform:scale(0.6)}40%,60%{opacity:1;transform:scale(1.2)}80%{opacity:0.3;transform:scale(0.8)}}
 
 /* ── EXP TOGGLE ─────────────────────────────────────────────────────────── */
 .exp-toggle{cursor:pointer;user-select:none}
@@ -326,29 +322,6 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
   0%{color:rgba(127,255,212,0);transform:translate(-50%,-50%) scale(0.5)}
   30%{color:rgba(127,255,212,1);transform:translate(calc(-50% + 70px),calc(-50% - 80px)) scale(1)}
   100%{color:rgba(127,255,212,0);transform:translate(calc(-50% + 120px),calc(-50% - 130px)) scale(0.2)}
-}
-
-  90%{opacity:1;transform:translate(3px,2px)}
-  91%{opacity:0}
-  92%{opacity:1;transform:translate(-3px,-1px)}
-  93%{opacity:0}
-  94%{opacity:1;transform:translate(2px,1px)}
-  95%{opacity:0}
-}
-
-  60%{color:#fff;text-shadow:0 0 8px rgba(43,184,184,0.9),0 0 20px rgba(43,184,184,0.6)}
-  100%{color:#e8f4ff;text-shadow:none}
-}
-
-  25%{transform:translate(-1.5px,0.5px);opacity:1}
-  50%{transform:translate(1.5px,-0.5px);opacity:0.7}
-  75%{transform:translate(-1px,1px);opacity:1}
-}
-
-  50%{opacity:0}
-}
-
-  50%{transform:translateY(var(--amp,-4px))}
 }
 
 /* ── SIGNAL sur le nom ───────────────────────────────────────────────────── */
@@ -674,90 +647,6 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
   }
 }
 
-.tag-d3{background:#f68e56;color:#fff;}@media(max-width:860px){
-  .nav-dots{
-    gap:4px !important;
-  }
-  .nav-dot{
-    flex-shrink:1 !important;
-    width:7px !important;
-    height:7px !important;
-  }
-  .nav-arrow{
-    flex-shrink:0 !important;
-    width:34px !important;
-    height:34px !important;
-  }
-  #mobile-nav{
-    gap:6px !important;
-  }
-
-/* ── MOBILE NAV ───────────────────────────────────────────── */
-#mobile-nav .nav-arrow{
-    width:38px;
-    height:38px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.13);
-    border:1px solid rgba(255,255,255,0.18);
-    cursor:pointer;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#fff;
-    flex-shrink:0;
-    transition:background .2s;
-  }
-#mobile-nav .nav-arrow:hover{ background:rgba(255,255,255,0.22); }
-#mobile-nav .nav-arrow svg{ stroke:#fff; width:16px; height:16px; }
-#mobile-nav .nav-dots{
-    display:flex;
-    align-items:center;
-    gap:5px;
-    flex:1;
-    justify-content:center;
-    min-width:0;
-    flex-shrink:1;
-  }
-#mobile-nav .nav-dot{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.3);
-    border:none;
-    cursor:pointer;
-    padding:0;
-    transition:background .2s, transform .2s;
-    flex-shrink:0;
-  }
-#mobile-nav .nav-dot.active{
-    background:rgba(43,184,184,1);
-    transform:scale(1.3);
-  }
-#mobile-nav .nav-sep{
-    width:1px; height:24px;
-    background:rgba(255,255,255,0.2);
-    flex-shrink:0;
-    margin:0 2px;
-  }
-#mobile-nav .nav-flags{
-    display:flex;
-    gap:7px;
-    align-items:center;
-    flex-shrink:0;
-  }
-#mobile-nav .nav-flags img{
-    width:26px;
-    height:26px;
-    border-radius:4px;
-    object-fit:cover;
-    cursor:pointer;
-    opacity:0.45;
-    transition:opacity .2s, transform .2s;
-  }
-#mobile-nav .nav-flags img.active{
-    opacity:1;
-    transform:scale(1.12);
-  }
 @media(max-width:860px){
   .nav-dots{ gap:4px !important; }
   .nav-dot{ flex-shrink:1 !important; width:7px !important; height:7px !important; }
@@ -782,9 +671,8 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 .proj-no-gh{
   cursor:default;
 }
-.tag-tDpy{background:#5865F2;color:#fff;}
 </style>
-<script>function toggleExp(el){el.classList.toggle("open");}</script>
+<script>function toggleExp(el){var open=el.classList.toggle("open");el.setAttribute("aria-expanded",open?"true":"false");}</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PPQR892T58"></script>
 <script>
@@ -943,7 +831,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
     </div>
       <div class="exp-scroll">
 
-        <div class="exp-card exp-toggle" onclick="toggleExp(this)">
+        <div class="exp-card exp-toggle" onclick="toggleExp(this)" role="button" tabindex="0" aria-expanded="false">
           <div class="exp-head">
             <span class="exp-chevron">❯</span>
             <span class="exp-icon">&#127970;</span>
@@ -972,7 +860,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
           </div>
         </div>
 
-        <div class="exp-card exp-toggle" onclick="toggleExp(this)">
+        <div class="exp-card exp-toggle" onclick="toggleExp(this)" role="button" tabindex="0" aria-expanded="false">
           <div class="exp-head">
             <span class="exp-chevron">❯</span>
             <span class="exp-icon">&#128187;</span>
@@ -1043,17 +931,17 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 
 <section>
   <div class="cat-grid">
-    <div class="cat-card" onclick="toggleCat('ds',this)" style="background:#061428">
+    <div class="cat-card" onclick="toggleCat('ds',this)" role="button" tabindex="0" style="background:#061428">
       <img src="assets/images/categories/data-science.jpg" alt="Data Science" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.6">
       <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(4,10,35,0.5) 0%,rgba(10,75,95,0.4) 100%)"></div>
       <div class="cat-label-bar"><span class="cat-name" data-fr="Data Science" data-en="Data Science">Data Science</span></div>
     </div>
-    <div class="cat-card" onclick="toggleCat('web',this)" style="background:#040e20">
+    <div class="cat-card" onclick="toggleCat('web',this)" role="button" tabindex="0" style="background:#040e20">
       <img src="assets/images/categories/sites-web.jpg" alt="Sites Web" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% center;opacity:0.62">
       <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(3,8,25,0.5) 0%,rgba(8,65,95,0.4) 100%)"></div>
       <div class="cat-label-bar"><span class="cat-name" data-fr="Sites Web" data-en="Web Projects">Sites Web</span></div>
     </div>
-    <div class="cat-card" onclick="toggleCat('soft',this)" style="background:#030810">
+    <div class="cat-card" onclick="toggleCat('soft',this)" role="button" tabindex="0" style="background:#030810">
       <img src="assets/images/categories/logiciels.jpg" alt="Logiciels" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55">
       <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(2,6,20,0.52) 0%,rgba(6,60,80,0.42) 100%)"></div>
       <div class="cat-label-bar"><span class="cat-name" data-fr="Logiciels" data-en="Software">Logiciels</span></div>
@@ -1077,15 +965,23 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
   var ctx=canvas.getContext('2d',{alpha:false});
   var stars=[], shoots=[];
   function rnd(a,b){return a+Math.random()*(b-a);}
-  function resize(){
-    canvas.width=window.innerWidth; canvas.height=window.innerHeight;
-    grad=null;
+  function makeStars(){
     stars=[];
     for(var i=0;i<260;i++){
       stars.push({x:rnd(0,canvas.width),y:rnd(0,canvas.height),
         r:rnd(0.3,1.7),base:rnd(0.12,0.68),phase:rnd(0,6.28),spd:rnd(0.004,0.022)});
     }
     window.starsRef=stars;
+  }
+  function resize(){
+    var ow=canvas.width,oh=canvas.height;
+    canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+    grad=null;
+    if(!stars.length){makeStars();return;}
+    // Repositionner les étoiles existantes au lieu de les régénérer :
+    // évite le "saut" du ciel quand la barre d'adresse mobile se rétracte
+    var rx=canvas.width/ow,ry=canvas.height/oh;
+    for(var i=0;i<stars.length;i++){stars[i].x*=rx;stars[i].y*=ry;}
   }
   resize(); window.addEventListener('resize',resize);
   var C0=[6,30,75], C1=[10,90,108], C2=[14,122,122];
@@ -1165,7 +1061,13 @@ function goTo(n){
   window.scrollTo({top:0,behavior:'instant'});
 }
 function changeSlide(d){goTo((current+d+N)%N);}
-document.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")changeSlide(-1);if(e.key==="ArrowRight")changeSlide(1);});
+document.addEventListener("keydown",function(e){
+  if(e.altKey||e.ctrlKey||e.metaKey)return;
+  var t=e.target;
+  if(t&&(t.tagName==="INPUT"||t.tagName==="TEXTAREA"||t.tagName==="SELECT"||t.isContentEditable))return;
+  if(e.key==="ArrowLeft")changeSlide(-1);
+  else if(e.key==="ArrowRight")changeSlide(1);
+});
 
 const SOFT=[
   {e:"\u{1F3AF}",fr:"Autonomie",en:"Autonomy"},{e:"\u{1F4AC}",fr:"Communication",en:"Communication"},
@@ -1200,6 +1102,7 @@ function toggleCat(cat,el){
   renderProj(cat);det.style.display="block";
   setTimeout(function(){det.scrollIntoView({behavior:"smooth",block:"start"});},50);
 }
+function escH(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
 function renderProj(cat){
   var lang=document.documentElement.getAttribute("data-lang")||"fr";
   var m=CAT_META[cat];
@@ -1208,25 +1111,25 @@ function renderProj(cat){
   var list=PROJECTS.filter(function(p){return p.c===cat;}).sort(function(a,b){return b.y-a.y;});
   grid.innerHTML=list.map(function(p){
     var desc=lang==="en"?p.en:p.fr;
-    var tags=p.lg.map(function(l){return '<span class="proj-tag '+(TAG_MAP[l]||'')+'">'+l+'</span>';}).join("");
+    var tags=p.lg.map(function(l){return '<span class="proj-tag '+(TAG_MAP[l]||'')+'">'+escH(l)+'</span>';}).join("");
     var stars='';
-    var imgSrc=p.img?p.img:'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+p.r;
-    var ghUrl='https://github.com/Pierre-Portfolio/'+p.r;
-    return '<a href="'+(p.noGithub?'#':ghUrl)+'" '+(p.noGithub?'onclick="return false"':"target=\"_blank\"")+' class="proj-card'+(p.noGithub?' proj-no-gh':'')+'">'
-      +'<img src="'+imgSrc+'" alt="'+p.t+'" loading="lazy" style="object-fit:'+(p.fit||'cover')+'"' +' onerror="this.onerror=null;this.src=\'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+p.r+'\'">'
+    var repo=encodeURIComponent(p.r);
+    var imgSrc=p.img?p.img:'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+repo;
+    var ghUrl='https://github.com/Pierre-Portfolio/'+repo;
+    return '<a href="'+(p.noGithub?'#':escH(ghUrl))+'" '+(p.noGithub?'onclick="return false"':"target=\"_blank\"")+' class="proj-card'+(p.noGithub?' proj-no-gh':'')+'">'
+      +'<img src="'+escH(imgSrc)+'" alt="'+escH(p.t)+'" loading="lazy" style="object-fit:'+escH(p.fit||'cover')+'"' +' onerror="this.onerror=null;this.src=\'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+repo+'\'">'
       +'<div class="proj-fallback">&#128187;</div>'
-      +'<div class="proj-body"><div class="proj-meta"><span class="proj-year">'+p.y+'</span>'+stars+'</div>'
-      +'<div class="proj-title">'+p.t+'</div><div class="proj-desc">'+desc+'</div>'
+      +'<div class="proj-body"><div class="proj-meta"><span class="proj-year">'+escH(p.y)+'</span>'+stars+'</div>'
+      +'<div class="proj-title">'+escH(p.t)+'</div><div class="proj-desc">'+escH(desc)+'</div>'
       +'<div class="proj-tags">'+tags+'</div>'
       +'<div class="proj-gh">'+(lang==="en"?"View on GitHub":"Voir sur GitHub")+'</div></div></a>';
   }).join("");
 }
 function setLang(lang){
   document.documentElement.setAttribute("data-lang",lang);
+  document.documentElement.setAttribute("lang",lang);
   document.getElementById("flag-en").classList.toggle("active",lang==="en");
   document.getElementById("flag-fr").classList.toggle("active",lang==="fr");
-  var mbbFr=document.getElementById("mbb-fr"); if(mbbFr) mbbFr.classList.toggle("active",lang==="fr");
-  var mbbEn=document.getElementById("mbb-en"); if(mbbEn) mbbEn.classList.toggle("active",lang==="en");
   var navFr=document.getElementById("nav-flag-fr"); if(navFr) navFr.classList.toggle("active",lang==="fr");
   var navEn=document.getElementById("nav-flag-en"); if(navEn) navEn.classList.toggle("active",lang==="en");
   document.querySelectorAll("[data-fr]").forEach(function(el){var v=el.getAttribute("data-"+lang);if(v)el.textContent=v;});
@@ -1236,6 +1139,13 @@ function setLang(lang){
 }
 var scrollTopBtn=document.getElementById("scrollTop");
 window.addEventListener("scroll",function(){scrollTopBtn.classList.toggle("visible",window.scrollY>200);},{passive:true});
+
+// Activation clavier (Entrée / Espace) des éléments cliquables non natifs
+document.querySelectorAll(".exp-toggle,.cat-card").forEach(function(el){
+  el.addEventListener("keydown",function(e){
+    if(e.key==="Enter"||e.key===" "){e.preventDefault();el.click();}
+  });
+});
 
 // ── TWINKLE : étoiles qui clignotent aléatoirement ──────────────────────────
 (function(){
@@ -1272,7 +1182,6 @@ window.addEventListener("scroll",function(){scrollTopBtn.classList.toggle("visib
     });
     requestAnimationFrame(loop);
   }
-  window.addEventListener('resize',pick);
   var t=setInterval(function(){
     if(window.starsRef&&window.starsRef.length){
       clearInterval(t);pick();setInterval(pick,4000);loop();
