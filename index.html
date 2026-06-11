@@ -22,9 +22,6 @@
 <meta name="twitter:description" content="Ingénieur en Data et IA. Data Science, Sites Web, Logiciels.">
 <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/60719810?v=4">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA5NiA5Nic+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSdnMScgeDE9JzAlJyB5MT0nMCUnIHgyPScxMDAlJyB5Mj0nMTAwJSc+PHN0b3Agb2Zmc2V0PScwJScgc3RvcC1jb2xvcj0nIzBkMjEzNycvPjxzdG9wIG9mZnNldD0nMTAwJScgc3RvcC1jb2xvcj0nIzBhMWEyZScvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSdncCcgeDE9JzAlJyB5MT0nMCUnIHgyPScxMDAlJyB5Mj0nMTAwJSc+PHN0b3Agb2Zmc2V0PScwJScgc3RvcC1jb2xvcj0nIzdmZmZkNCcvPjxzdG9wIG9mZnNldD0nMTAwJScgc3RvcC1jb2xvcj0nIzJiYjhiOCcvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSc5NicgaGVpZ2h0PSc5Nicgcng9JzIwJyBmaWxsPSd1cmwoI2cxKScvPjx0ZXh0IHg9JzUwJScgeT0nNjglJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmb250LWZhbWlseT0nR2VvcmdpYSxzZXJpZicgZm9udC1zaXplPSc2MicgZm9udC13ZWlnaHQ9J2JvbGQnIGZpbGw9J25vbmUnIHN0cm9rZT0nIzJiYjhiOCcgc3Ryb2tlLXdpZHRoPScyLjUnPlA8L3RleHQ+PHRleHQgeD0nNTAlJyB5PSc2OCUnIHRleHQtYW5jaG9yPSdtaWRkbGUnIGZvbnQtZmFtaWx5PSdHZW9yZ2lhLHNlcmlmJyBmb250LXNpemU9JzYyJyBmb250LXdlaWdodD0nYm9sZCcgZmlsbD0ndXJsKCNncCknPlA8L3RleHQ+PHBvbHlnb24gcG9pbnRzPSc2MywyMiA2NS41LDI5LjUgNzMsMjkuNSA2NywzNCA2OS41LDQxLjUgNjMsMzcgNTYuNSw0MS41IDU5LDM0IDUzLDI5LjUgNjAuNSwyOS41JyBmaWxsPScjZmZkNzAwJyBvcGFjaXR5PScwLjkyJy8+PC9zdmc+">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio Pierre Pétillion</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -182,6 +179,7 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;padding:52px 2
 .contact-info{flex:1;min-width:0}
 .contact-label{font-size:14px;font-weight:700;display:block}
 .contact-detail{font-size:12px;opacity:.72;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.contact-detail a{color:#fff}
 .contact-btn{font-size:12px;color:#fff;border:1.5px solid rgba(255,255,255,.48);padding:7px 14px;border-radius:20px;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background .2s}
 .contact-btn:hover{background:rgba(255,255,255,.2)}
 
@@ -892,7 +890,6 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 <div class="t2-item"><span class="t2-icon">🔍</span><span class="t2-label" data-fr="Tests & Qualité logicielle" data-en="Testing & Quality">Tests & Qualité logicielle</span></div></div></div>
       </div>
     </div>
-    </div>
 
     <!-- SLIDE 3 SOFT -->
     <div class="slide slide-box" id="s2">
@@ -1024,7 +1021,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
         </div>
       </div>
     </div>
-
+  </div>
 
   <div id="dots">
     <button id="prev" class="carousel-ctrl" onclick="changeSlide(-1)">
@@ -1136,8 +1133,10 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
   requestAnimationFrame(draw);
 })();
 
-var current=0,N=6;
+var current=0,N=document.querySelectorAll(".slide").length,lastSlideTs=0;
 function goTo(n){
+  if(Date.now()-lastSlideTs<380||n===current)return;
+  lastSlideTs=Date.now();
   var slides = document.querySelectorAll(".slide");
   var dir = n > current ? 1 : -1;
   var prev = current;
@@ -1164,8 +1163,6 @@ function goTo(n){
 }
 function changeSlide(d){goTo((current+d+N)%N);}
 document.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")changeSlide(-1);if(e.key==="ArrowRight")changeSlide(1);});
-var tx=0;
-/* swipe désactivé */
 
 const SOFT=[
   {e:"\u{1F3AF}",fr:"Autonomie",en:"Autonomy"},{e:"\u{1F4AC}",fr:"Communication",en:"Communication"},
@@ -1213,7 +1210,7 @@ function renderProj(cat){
     var imgSrc=p.img?p.img:'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+p.r;
     var ghUrl='https://github.com/Pierre-Portfolio/'+p.r;
     return '<a href="'+(p.noGithub?'#':ghUrl)+'" '+(p.noGithub?'onclick="return false"':"target=\"_blank\"")+' class="proj-card'+(p.noGithub?' proj-no-gh':'')+'">'
-      +'<img src="'+imgSrc+'" alt="'+p.t+'" style="object-fit:'+(p.fit||'cover')+'"' +' onerror="this.src=\'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+p.r+'\'">'
+      +'<img src="'+imgSrc+'" alt="'+p.t+'" style="object-fit:'+(p.fit||'cover')+'"' +' onerror="this.onerror=null;this.src=\'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+p.r+'\'">'
       +'<div class="proj-fallback">&#128187;</div>'
       +'<div class="proj-body"><div class="proj-meta"><span class="proj-year">'+p.y+'</span>'+stars+'</div>'
       +'<div class="proj-title">'+p.t+'</div><div class="proj-desc">'+desc+'</div>'
@@ -1271,6 +1268,7 @@ window.addEventListener("scroll",function(){document.getElementById("scrollTop")
     });
     requestAnimationFrame(loop);
   }
+  window.addEventListener('resize',pick);
   var t=setInterval(function(){
     if(window.starsRef&&window.starsRef.length){
       clearInterval(t);pick();setInterval(pick,4000);loop();
