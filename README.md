@@ -50,4 +50,4 @@ Pierre/
 
 ---
 
-Projet démarré en 2026 et mis à jour régulièrement.
+<p align="center">Projet réalisé en 2026.</p>
