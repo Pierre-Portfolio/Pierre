@@ -1,4 +1,4 @@
-# [Pierre Portfolio](assets/images/github/header.jpg)
+![Pierre Portfolio](assets/images/github/header.jpg)
 
 ![star](assets/images/github/star.gif)
 
