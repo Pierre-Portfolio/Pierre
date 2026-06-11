@@ -17,15 +17,15 @@ Présente le parcours, compétences et projets dans les domaines de la data scie
 
 ```
 Pierre/
-├── index.html                    # Structure principale
+├── index.html                    # Structure, styles (inline) et logique (canvas, carrousel, animations)
 ├── assets/
-│   ├── css/style.css             # Style global
-│   ├── js/main.js                # Logique (canvas, carrousel, animations)
+│   ├── js/projects.js            # Données des projets (seul JS externe chargé)
 │   ├── images/
 │   │   ├── carrousel/            # Images profil
-│   │   ├── projets/              # Miniatures projets
+│   │   ├── categories/           # Visuels des catégories de projets
+│   │   ├── projets/              # Miniatures projets (fallback local)
 │   │   └── github/               # Assets README
-│   └── CV-Pierre-Petillion.pdf   # CV
+│   └── CV-Pierre-Petillion.pdf   # CV (lié via href, jamais en base64)
 ├── .gitignore
 └── README.md
 ```
@@ -51,7 +51,7 @@ Pierre/
 
 ### Maintenance
 - Tenir le README à jour pour toute modification majeure
-- Garder structure modulaire dans `main.js`
+- Garder structure modulaire dans les scripts inline d'`index.html` et `projects.js`
 - Tester carrousel et animations avant commit
 - Vérifier GA4 et liens externes (CV, LinkedIn)
 - vérifier que l'adresse mail dans l'onglet contact ne soit pas bloqué par cloudfare et est bien écrit en blanc
@@ -59,6 +59,6 @@ Pierre/
 
 ## Notes
 
-- Fichier index.html très volumineux (~430KB) → utiliser Grep pour rechercher
+- Fichier index.html (~84KB, styles et JS inline) → utiliser Grep pour rechercher
 - Logo/emoji dans les skills bien structuré en grille
 - Animations étoiles et orbites critiques pour l'UX

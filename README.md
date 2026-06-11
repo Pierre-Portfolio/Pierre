@@ -30,14 +30,14 @@ Portfolio interactif présentant mon parcours, mes compétences et mes projets d
 
 ```
 Pierre/
-├── index.html                    # Structure HTML
+├── index.html                    # Structure HTML, styles et logique (canvas, carousel...)
 ├── assets/
-│   ├── css/
-│   │   └── style.css             # Styles
 │   ├── js/
-│   │   └── main.js               # Logique (canvas, projets, carousel...)
+│   │   └── projects.js           # Données des projets
 │   ├── images/
-│   │   ├── projets/              # Miniatures des projets
+│   │   ├── carrousel/            # Images profil et drapeaux
+│   │   ├── categories/           # Visuels des catégories de projets
+│   │   ├── projets/              # Miniatures locales des projets
 │   │   └── github/               # Assets README (header, UI, star)
 │   └── CV-Pierre-Petillion.pdf   # CV téléchargeable
 ├── .gitignore
