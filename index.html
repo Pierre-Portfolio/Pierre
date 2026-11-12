@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://opengraph.githubassets.com https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <title>Pierre Petillion — Consultant Logiciel & Data Engineer</title>
-<meta name="description" content="Portfolio de Pierre Petillion, Ingénieur en Data et IA, Software Consultant chez Magellan. Découvrez mes projets en Data Science, Sites Web et Logiciels.">
+<meta name="description" content="Portfolio de Pierre Petillion, Ingénieur en Data et IA, Consultant Support &amp; Formation chez Allshare. Découvrez mes projets en Data Science, Sites Web et Logiciels.">
 
 <!-- Open Graph / Instagram / Facebook / WhatsApp -->
 <meta property="og:type" content="website">
@@ -29,8 +29,8 @@
   "name": "Pierre Petillion",
   "url": "https://pierre-portfolio.github.io/",
   "image": "https://pierre-portfolio.github.io/assets/images/carrousel/profil.jpg",
-  "jobTitle": "Consultant Logiciel & Data Engineer",
-  "worksFor": {"@type": "Organization", "name": "Magellan"},
+  "jobTitle": "Consultant Support & Formation",
+  "worksFor": {"@type": "Organization", "name": "Allshare"},
   "alumniOf": {"@type": "CollegeOrUniversity", "name": "ESILV"},
   "knowsAbout": ["Data Science", "Data Engineering", "Software Development", "Web Development"],
   "sameAs": [
@@ -100,13 +100,15 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;padding:52px 2
 }
 
 /* ARROWS */
-.carousel-ctrl{position:absolute;top:50%;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:20;box-shadow:0 2px 14px rgba(0,0,0,.18);transition:background .2s,box-shadow .25s}
+.carousel-ctrl{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:20;box-shadow:0 2px 14px rgba(0,0,0,.18);transition:background .2s,box-shadow .25s}
 .carousel-ctrl:hover{background:#fff;box-shadow:0 0 20px rgba(43,184,184,.6)}
 #prev{left:-44px;animation:aL 2.5s ease-in-out infinite}
 #next{right:-44px;animation:aR 2.5s ease-in-out infinite}
-#prev:hover,#next:hover{animation:none}
-@keyframes aL{0%,100%{left:-44px}50%{left:-50px}}
-@keyframes aR{0%,100%{right:-44px}50%{right:-50px}}
+#prev:hover,#next:hover{animation-play-state:paused}
+@keyframes aL{0%,100%{transform:translate(0,-50%)}50%{transform:translate(-6px,-50%)}}
+@keyframes aR{0%,100%{transform:translate(0,-50%)}50%{transform:translate(6px,-50%)}}
+/* Écran moyen : flèches ramenées dans le cadre, sinon coupées par body{overflow-x:hidden} */
+@media(max-width:1219px){#prev{left:6px}#next{right:6px}}
 .carousel-ctrl svg{color:var(--teal-dk)}
 
 /* DOTS — vrais cercles */
@@ -201,7 +203,6 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;padding:52px 2
 .proj-card{display:flex;flex-direction:column;background:rgba(255,255,255,.13);border:2px solid rgba(255,255,255,.28);border-top:3px solid transparent;border-radius:12px;overflow:hidden;text-decoration:none;color:#fff;transition:transform .2s,box-shadow .2s,border-color .2s}
 .proj-card:hover{transform:translateY(-4px);border-top-color:var(--teal);box-shadow:0 16px 38px rgba(0,0,0,.32)}
 .proj-card img{width:100%;height:128px;object-fit:cover;display:block}
-.proj-fallback{width:100%;height:128px;background:rgba(0,0,0,.18);display:none;align-items:center;justify-content:center;font-size:34px}
 .proj-body{padding:12px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
 .proj-meta{display:flex;justify-content:space-between}
 .proj-year{font-size:11px;opacity:.58;font-family:monospace}
@@ -367,6 +368,15 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 
   /* Footer */
   footer{font-size:11px !important;padding:12px !important;}
+}
+
+/* ── ÉCRAN MOYEN (≤ 1000px) : profil empilé, la ligne fixe de 850px ne tient plus ── */
+@media(max-width:1000px){
+  .profile-row{width:100%;height:auto;position:static;display:flex;flex-direction:column;align-items:center;gap:18px;padding:10px 0}
+  .av-wrap{position:relative;transform:none;left:auto;top:auto;margin:0 auto}
+  .profile-info{position:static;transform:none;max-width:100%;width:100%;text-align:center}
+  .meta-row{justify-content:center}
+  .bio{margin-left:auto;margin-right:auto}
 }
 
 /* ── PETIT MOBILE (≤ 390px) ──────────────────────────────────── */
@@ -572,7 +582,6 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
 }
 </style>
-<script>function toggleExp(el){var open=el.classList.toggle("open");el.setAttribute("aria-expanded",open?"true":"false");}</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PPQR892T58"></script>
 <script>
@@ -620,16 +629,16 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
         </div>
         <div class="profile-info">
           <h1 class="name-stellar"><span class="sparkle sp1"></span><span class="sparkle sp2"></span><span class="sparkle sp3"></span><span class="sparkle sp4"></span><span class="sparkle sp5"></span><span class="sparkle sp6"></span>Pierre Petillion</h1>
-          <div class="job-title" data-fr="Consultant Logiciel chez Magellan" data-en="Software Consultant at Magellan">Consultant Logiciel chez Magellan</div>
+          <div class="job-title" data-fr="Consultant Support &amp; Formation chez Allshare" data-en="Support &amp; Training Consultant at Allshare">Consultant Support &amp; Formation chez Allshare</div>
           <div class="job-sub" data-fr="Ingénieur en Data et IA" data-en="Data &amp; AI Engineer">Ingénieur en Data et IA</div>
           <div class="meta-row">
             <span class="meta-item">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Paris, Ile-de-France
+              Paris, Île-de-France
             </span>
             <span class="meta-item">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-              Magellan
+              Allshare
             </span>
           </div>
           <p class="bio" data-fr="Ingénieur en Data et IA, je me situe à l'intersection du développement logiciel, de la science des données et du conseil — un positionnement qui me permet d'adresser un problème aussi bien sous l'angle algorithmique que sous celui de l'architecture système ou de l'impact business. Habitué à évoluer dans des contextes exigeants, je conçois des solutions qui ne se contentent pas de fonctionner : elles s'intègrent, se maintiennent et évoluent avec les besoins de l'organisation." data-en="Data & AI Engineer, I sit at the intersection of software development, data science and consulting — a position that allows me to address any problem from an algorithmic, system architecture or business impact angle. Used to working in demanding environments, I build solutions that do more than just work: they integrate, they last, and they grow with the organisation.">Ingénieur en Data et IA, je me situe à l'intersection du développement logiciel, de la science des données et du conseil — un positionnement qui me permet d'adresser un problème aussi bien sous l'angle algorithmique que sous celui de l'architecture système ou de l'impact business. Habitué à évoluer dans des contextes exigeants, je conçois des solutions qui ne se contentent pas de fonctionner : elles s'intègrent, se maintiennent et évoluent avec les besoins de l'organisation.</p>
@@ -654,12 +663,12 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
         </a>
       </div>
     
-      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Scroll vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button></div>
+      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Défiler vers le bas" aria-label="Défiler vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button></div>
 
         <!-- SLIDE 2 -->
     <div class="slide slide-box" id="s1">
       <div class="slide-title-wrap"><h2 class="slide-title" data-fr="Compétences Générales" data-en="General Skills">Compétences Générales</h2>
-      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Scroll vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Défiler vers le bas" aria-label="Défiler vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
     </div>
       <div class="tech2-grid">
         <div class="t2-cat"><div class="t2-cat-title" data-fr="Data Science & IA" data-en="Data Science & AI">Data Science & IA</div><div class="t2-items"><div class="t2-item"><span class="t2-icon">📈</span><span class="t2-label" data-fr="Analyse prédictive" data-en="Predictive Analytics">Analyse prédictive</span></div>
@@ -668,14 +677,14 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 <div class="t2-item"><span class="t2-icon">🤖</span><span class="t2-label" data-fr="Machine Learning" data-en="Machine Learning">Machine Learning</span></div>
 <div class="t2-item"><span class="t2-icon">📊</span><span class="t2-label" data-fr="Visualisation de données" data-en="Data Visualization">Visualisation de données</span></div></div></div>
         <div class="t2-cat"><div class="t2-cat-title" data-fr="Développement" data-en="Development">Développement</div><div class="t2-items"><div class="t2-item"><span class="t2-icon">🔌</span><span class="t2-label" data-fr="API REST & Intégration" data-en="REST API & Integration">API REST & Intégration</span></div>
-<div class="t2-item"><span class="t2-icon">🗄️</span><span class="t2-label" data-fr="Bases de données (SQL/NoSQL)" data-en="Databases (SQL/NoSQL)">Bases de données (SQL/NoSQL)</span></div>
+<div class="t2-item"><span class="t2-icon">🗄️</span><span class="t2-label" data-fr="Bases de données (Oracle / SQL / NoSQL)" data-en="Databases (Oracle / SQL / NoSQL)">Bases de données (Oracle / SQL / NoSQL)</span></div>
 <div class="t2-item"><span class="t2-icon">🖥️</span><span class="t2-label" data-fr="Dev Logiciel (C# / .NET)" data-en="Software Dev (C# / .NET)">Dev Logiciel (C# / .NET)</span></div>
 <div class="t2-item"><span class="t2-icon">🌐</span><span class="t2-label" data-fr="Dev Web Full Stack" data-en="Full Stack Web Dev">Dev Web Full Stack</span></div>
 <div class="t2-item"><span class="t2-icon">🚀</span><span class="t2-label" data-fr="Déploiement & Mise en production" data-en="Deployment & Production Release">Déploiement & Mise en production</span></div></div></div>
         <div class="t2-cat"><div class="t2-cat-title" data-fr="Conseil & Outils" data-en="Consulting & Tools">Conseil & Outils</div><div class="t2-items"><div class="t2-item"><span class="t2-icon">🔄</span><span class="t2-label" data-fr="Agile / Scrum" data-en="Agile / Scrum">Agile / Scrum</span></div>
 <div class="t2-item"><span class="t2-icon">📋</span><span class="t2-label" data-fr="Gestion portefeuille clients" data-en="Client Portfolio Management">Gestion portefeuille clients</span></div>
-<div class="t2-item"><span class="t2-icon">🛠️</span><span class="t2-label" data-fr="Maintenance & SLA" data-en="Maintenance & SLA">Maintenance & SLA</span></div>
 <div class="t2-item"><span class="t2-icon">📉</span><span class="t2-label" data-fr="Power BI & Tableau" data-en="Power BI & Tableau">Power BI & Tableau</span></div>
+<div class="t2-item"><span class="t2-icon">🛠️</span><span class="t2-label" data-fr="Support, Formation & SLA" data-en="Support, Training & SLA">Support, Formation & SLA</span></div>
 <div class="t2-item"><span class="t2-icon">🔍</span><span class="t2-label" data-fr="Tests & Qualité logicielle" data-en="Testing & Quality">Tests & Qualité logicielle</span></div></div></div>
       </div>
     </div>
@@ -683,7 +692,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
     <!-- SLIDE 3 SOFT -->
     <div class="slide slide-box" id="s2">
       <div class="slide-title-wrap"><h2 class="slide-title">Soft Skills</h2>
-      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Scroll vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Défiler vers le bas" aria-label="Défiler vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
     </div>
       <div class="soft-grid" id="soft-grid"></div>
     </div>
@@ -691,7 +700,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
     <!-- SLIDE 4 EDU -->
     <div class="slide slide-box" id="s3" style="padding:38px 52px">
       <div class="slide-title-wrap"><h2 class="slide-title" data-fr="Formations" data-en="Education">Formations</h2>
-      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Scroll vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Défiler vers le bas" aria-label="Défiler vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
     </div>
       <div class="edu-scroll">
         <div class="timeline">
@@ -699,7 +708,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
           <div class="tl-item">
             <div class="tl-dot"></div>
             <div class="t-card">
-              <div class="t-head"><span class="t-title" data-fr="Diplome d'Ingenieur" data-en="Engineering Degree">Diplome d'Ingenieur</span><span class="t-badge">2020-2023</span></div>
+              <div class="t-head"><span class="t-title" data-fr="Diplôme d'Ingénieur" data-en="Engineering Degree">Diplôme d'Ingénieur</span><span class="t-badge">2020-2023</span></div>
               <div class="t-place">ESILV — École Supérieure d'Ingénieurs Léonard de Vinci</div>
               <div class="t-sub" data-fr="Data Science &amp; IA · Machine Learning · Deep Learning · Big Data" data-en="Data Science &amp; AI · Machine Learning · Deep Learning · Big Data">Data Science &amp; IA · Machine Learning · Deep Learning · Big Data</div>
             </div>
@@ -707,16 +716,16 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
           <div class="tl-item">
             <div class="tl-dot"></div>
             <div class="t-card">
-              <div class="t-head"><span class="t-title" data-fr="Classe Preparatoire ATS" data-en="ATS Preparatory Class">Classe Preparatoire ATS</span><span class="t-badge">2019-2020</span></div>
-              <div class="t-place">Lycee Cesar Baggio</div>
-              <div class="t-sub" data-fr="Maths · Physique · Sciences de l'ingenieur · Anglais" data-en="Maths · Physics · Engineering Science · English">Maths · Physique · Sciences de l'ingenieur · Anglais</div>
+              <div class="t-head"><span class="t-title" data-fr="Classe Préparatoire ATS" data-en="ATS Preparatory Class">Classe Préparatoire ATS</span><span class="t-badge">2019-2020</span></div>
+              <div class="t-place">Lycée César Baggio</div>
+              <div class="t-sub" data-fr="Maths · Physique · Sciences de l'ingénieur · Anglais" data-en="Maths · Physics · Engineering Science · English">Maths · Physique · Sciences de l'ingénieur · Anglais</div>
             </div>
           </div>
           <div class="tl-item">
             <div class="tl-dot"></div>
             <div class="t-card">
               <div class="t-head"><span class="t-title" data-fr="DUT Informatique" data-en="Computer Science HND">DUT Informatique</span><span class="t-badge">2017-2019</span></div>
-              <div class="t-place">Universite Paris-Saclay — IUT d'Orsay</div>
+              <div class="t-place">Université Paris-Saclay — IUT d'Orsay</div>
               <div class="t-sub" data-fr="POO · Programmation Web · Réseaux · Administration systèmes" data-en="OOP · Web · Networks · System Administration">POO · Programmation Web · Réseaux · Administration systèmes</div>
             </div>
           </div>
@@ -726,10 +735,29 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 
 <!-- SLIDE 5 EXP -->
     <div class="slide slide-box" id="s4" style="gap:18px">
-      <div class="slide-title-wrap"><h2 class="slide-title" data-fr="Expériences" data-en="Expérience">Expériences</h2>
-      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Scroll vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="slide-title-wrap"><h2 class="slide-title" data-fr="Expériences" data-en="Experience">Expériences</h2>
+      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Défiler vers le bas" aria-label="Défiler vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
     </div>
       <div class="exp-scroll">
+
+        <div class="exp-card exp-toggle" onclick="toggleExp(this)" role="button" tabindex="0" aria-expanded="false">
+          <div class="exp-head">
+            <span class="exp-chevron">❯</span>
+            <span class="exp-icon">&#128202;</span>
+            <div style="flex:1">
+              <div class="exp-company">Allshare <span style="font-weight:400;font-size:14px;opacity:.72">— Guyancourt</span></div>
+              <div style="font-size:13px;opacity:.75;margin-top:1px" data-fr="Consultant Support &amp; Formation" data-en="Support &amp; Training Consultant">Consultant Support &amp; Formation</div>
+              <div class="exp-period" data-fr="2026 → aujourd'hui" data-en="2026 → present">2026 → aujourd'hui</div>
+            </div>
+          </div>
+          <div class="exp-roles exp-body">
+            <div class="exp-role"><div class="exp-dot"></div><div>
+              <span class="exp-rl" data-fr="Consultant Support &amp; Formation" data-en="Support &amp; Training Consultant">Consultant Support &amp; Formation</span>
+              <span class="exp-rp" data-fr="Sept. 2026 → aujourd'hui" data-en="Sept. 2026 → present">Sept. 2026 → aujourd'hui</span>
+              <div class="exp-rd" data-fr="Développements Oracle OLAP, SQL et APEX." data-en="Oracle OLAP, SQL and APEX development.">Développements Oracle OLAP, SQL et APEX.</div>
+            </div></div>
+          </div>
+        </div>
 
         <div class="exp-card exp-toggle" onclick="toggleExp(this)" role="button" tabindex="0" aria-expanded="false">
           <div class="exp-head">
@@ -743,18 +771,18 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
           </div>
           <div class="exp-roles exp-body">
             <div class="exp-role"><div class="exp-dot"></div><div>
-              <span class="exp-rl" data-fr="CDI — Consultant Développeur Pole Accompagnement" data-en="Full-time — Client Support Consultant">CDI — Consultant Développeur Pole Accompagnement</span>
-              <span class="exp-rp">2023 → 2026</span>
-              <div class="exp-rd" data-fr="Gestion portefeuille clients, respect des SLA, développement nouvelles fonctionnalites, resolution incidents. Referent d'une dizaine d'applications (VPSoft, Enablon)." data-en="Client portfolio management, SLA compliance, feature development, incident resolution. Owner of ~10 apps (VPSoft, Enablon).">Gestion portefeuille clients, respect des SLA, développement nouvelles fonctionnalites, resolution incidents. Referent d'une dizaine d'applications (VPSoft, Enablon).</div>
+              <span class="exp-rl" data-fr="CDI — Software Engineer, Pôle Accompagnement" data-en="Full-time — Software Engineer, Client Support">CDI — Software Engineer, Pôle Accompagnement</span>
+              <span class="exp-rp" data-fr="Sept. 2023 – Août 2026" data-en="Sept. 2023 – Aug. 2026">Sept. 2023 – Août 2026</span>
+              <div class="exp-rd" data-fr="Gestion portefeuille clients, respect des SLA, développement de nouvelles fonctionnalités, résolution d'incidents. Référent d'une dizaine d'applications (VPSoft, Enablon)." data-en="Client portfolio management, SLA compliance, feature development, incident resolution. Owner of ~10 apps (VPSoft, Enablon).">Gestion portefeuille clients, respect des SLA, développement de nouvelles fonctionnalités, résolution d'incidents. Référent d'une dizaine d'applications (VPSoft, Enablon).</div>
             </div></div>
             <div class="exp-role"><div class="exp-dot"></div><div>
-              <span class="exp-rl" data-fr="Alternance — Pole Produit &amp; Service" data-en="Apprentice — Product &amp; Service">Alternance — Pole Produit &amp; Service</span>
-              <span class="exp-rp">Mars – Sept. 2023</span>
-              <div class="exp-rd" data-fr="Développement applications web VPSoft &amp; Enablon. 3 mois a Londres puis Paris." data-en="VPSoft &amp; Enablon web app development. 3 months London then Paris.">Développement applications web VPSoft &amp; Enablon. 3 mois a Londres puis Paris.</div>
+              <span class="exp-rl" data-fr="Alternance — Pôle Produit &amp; Service" data-en="Apprentice — Product &amp; Service">Alternance — Pôle Produit &amp; Service</span>
+              <span class="exp-rp" data-fr="Mars – Sept. 2023" data-en="Mar. – Sept. 2023">Mars – Sept. 2023</span>
+              <div class="exp-rd" data-fr="Développement applications web VPSoft &amp; Enablon. 3 mois à Londres puis Paris." data-en="VPSoft &amp; Enablon web app development. 3 months London then Paris.">Développement applications web VPSoft &amp; Enablon. 3 mois à Londres puis Paris.</div>
             </div></div>
             <div class="exp-role"><div class="exp-dot"></div><div>
-              <span class="exp-rl" data-fr="Stage — Pole Produit &amp; Service" data-en="Intern — Product &amp; Service">Stage — Pole Produit &amp; Service</span>
-              <span class="exp-rp">Avr. – Sept. 2021</span>
+              <span class="exp-rl" data-fr="Stage — Pôle Produit &amp; Service" data-en="Intern — Product &amp; Service">Stage — Pôle Produit &amp; Service</span>
+              <span class="exp-rp" data-fr="Avr. – Sept. 2021" data-en="Apr. – Sept. 2021">Avr. – Sept. 2021</span>
               <div class="exp-rd" data-fr="Développement d'une extension Chrome et d'une application web pour la gestion d'affichage dynamique sur écrans." data-en="Developed a Chrome extension and web application for dynamic screen display management.">Développement d'une extension Chrome et d'une application web pour la gestion d'affichage dynamique sur écrans.</div>
             </div></div>
           </div>
@@ -773,13 +801,13 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
           <div class="exp-roles exp-body">
             <div class="exp-role"><div class="exp-dot"></div><div>
               <span class="exp-rl" data-fr="CDD — Développeur Web Full Stack" data-en="Fixed-term — Full Stack Web Developer">CDD — Développeur Web Full Stack</span>
-              <span class="exp-rp">Juil. – Août 2019 · 2 mois</span>
-              <div class="exp-rd" data-fr="Amelioration du site web de l'entreprise afin d'en accroitre son ergonomie et sa fluidite. Résolution de problèmes, développement web." data-en="Improved the company website to enhance ergonomics and fluidity. Problem solving, web development.">Amelioration du site web de l'entreprise afin d'en accroitre son ergonomie et sa fluidite. Résolution de problèmes, développement web.</div>
+              <span class="exp-rp" data-fr="Juil. – Août 2019 · 2 mois" data-en="Jul. – Aug. 2019 · 2 months">Juil. – Août 2019 · 2 mois</span>
+              <div class="exp-rd" data-fr="Amélioration du site web de l'entreprise afin d'en accroître l'ergonomie et la fluidité. Résolution de problèmes, développement web." data-en="Improved the company website to enhance ergonomics and fluidity. Problem solving, web development.">Amélioration du site web de l'entreprise afin d'en accroître l'ergonomie et la fluidité. Résolution de problèmes, développement web.</div>
             </div></div>
             <div class="exp-role"><div class="exp-dot"></div><div>
               <span class="exp-rl" data-fr="Stage — Développeur Logiciel" data-en="Intern — Software Developer">Stage — Développeur Logiciel</span>
-              <span class="exp-rp">Avr. – Juin 2019 · 3 mois</span>
-              <div class="exp-rd" data-fr="Réalisation de plusieurs outils en Qt afin de proposer une solution centralisee simple et efficace de gestion d'affichage d'écran dynamique." data-en="Built several tools in Qt to provide a simple and efficient centralized solution for dynamic screen display management.">Réalisation de plusieurs outils en Qt afin de proposer une solution centralisee simple et efficace de gestion d'affichage d'écran dynamique.</div>
+              <span class="exp-rp" data-fr="Avr. – Juin 2019 · 3 mois" data-en="Apr. – Jun. 2019 · 3 months">Avr. – Juin 2019 · 3 mois</span>
+              <div class="exp-rd" data-fr="Réalisation de plusieurs outils en Qt afin de proposer une solution centralisée simple et efficace de gestion d'affichage d'écran dynamique." data-en="Built several tools in Qt to provide a simple and efficient centralized solution for dynamic screen display management.">Réalisation de plusieurs outils en Qt afin de proposer une solution centralisée simple et efficace de gestion d'affichage d'écran dynamique.</div>
             </div></div>
           </div>
         </div>
@@ -790,7 +818,7 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 <!-- SLIDE 6 CONTACT -->
     <div class="slide slide-box" id="s5">
       <div class="slide-title-wrap"><h2 class="slide-title" data-fr="Contact" data-en="Contact">Contact</h2>
-      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Scroll vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="scroll-down-btn" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" title="Défiler vers le bas" aria-label="Défiler vers le bas"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
     </div>
       <div class="contact-row">
         <div class="contact-tile">
@@ -858,21 +886,28 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
 <button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button>
 <footer><strong data-fr="&copy; 2026 Pierre Petillion &mdash; Engineer &amp; Software Consultant" data-en="&copy; 2026 Pierre Petillion &mdash; Engineer &amp; Software Consultant">&copy; 2026 Pierre Petillion &mdash; Engineer &amp; Software Consultant</strong></footer>
 
-<script src="assets/js/projects.js?v=4"></script>
+<script src="assets/js/projects.js?v=5"></script>
 <script>
 (function(){
   var canvas=document.getElementById('bg-canvas');
   var ctx=canvas.getContext('2d',{alpha:false});
-  var stars=[], shoots=[];
+  var stars=[], shoots=[], twinklers=[];
   var W=0,H=0; // dimensions logiques (px CSS) — le canvas est mis à l'échelle par dpr
+  var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var C0=[6,30,75], C1=[10,90,108], C2=[14,122,122];
+  var lastShoot=-9999,nextShoot=rnd(2500,5000),lastPick=-1e9,grad=null,gradT=-1,scrollFrac=0;
   function rnd(a,b){return a+Math.random()*(b-a);}
+  function lerp(a,b,t){return a+(b-a)*t;}
   function makeStars(){
     stars=[];
     for(var i=0;i<260;i++){
       stars.push({x:rnd(0,W),y:rnd(0,H),
-        r:rnd(0.3,1.7),base:rnd(0.12,0.68),phase:rnd(0,6.28),spd:rnd(0.004,0.022)});
+        r:rnd(0.3,1.7),base:rnd(0.12,0.68),phase:rnd(0,6.28),spd:rnd(0.004,0.022),tw:null});
     }
-    window.starsRef=stars;
+  }
+  // Fraction de scroll mise en cache : évite de lire scrollHeight (reflow) à chaque frame
+  function updateScroll(){
+    scrollFrac=Math.min(window.scrollY/Math.max(document.documentElement.scrollHeight-window.innerHeight,1),1);
   }
   function resize(){
     var ow=W,oh=H;
@@ -881,18 +916,29 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
     canvas.width=Math.round(W*dpr); canvas.height=Math.round(H*dpr);
     ctx.setTransform(dpr,0,0,dpr,0,0);
     grad=null;
-    if(!stars.length){makeStars();return;}
-    // Repositionner les étoiles existantes au lieu de les régénérer :
-    // évite le "saut" du ciel quand la barre d'adresse mobile se rétracte
-    var rx=W/ow,ry=H/oh;
-    for(var i=0;i<stars.length;i++){stars[i].x*=rx;stars[i].y*=ry;}
+    updateScroll();
+    if(!stars.length){makeStars();}
+    else{
+      // Repositionner les étoiles existantes au lieu de les régénérer :
+      // évite le "saut" du ciel quand la barre d'adresse mobile se rétracte
+      var rx=W/ow,ry=H/oh;
+      for(var i=0;i<stars.length;i++){stars[i].x*=rx;stars[i].y*=ry;}
+    }
+    if(reduceMotion)requestFrame();
   }
-  resize(); window.addEventListener('resize',resize);
-  var C0=[6,30,75], C1=[10,90,108], C2=[14,122,122];
-  var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function scrollT(){return Math.min(window.scrollY/Math.max(document.body.scrollHeight-window.innerHeight,1),1);}
-  function lerp(a,b,t){return a+(b-a)*t;}
-  var lastShoot=-9999,nextShoot=rnd(2500,5000),grad=null,gradT=-1;
+  // Scintillement : 15 % des étoiles pulsent fortement, sélection renouvelée toutes les 4 s
+  function pickTwinklers(){
+    for(var i=0;i<twinklers.length;i++){var o=twinklers[i];o.base=o.tw.orig;o.tw=null;}
+    twinklers=[];
+    var count=Math.floor(stars.length*0.15),seen={};
+    while(twinklers.length<count){
+      var k=Math.floor(Math.random()*stars.length);
+      if(seen[k])continue; seen[k]=1;
+      var st=stars[k];
+      st.tw={phase:Math.random()*Math.PI*2,speed:0.02+Math.random()*0.05,orig:st.base};
+      twinklers.push(st);
+    }
+  }
   function spawnShoot(ts){
     var fromRight=Math.random()>0.4;
     var sx,sy;
@@ -902,8 +948,8 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
       angle:Math.PI*0.65+rnd(-0.15,0.15),life:1,decay:rnd(0.009,0.016),w:rnd(1.0,1.8)});
     lastShoot=ts;
   }
-  function draw(ts){
-    var t=Math.round(scrollT()*100)/100;
+  function render(ts){
+    var t=Math.round(scrollFrac*100)/100;
     if(!grad||t!==gradT){
       gradT=t;
       var t1=Math.min(t*1.4,1);
@@ -913,14 +959,25 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
       grad.addColorStop(0,'rgb('+top+')'); grad.addColorStop(1,'rgb('+bot+')');
     }
     ctx.fillStyle=grad; ctx.fillRect(0,0,W,H);
+    if(!reduceMotion){
+      if(ts-lastPick>4000){pickTwinklers();lastPick=ts;}
+      for(var k=0;k<twinklers.length;k++){
+        var tw=twinklers[k]; tw.tw.phase+=tw.tw.speed;
+        tw.base=0.05+(Math.sin(tw.tw.phase)+1)*0.45; // pulse entre 0.05 et 0.95
+      }
+    }
+    // globalAlpha au lieu d'une chaîne rgba() par étoile et par frame
+    ctx.fillStyle='#fff';
     for(var i=0;i<stars.length;i++){
       var s=stars[i];
       if(!reduceMotion)s.phase+=s.spd;
       var a=reduceMotion?s.base:s.base+Math.sin(s.phase)*0.16;
-      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,6.28);
-      ctx.fillStyle='rgba(255,255,255,'+Math.max(0,Math.min(1,a))+')'; ctx.fill();
+      ctx.globalAlpha=a<0?0:(a>1?1:a);
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,6.28); ctx.fill();
     }
-    if(!reduceMotion&&ts-lastShoot>nextShoot){spawnShoot(ts);nextShoot=rnd(2500,5000);}
+    ctx.globalAlpha=1;
+    if(reduceMotion)return;
+    if(ts-lastShoot>nextShoot){spawnShoot(ts);nextShoot=rnd(2500,5000);}
     for(var j=shoots.length-1;j>=0;j--){
       var sh=shoots[j];
       var tailX=sh.x-Math.cos(sh.angle)*sh.len*sh.life;
@@ -934,16 +991,27 @@ footer{text-align:center;padding:10px 0 16px;font-size:13px;opacity:.62;font-wei
       sh.x+=Math.cos(sh.angle)*sh.spd; sh.y+=Math.sin(sh.angle)*sh.spd; sh.life-=sh.decay;
       if(sh.life<=0||sh.x<-80||sh.y>H+80) shoots.splice(j,1);
     }
-    requestAnimationFrame(draw);
   }
-  requestAnimationFrame(draw);
+  // Mouvement réduit : rendu statique, redessiné seulement sur scroll/resize
+  var pending=false;
+  function requestFrame(){
+    if(pending)return; pending=true;
+    requestAnimationFrame(function(ts){pending=false;render(ts);});
+  }
+  function loop(ts){render(ts);requestAnimationFrame(loop);}
+  window.addEventListener('scroll',function(){updateScroll();if(reduceMotion)requestFrame();},{passive:true});
+  window.addEventListener('resize',resize);
+  resize();
+  if(!reduceMotion)requestAnimationFrame(loop);
 })();
 
-var current=0,N=document.querySelectorAll(".slide").length,lastSlideTs=0;
+var slidesEl=document.querySelectorAll(".slide"),dotsEl=null; // dotsEl résolu au 1er goTo : #mobile-nav est après ce script
+var current=0,N=slidesEl.length,lastSlideTs=0;
+function toggleExp(el){var open=el.classList.toggle("open");el.setAttribute("aria-expanded",open?"true":"false");}
 function goTo(n){
-  if(Date.now()-lastSlideTs<380||n===current)return;
+  if(n===current||Date.now()-lastSlideTs<380)return;
   lastSlideTs=Date.now();
-  var slides = document.querySelectorAll(".slide");
+  var slides=slidesEl;
   var dir = n > current ? 1 : -1;
   var prev = current;
 
@@ -961,8 +1029,9 @@ function goTo(n){
     slides[n].classList.add('active');
   }
 
-  document.querySelectorAll(".dot").forEach(function(d,i){d.classList.toggle("active",i===n);});
-  document.querySelectorAll(".nav-dot").forEach(function(d,i){d.classList.toggle("active",i===n);});
+  // .dot (desktop) puis .nav-dot (mobile) : même index modulo N
+  if(!dotsEl)dotsEl=document.querySelectorAll(".dot,.nav-dot");
+  dotsEl.forEach(function(d,i){d.classList.toggle("active",i%N===n);});
   current=n;
   window.scrollTo({top:0,behavior:'instant'});
 }
@@ -1018,17 +1087,17 @@ function renderProj(cat){
   grid.innerHTML=list.map(function(p){
     var desc=lang==="en"?p.en:p.fr;
     var tags=p.lg.map(function(l){return '<span class="proj-tag '+(TAG_MAP[l]||'')+'">'+escH(l)+'</span>';}).join("");
-    var stars='';
     var repo=encodeURIComponent(p.r);
     var imgSrc=p.img?p.img:'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+repo;
     var ghUrl='https://github.com/Pierre-Portfolio/'+repo;
-    return '<a href="'+(p.noGithub?'#':escH(ghUrl))+'" '+(p.noGithub?'onclick="return false"':'target="_blank" rel="noopener noreferrer"')+' class="proj-card'+(p.noGithub?' proj-no-gh':'')+'">'
+    // Projet sans dépôt public : carte non cliquable (div) au lieu d'un lien mort href="#"
+    var open=p.noGithub?'<div class="proj-card proj-no-gh">':'<a href="'+escH(ghUrl)+'" target="_blank" rel="noopener noreferrer" class="proj-card">';
+    return open
       +'<img src="'+escH(imgSrc)+'" alt="'+escH(p.t)+'" loading="lazy" style="object-fit:'+escH(p.fit||'cover')+'"' +' onerror="this.onerror=null;this.src=\'https://opengraph.githubassets.com/1/Pierre-Portfolio/'+repo+'\'">'
-      +'<div class="proj-fallback">&#128187;</div>'
-      +'<div class="proj-body"><div class="proj-meta"><span class="proj-year">'+escH(p.y)+'</span>'+stars+'</div>'
+      +'<div class="proj-body"><div class="proj-meta"><span class="proj-year">'+escH(p.y)+'</span></div>'
       +'<div class="proj-title">'+escH(p.t)+'</div><div class="proj-desc">'+escH(desc)+'</div>'
       +'<div class="proj-tags">'+tags+'</div>'
-      +'<div class="proj-gh">'+(lang==="en"?"View on GitHub":"Voir sur GitHub")+'</div></div></a>';
+      +'<div class="proj-gh">'+(p.noGithub?(lang==="en"?"Private code":"Code privé"):(lang==="en"?"View on GitHub":"Voir sur GitHub"))+'</div></div>'+(p.noGithub?'</div>':'</a>');
   }).join("");
 }
 function setLang(lang){
@@ -1039,7 +1108,6 @@ function setLang(lang){
   var navFr=document.getElementById("nav-flag-fr"); if(navFr) navFr.classList.toggle("active",lang==="fr");
   var navEn=document.getElementById("nav-flag-en"); if(navEn) navEn.classList.toggle("active",lang==="en");
   document.querySelectorAll("[data-fr]").forEach(function(el){var v=el.getAttribute("data-"+lang);if(v)el.textContent=v;});
-  document.querySelectorAll(".soft-label").forEach(function(el,i){if(SOFT[i])el.textContent=SOFT[i][lang]||SOFT[i].fr;});
   document.querySelectorAll(".soft-inner .tip").forEach(function(tip,i){if(SOFT[i])tip.textContent=SOFT[i][lang]||SOFT[i].fr;});
   if(activeCat)renderProj(activeCat);
 }
@@ -1052,55 +1120,6 @@ document.querySelectorAll(".exp-toggle,.cat-card").forEach(function(el){
     if(e.key==="Enter"||e.key===" "){e.preventDefault();el.click();}
   });
 });
-
-// ── TWINKLE : étoiles qui clignotent aléatoirement ──────────────────────────
-(function(){
-  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var twinklers=[];
-  function pick(){
-    if(!window.starsRef||!window.starsRef.length)return;
-    // Remettre la base originale
-    window.starsRef.forEach(function(s){
-      if(s.twinkle){s.base=s.twinkle.origBase;}
-      delete s.twinkle;
-    });
-    twinklers=[];
-    var stars=window.starsRef;
-    var count=Math.floor(stars.length*0.15);
-    var seen={};
-    while(twinklers.length<count){
-      var i=Math.floor(Math.random()*stars.length);
-      if(seen[i])continue;seen[i]=1;
-      stars[i].twinkle={
-        phase:Math.random()*Math.PI*2,
-        speed:0.02+Math.random()*0.05,
-        origBase:stars[i].base
-      };
-      twinklers.push(stars[i]);
-    }
-  }
-  function loop(){
-    twinklers.forEach(function(s){
-      if(!s.twinkle)return;
-      s.twinkle.phase+=s.twinkle.speed;
-      var p=(Math.sin(s.twinkle.phase)+1)/2; // 0→1
-      // Faire pulser entre très sombre (0.05) et très brillant (0.95)
-      s.base=0.05+p*0.90;
-    });
-    requestAnimationFrame(loop);
-  }
-  var t=setInterval(function(){
-    if(window.starsRef&&window.starsRef.length){
-      clearInterval(t);pick();setInterval(pick,4000);loop();
-    }
-  },300);
-})();
-
-
-
-
-
-
 
 // ── SIGNAL : scintillement aléatoire comme un signal radio ──────────────────
 (function(){
@@ -1124,7 +1143,6 @@ document.querySelectorAll(".exp-toggle,.cat-card").forEach(function(el){
     }, wait);
   }
   scheduleFlash();
-  setLang('fr');
 })();
 
 </script>
